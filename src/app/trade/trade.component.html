@@ -1,0 +1,27 @@
+<h4>From</h4>
+<mat-form-field>
+  <mat-label>Select currency</mat-label>
+  <mat-select  [(ngModel)]="tradeService.selectedValueFrom">
+    <mat-option *ngFor="let currency of currencies" [value]="currency.name">
+      {{currency.viewValue}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+<br>
+<label>Amount: </label><input type="number" class="form-control" [(ngModel)]="tradeService.amountFrom">
+
+<h4>To</h4>
+<mat-form-field>
+  <mat-label>Select currency</mat-label>
+  <mat-select [(ngModel)]="tradeService.selectedValueTo">
+    <mat-option *ngFor="let currency of currencies" [value]="currency.name" (change)="tradeService.getTradeAmountTo()">
+      {{currency.viewValue}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+<br>
+<label>Amount: </label><input type="number" class="form-control" disabled='true'[(ngModel)]="amountToValue" >
+<br>
+<button class="btn btn-primary" (click)="tradeService.trade()" [routerLink]="['/servers']" >Add</button>
+<p>{{tradeService.selectedValueFrom}}</p>
+<p>{{tradeService.selectedValueTo}}</p>
