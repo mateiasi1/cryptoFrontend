@@ -1,0 +1,41 @@
+
+<table class="table" >
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">IBAN</th>
+        <th scope="col">Currency</th>
+      </tr>
+    </thead>
+    
+    <tbody>
+      <tr *ngFor="let item of accountsFromBackend">
+        <th scope="row"> {{ item.id }}</th>
+        <td>{{ item.name }}</td>
+        <td>{{item.IBAN}}</td>
+        <td>{{item.Currency}}</td>
+      </tr>
+    </tbody>
+  </table><br>
+ 
+  
+<mat-accordion>
+    <mat-expansion-panel (opened)="panelOpenState = true"
+    (closed)="panelOpenState = false">
+<mat-expansion-panel-header>
+<mat-panel-title>
+  Add Account
+</mat-panel-title>
+
+</mat-expansion-panel-header>
+<form>
+    
+    <label>Name</label><input type="text" class="form-control"[(ngModel)]="name" name="name">
+    <label>IBAN: </label><input type="text" class="form-control"[(ngModel)]="IBAN" name="IBAN">
+    <label>Currency: </label><input type="text" class="form-control"[(ngModel)]="currency" name="currency">
+    </form>
+    <hr>
+    <button class="btn btn-primary space buttonsWidth" [routerLink]="['/bank-account']"  (click)="addAccount()">Add Account</button>
+</mat-expansion-panel>
+</mat-accordion>

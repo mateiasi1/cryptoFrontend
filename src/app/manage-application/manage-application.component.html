@@ -1,0 +1,41 @@
+<mat-accordion>
+  <mat-expansion-panel (opened)="panelOpenState = true"
+  (closed)="panelOpenState = false">
+<mat-expansion-panel-header>
+<mat-panel-title>
+<h4>Manage transaction fee</h4>
+</mat-panel-title>
+
+</mat-expansion-panel-header>
+<form>
+    <label>New value: </label>
+ <input type="text" class="form-control inputNew"[(ngModel)]="newValueFee" name="newValueFee"> <button class="btn btn-primary buttons" (click)="addFee()" [routerLink]="['/manage-application']">Add fee</button>
+</form>
+ 
+  
+<hr>
+<label>Old value: </label><input type="text" class="form-control inputOld"[(ngModel)]="actualFee" name="actualFee" disabled>
+
+</mat-expansion-panel>
+</mat-accordion>
+<hr>
+<mat-accordion>
+    <mat-expansion-panel (opened)="panelOpenState = true"
+    (closed)="panelOpenState = false">
+  <mat-expansion-panel-header>
+  <mat-panel-title>
+  <h4>Withdrawal flat rate </h4>
+  </mat-panel-title>
+  
+  </mat-expansion-panel-header>
+  <form>
+      <label>New value: </label>
+   <input type="text" class="form-control inputNew"[(ngModel)]="newValueFlat" name="newValueFlat"> <button class="btn btn-primary buttons" (click)="addFlatRate()" [routerLink]="['/manage-application']">Add flat</button>
+  </form>
+   
+    
+  <hr>
+  <label>Old value: </label><input type="text" class="form-control inputOld"[(ngModel)]="actualFlat" name="actualFlat" disabled>
+  
+  </mat-expansion-panel>
+  </mat-accordion>

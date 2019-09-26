@@ -1,0 +1,16 @@
+.inputNew {
+    width: 300px;
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.inputOld {
+    width: 300px;
+    display: inline-block;
+    margin-left: 16px;
+}
+
+
+.buttons {
+    margin-left: 10px;
+}

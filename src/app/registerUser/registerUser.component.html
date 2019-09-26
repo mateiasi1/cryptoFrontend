@@ -1,0 +1,21 @@
+<div class="loginBorder">
+  <h1 style="text-align: center; margin-bottom: 40px">Register</h1>
+ 
+<label>First name: </label><input type="text" class="form-control inline" >
+<label class="margin">Last name: </label><input type="text" class="form-control inline" >
+<br>
+<br>
+<label>Username: </label><input type="text" class="form-control" [(ngModel)]="userCreate.Username">
+<br>
+<label>Password: </label><input type="password" class="form-control" [(ngModel)]="userCreate.Password">
+<br>
+<label>Repeat Password: </label><input type="password" class="form-control">
+<br>
+<label>Phone number: </label><input type="tel" class="form-control">
+<br>
+<mat-checkbox [(ngModel)]="userCreate.IsOver18">Over 18</mat-checkbox>
+
+<button class="btn btn-primary loginBtn" [routerLink]="['/users']" (click)="postUser()">Register</button>
+<br>
+<p style="color:blue" [routerLink]="['/users']" routerLinkActive="router-link-active" > <--Back to login</p>
+</div>

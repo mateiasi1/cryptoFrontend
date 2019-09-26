@@ -1,0 +1,31 @@
+<table class="table" >
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Symbol</th>
+    </tr>
+  </thead>
+  
+  <tbody>
+    <tr *ngFor="let item of currencyFromBackend">
+      <th scope="row"> {{ item.id }}</th>
+      <td>{{ item.name }}</td>
+      <td>{{item.viewValue}}</td>
+      <td><button class="btn btn-primary space buttonsWidth" [routerLink]="['/availableCurrencies']"  (click)="addCurrency(item.name,item.viewValue,item.id,item.currentPrice,item.amount)">Add</button>
+    </tr>
+  </tbody>
+</table><br>
+
+<h3>Administrator add currency to the list</h3>
+<br>
+<mat-form-field>
+  <mat-label>Select currency</mat-label>
+  <mat-select  [(ngModel)]="selectedValue">
+    <mat-option *ngFor="let currency of allCurrency" [value]="currency.name">
+      {{currency.viewValue}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+<br>
+<button class="btn btn-primary" [routerLink]="['/availableCurrencies']"  (click)="addCurrencyToList()">Administrator Add Currency</button>

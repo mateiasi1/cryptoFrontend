@@ -5,14 +5,10 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import {  DepositComponent } from './deposit/deposit.component';
-import { WithdrawComponent } from './users/withdraw.component';
+import { WithdrawComponent } from './withdraw/withdraw.component';
 import { ServersComponent } from './servers/servers.component';
-import { UserComponent } from './users/users/user.component';
-import { EditServerComponent } from './servers/edit-server/edit-server.component';
-import { ServerComponent } from './servers/server/server.component';
 import { ServersService } from './servers/servers.service';
 import { HomeService } from './deposit/deposit.service';
-import { WithdrawService } from './users/withdraw.service';
 import { TradeComponent } from './trade/trade.component';
 import { MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -21,14 +17,31 @@ import { MatSelectModule } from '@angular/material/select';
 import { Currency } from './servers/currency.component';
 import { TradeService } from './trade/trade.service';
 import { HttpClientModule } from '@angular/common/http';
-
+import { WithdrawService } from './withdraw/withdraw.service';
+import { UsersComponent } from './users/users.component';
+import { UserCreate } from './users/userCreate.component';
+import { UserLogin } from './users/userLogin.component';
+import { AvailableCurrenciesComponent } from './availableCurrencies/availableCurrencies.component';
+import { FiatAccountComponent } from './fiat-account/fiat-account.component';
+import { BankAccount } from './bankAccount.component';
+import { ManageApplicationComponent } from './manage-application/manage-application.component';
+import { RegisterUserComponent } from './registerUser/registerUser.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import { AuthGuard } from './auth-guard.service';
+import { AuthService } from './auth-service';
+import { LoginModule } from 'src/Login/Login.module';
 
 const appRoutes: Routes = [
-  { path: '', component: DepositComponent },
-  { path: 'home', component: DepositComponent},
-  { path: 'users', component: WithdrawComponent },
-  { path: 'servers', component: ServersComponent },
-  { path: 'trade', component: TradeComponent },
+  { path: '', canActivate: [AuthGuard], component: DepositComponent },
+  { path: 'home', canActivate: [AuthGuard], component: DepositComponent},
+  { path: 'withdraw', canActivate: [AuthGuard],  component: WithdrawComponent },
+  { path: 'servers', canActivate: [AuthGuard],  component: ServersComponent },
+  { path: 'trade', canActivate: [AuthGuard], component: TradeComponent },
+  { path: 'users', component: UsersComponent},
+  { path: 'availableCurrencies', canActivate: [AuthGuard], component: AvailableCurrenciesComponent},
+  { path: 'bank-account', canActivate: [AuthGuard], component: FiatAccountComponent},
+  { path: 'manage-application', canActivate: [AuthGuard], component: ManageApplicationComponent},
+  { path: 'registerUser', component: RegisterUserComponent},
   { path: '**', redirectTo: '/not-found'},
 ];
 
@@ -38,12 +51,13 @@ const appRoutes: Routes = [
       DepositComponent,
       WithdrawComponent,
       ServersComponent,
-      UserComponent,
-      EditServerComponent,
-      ServerComponent,
-      TradeComponent
+      TradeComponent,
+      UsersComponent,
+      AvailableCurrenciesComponent,
+      FiatAccountComponent,
+      ManageApplicationComponent,
+      RegisterUserComponent
    ],
-
    imports: [
       BrowserModule,
       FormsModule,
@@ -54,15 +68,21 @@ const appRoutes: Routes = [
       MatSelectModule,
       MatInputModule,
       MatExpansionModule,
-      HttpClientModule
-
+      HttpClientModule,
+      MatCheckboxModule,
+      LoginModule
    ],
    providers: [
       ServersService,
       HomeService,
       WithdrawService,
       Currency,
-      TradeService
+      TradeService,
+      UserCreate,
+      UserLogin,
+      ManageApplicationComponent,
+      AuthService,
+      AuthGuard
    ],
    bootstrap: [
       AppComponent

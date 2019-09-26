@@ -1,0 +1,9 @@
+<div class="loginBorder">
+  <h1 style="text-align: center; margin-bottom: 40px">Login</h1>
+ 
+<label>Username: </label><input type="text" class="form-control" [(ngModel)]="userLogin.Username">
+<label>Password: </label><input type="password" class="form-control" [(ngModel)]="userLogin.Password">
+
+<button class="btn btn-primary loginBtn" [routerLink]="['/servers']" (click)="loginUser()">Login</button>
+<p style="color:blue" >Forgot password?</p>
+</div>
