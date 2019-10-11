@@ -22,6 +22,6 @@
 <br>
 <label>Amount: </label><input type="number" class="form-control" disabled='true' >
 <br>
-<button class="btn btn-primary" (click)="tradeService.trade()" [routerLink]="['/servers']" >Add</button>
+<button mat-button class="btn btn-primary" (click)="tradeService.trade()" [routerLink]="['/servers']" >Add</button>
 <p>{{tradeService.selectedValueFrom}}</p>
 <p>{{tradeService.selectedValueTo}}</p>

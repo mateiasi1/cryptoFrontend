@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { UserCreate } from './userCreate.component';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { UserLogin } from './userLogin.component';
-import { AuthService } from '../auth-service';
+import { UserCreate } from 'src/Login/userCreate.component';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 @Component({
   selector: 'app-users',
@@ -10,30 +8,47 @@ import { AuthService } from '../auth-service';
   styleUrls: ['./users.component.css']
 })
 export class UsersComponent implements OnInit {
-  username = '';
-  debugger;
-  password = '';
+public users;
+public userId;
+  constructor(private http: HttpClient) { }
 
-  // tslint:disable-next-line: max-line-length
-
-  public userLogin: UserLogin = {Username: this.username, Password: this.password};
-  constructor(private http: HttpClient,
-    public authService: AuthService) { }
   ngOnInit() {
-
+    this.getUsers();
   }
 
-  loginUser() {
-    this.http.post( 'https://localhost:44384/api/logins', this.userLogin).subscribe(responseData => {
-    // tslint:disable-next-line: no-debugger
-    console.log(responseData, 'login');
-    if (responseData === true ) {
-      this.authService.login();
-    } else {
-      this.authService.logout();
-    }
+
+  getUsers() {
+    this.http.get('https://localhost:44384/api/Users').subscribe(respondeData => {
+      this.users = respondeData;
+      debugger;
+      console.log(this.users);
+    });
+  }
+//change password
+  putUser(id: number) {
+    debugger;
+    this.http.put('https://localhost:44384/api/Users', id).subscribe(respondeData => {
+      debugger;
+      console.log(this.users);
+    });
+  }
+//confirm user
+confirmUser(id: number, state: boolean) {
+  debugger;
+  this.http.put(`https://localhost:44384/api/Users/${state}`, id).subscribe(respondeData => {
+    debugger;
+    const params = new HttpParams()
+  .set('Id', id.toString());
+    console.log(this.users);
   });
-
+}
+  deleteUser(id: number) {
+    debugger;
+    const params = new HttpParams()
+  .set('Id', id.toString());
+    this.http.delete(`https://localhost:44384/api/Users/${id}`).subscribe(respondeData => {
+      debugger;
+      console.log(this.users);
+    });
   }
-
 }

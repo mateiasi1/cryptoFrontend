@@ -15,7 +15,7 @@ return this.authService.isAuthenticated()
 if (authenticated) {
     return true;
 } else {
-this.router.navigate(['/users']);
+this.router.navigate(['/login']);
 }
         });
     }

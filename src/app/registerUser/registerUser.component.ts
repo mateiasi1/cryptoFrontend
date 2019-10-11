@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { UserCreate } from '../users/userCreate.component';
-import { UserLogin } from '../users/userLogin.component';
 import { HttpClient } from '@angular/common/http';
+import { UserCreate } from 'src/Login/userCreate.component';
 
 
 @Component({
@@ -19,6 +18,7 @@ export class RegisterUserComponent implements OnInit {
     this.createDefaultAdmin();
   }
   createDefaultAdmin() {
+    debugger;
     this.http.post( 'https://localhost:44384/api/registerusers', this.defaultAdmin).subscribe(responseData => {
     // tslint:disable-next-line: no-debugger
  debugger;
@@ -26,7 +26,7 @@ export class RegisterUserComponent implements OnInit {
   });
   }
   postUser() {
-    this.http.post( 'https://localhost:44384/api/users', this.userCreate).subscribe(responseData => {
+    this.http.post( 'https://localhost:44384/api/registerusers', this.userCreate).subscribe(responseData => {
     // tslint:disable-next-line: no-debugger
     debugger;
     console.log(responseData);

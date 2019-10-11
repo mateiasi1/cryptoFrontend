@@ -9,7 +9,7 @@
 </mat-expansion-panel-header>
 <form>
     <label>New value: </label>
- <input type="text" class="form-control inputNew"[(ngModel)]="newValueFee" name="newValueFee"> <button class="btn btn-primary buttons" (click)="addFee()" [routerLink]="['/manage-application']">Add fee</button>
+ <input type="text" class="form-control inputNew"[(ngModel)]="newValueFee" name="newValueFee"> <button mat-button class="buttons" (click)="addFee()" [routerLink]="['/manage-application']">Add fee</button>
 </form>
  
   
@@ -30,7 +30,7 @@
   </mat-expansion-panel-header>
   <form>
       <label>New value: </label>
-   <input type="text" class="form-control inputNew"[(ngModel)]="newValueFlat" name="newValueFlat"> <button class="btn btn-primary buttons" (click)="addFlatRate()" [routerLink]="['/manage-application']">Add flat</button>
+   <input type="text" class="form-control inputNew"[(ngModel)]="newValueFlat" name="newValueFlat"> <button mat-button class=" buttons" (click)="addFlatRate()" [routerLink]="['/manage-application']">Add flat</button>
   </form>
    
     

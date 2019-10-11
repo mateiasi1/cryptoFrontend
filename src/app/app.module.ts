@@ -1,8 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Routes, RouterModule } from '@angular/router';
-
 import { AppComponent } from './app.component';
 import {  DepositComponent } from './deposit/deposit.component';
 import { WithdrawComponent } from './withdraw/withdraw.component';
@@ -18,9 +16,6 @@ import { Currency } from './servers/currency.component';
 import { TradeService } from './trade/trade.service';
 import { HttpClientModule } from '@angular/common/http';
 import { WithdrawService } from './withdraw/withdraw.service';
-import { UsersComponent } from './users/users.component';
-import { UserCreate } from './users/userCreate.component';
-import { UserLogin } from './users/userLogin.component';
 import { AvailableCurrenciesComponent } from './availableCurrencies/availableCurrencies.component';
 import { FiatAccountComponent } from './fiat-account/fiat-account.component';
 import { BankAccount } from './bankAccount.component';
@@ -30,20 +25,9 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import { AuthGuard } from './auth-guard.service';
 import { AuthService } from './auth-service';
 import { LoginModule } from 'src/Login/Login.module';
-
-const appRoutes: Routes = [
-  { path: '', canActivate: [AuthGuard], component: DepositComponent },
-  { path: 'home', canActivate: [AuthGuard], component: DepositComponent},
-  { path: 'withdraw', canActivate: [AuthGuard],  component: WithdrawComponent },
-  { path: 'servers', canActivate: [AuthGuard],  component: ServersComponent },
-  { path: 'trade', canActivate: [AuthGuard], component: TradeComponent },
-  { path: 'users', component: UsersComponent},
-  { path: 'availableCurrencies', canActivate: [AuthGuard], component: AvailableCurrenciesComponent},
-  { path: 'bank-account', canActivate: [AuthGuard], component: FiatAccountComponent},
-  { path: 'manage-application', canActivate: [AuthGuard], component: ManageApplicationComponent},
-  { path: 'registerUser', component: RegisterUserComponent},
-  { path: '**', redirectTo: '/not-found'},
-];
+import { AppRoutingModule } from './app-routing.module.module';
+import { UsersComponent } from './users/users.component';
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
    declarations: [
@@ -52,16 +36,15 @@ const appRoutes: Routes = [
       WithdrawComponent,
       ServersComponent,
       TradeComponent,
-      UsersComponent,
       AvailableCurrenciesComponent,
       FiatAccountComponent,
       ManageApplicationComponent,
-      RegisterUserComponent
+      RegisterUserComponent,
+      UsersComponent
    ],
    imports: [
       BrowserModule,
       FormsModule,
-      RouterModule.forRoot(appRoutes),
       MatDialogModule,
       BrowserAnimationsModule,
       MatFormFieldModule,
@@ -70,7 +53,9 @@ const appRoutes: Routes = [
       MatExpansionModule,
       HttpClientModule,
       MatCheckboxModule,
-      LoginModule
+      LoginModule,
+      AppRoutingModule,
+      MatButtonModule
    ],
    providers: [
       ServersService,
@@ -78,8 +63,6 @@ const appRoutes: Routes = [
       WithdrawService,
       Currency,
       TradeService,
-      UserCreate,
-      UserLogin,
       ManageApplicationComponent,
       AuthService,
       AuthGuard

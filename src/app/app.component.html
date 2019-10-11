@@ -6,12 +6,13 @@
         <li role="presentation"><a routerLink="/servers">Wallet</a></li>
         <li role="presentation"><a routerLink="/withdraw">Withdraw</a></li>
         <li role="presentation"><a routerLink="/trade">Trade</a></li>
-        <li role="presentation"><a routerLink="/users">Users</a></li>
+        <li role="presentation"><a routerLink="/login">Login</a></li>
         <li role="presentation"><a routerLink="/registerUser">Register User</a></li>
         <li role="presentation"><a routerLink="/user-details">Details</a></li>
         <li role="presentation"><a routerLink="/availableCurrencies">Available Currencies</a></li>
         <li role="presentation"><a routerLink="/bank-account">Bank Account</a></li>
         <li role="presentation"><a routerLink="/manage-application">Manage Application</a></li>
+        <li role="presentation"><a routerLink="/usersUnconfirmed">Users unconfirmed</a></li>
         <li *ngIf="authService.loggedIn"><button class="btn btn-primary" (click)="authService.logout()" [routerLink]="['/users']" routerLinkActive="router-link-active" >Logout</button></li>
       </ul>
     </div>

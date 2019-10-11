@@ -1,4 +1,4 @@
-<button class="btn btn-primary space buttonsWidth" [routerLink]="['/availableCurrencies']">Add</button>
+<button mat-button class="btn btn-primary space buttonsWidth" [routerLink]="['/availableCurrencies']">Add</button>
 <table class="table" >
   <thead>
     <tr>
@@ -17,10 +17,10 @@
       <td>{{item.viewValue}}</td>
       <td>{{item.currentPrice}}</td>
       <td>{{item.amount}}</td>
-      <td><button class="btn btn-primary space buttonsWidth" [routerLink]="['/home']" routerLinkActive="router-link-active" (click)="homeService.setID(item.id)">Deposit</button>
-        <button class="btn btn-primary space buttonsWidth" [routerLink]="['/withdraw']" routerLinkActive="router-link-active" (click)="withdrawService.setID(item.id)">Withdraw</button>
-        <button class="btn btn-primary space buttonsWidth" [routerLink]="['/trade']" routerLinkActive="router-link-active" >Trade</button>
-        <button class="btn btn-danger space buttonsWidth"  [routerLink]="['/servers']" (click)="deleteCurrency(item.id)">Delete</button></td>
+      <td><button mat-button class="btn btn-primary space buttonsWidth" [routerLink]="['/home']" routerLinkActive="router-link-active" (click)="homeService.setID(item.id)">Deposit</button>
+        <button mat-button class="btn btn-primary space buttonsWidth" [routerLink]="['/withdraw']" routerLinkActive="router-link-active" (click)="withdrawService.setID(item.id)">Withdraw</button>
+        <button mat-button class="btn btn-primary space buttonsWidth" [routerLink]="['/trade']" routerLinkActive="router-link-active" >Trade</button>
+        <button mat-button class="btn btn-danger space buttonsWidth"  [routerLink]="['/servers']" (click)="deleteCurrency(item.id)">Delete</button></td>
     </tr>
   </tbody>
 </table><br>

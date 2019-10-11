@@ -1,0 +1,10 @@
+.loginBtn {
+    width: 100%;
+    margin-top: 30px;
+}
+
+.loginBorder {
+    border: 2px solid black;
+    padding: 70px;
+    border-radius: 8px;
+}
