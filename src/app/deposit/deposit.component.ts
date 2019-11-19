@@ -1,5 +1,4 @@
-import { ServersService } from '../servers/servers.service';
-import { HomeService } from './deposit.service';
+import { BankAccountService } from '../bankAccount/bankAccount.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -9,11 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DepositComponent implements OnInit {
    id = 0;
-  constructor(public serverService: ServersService,
-              public homeService: HomeService
+   amount: number;
+  constructor(public bankAccountService: BankAccountService
     ) { }
 
   ngOnInit() {
   }
-
+  deposit() {
+    this.bankAccountService.deposit(this.amount);
+  }
 }

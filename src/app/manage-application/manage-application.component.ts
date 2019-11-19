@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Fee } from './fee.controller';
 import { map } from 'rxjs/operators';
 import { FlatRate } from './flatRate.component';
+import { ManagerService } from './manager.service';
 
 @Component({
   selector: 'app-manage-application',
@@ -11,30 +12,26 @@ import { FlatRate } from './flatRate.component';
 })
 export class ManageApplicationComponent implements OnInit {
   public newValueFee: number;
-  public actualFee;
   public newValueFlat: number;
-  public actualFlat;
-  constructor(private http: HttpClient) { }
+  
+  constructor(private http: HttpClient,
+              public managerService: ManagerService) { }
 
   ngOnInit() {
-    this.getFee();
-    this.getFlatRate();
+    this.managerService.getFee();
+    this.managerService.getFlatRate();
   }
   addFee() {
   const newFee: Fee = {Id: 0, Percentage: this.newValueFee, Obsolete: false};
   this.http.post('https://localhost:44384/api/Fees', newFee).subscribe(respondeData => {
+    debugger;
       console.log(respondeData);
-      this.getFee();
+      this.managerService.getFee();
       this.newValueFee = 0;
     });
 }
 
-  getFee() {
-    this.http.get('https://localhost:44384/api/Fees').subscribe(respondeData => {
-      this.actualFee = parseFloat(respondeData.toString());
-      console.log(this.actualFee);
-    });
-  }
+ 
 
   // getFeeTest() {
   //   this.http.get('https://localhost:44384/api/Fees').pipe(map((responseData: string) => {
@@ -50,15 +47,8 @@ export class ManageApplicationComponent implements OnInit {
     const newFlatRate: FlatRate = {Id: 0, Ammount: this.newValueFlat, Obsolete: false};
     this.http.post('https://localhost:44384/api/FlatRateFees', newFlatRate).subscribe(respondeData => {
         console.log(respondeData);
-        this.getFlatRate();
+        this.managerService.getFlatRate();
         this.newValueFlat = 0;
       });
   }
-
-    getFlatRate() {
-      this.http.get('https://localhost:44384/api/FlatRateFees').subscribe(respondeData => {
-        this.actualFlat = parseFloat(respondeData.toString());
-        console.log(this.actualFlat);
-      });
-    }
 }

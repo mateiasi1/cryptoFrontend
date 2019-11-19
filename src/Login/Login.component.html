@@ -1,11 +1,20 @@
-<div fxFlex="60" >
-<div class="loginBorder">
-  <h1 style="text-align: center; margin-bottom: 40px">Login</h1>
- 
-<label>Username: </label><input type="text" class="form-control" [(ngModel)]="userLogin.Username">
-<label>Password: </label><input type="password" class="form-control" [(ngModel)]="userLogin.Password">
-
-<button mat-button sclass="btn btn-primary loginBtn"  [routerLink]="['/servers']"  (click)="loginUser()">Login</button>
-<p style="color:blue" >Forgot password?</p>
-</div>
+<div fxFlex="60" class="flex-container">
+<mat-card class="loginCard">
+  <mat-card-title style="text-align: center">Login</mat-card-title>
+  <mat-form-field class="inputFields">
+            <mat-label>Username</mat-label>
+            <input matInput [(ngModel)]="userLogin.Username">
+  </mat-form-field> 
+<br>
+<mat-form-field class="inputFields">
+          <mat-label>Password</mat-label>
+    <input matInput type="password" [(ngModel)]="userLogin.Password">
+  </mat-form-field> 
+  <br>
+<mat-card-actions>
+<button class="loginButton" mat-raised-button color="primary"  [routerLink]="['/servers']"  (click)="loginUser()">Login</button>
+</mat-card-actions>
+<hr>
+<p class="text"> Forgot password?</p>
+</mat-card>
 </div>

@@ -1,3 +1,11 @@
 .container {
   margin-top: 30px;
 }
+
+.defaultBtn {
+  color: blue;
+}
+
+.defaultBtn:hover {
+  background: darkblue;
+}

@@ -1,2 +1,8 @@
-<label>Amount: </label><input type="number" class="form-control"[(ngModel)]="withdrawService.amount">
-<button mat-button class="btn btn-primary" [routerLink]="['/servers']" (click)="withdrawService.putData()" >Withdraw</button>
+<mat-form-field class="inputFields">
+          <mat-label>Amount </mat-label>
+          <input type="number" matInput [(ngModel)]="withdrawService.amount">
+</mat-form-field> 
+<br>
+<button mat-raised-button color="primary" [routerLink]="['/servers']" (click)="withdrawService.putData()" >Withdraw</button>
+
+

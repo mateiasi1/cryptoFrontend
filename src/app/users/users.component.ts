@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { UserCreate } from 'src/Login/userCreate.component';
 import { HttpClient, HttpParams } from '@angular/common/http';
+import { Users } from './users';
+import { MatTableDataSource } from '@angular/material';
+import { AngularWaitBarrier } from 'blocking-proxy/built/lib/angular_wait_barrier';
 
 @Component({
   selector: 'app-users',
@@ -8,18 +11,22 @@ import { HttpClient, HttpParams } from '@angular/common/http';
   styleUrls: ['./users.component.css']
 })
 export class UsersComponent implements OnInit {
-public users;
+public users: Users[] = [];
 public userId;
+displayedColumns: string[] = ['id', 'name', 'role', 'state', 'actions'];
+dataSource: MatTableDataSource<Users>;
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
     this.getUsers();
+    debugger;
   }
 
 
   getUsers() {
-    this.http.get('https://localhost:44384/api/Users').subscribe(respondeData => {
+    this.http.get('https://localhost:44384/api/users/1').subscribe((respondeData: Users[]) => {
       this.users = respondeData;
+      this.dataSource = new MatTableDataSource(this.users);
       debugger;
       console.log(this.users);
     });

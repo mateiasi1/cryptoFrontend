@@ -29,6 +29,7 @@ export class LoginComponent implements OnInit {
 
   loginUser() {
     const currentUser = JSON.parse(localStorage.getItem(this.userLogin.Username));
+    debugger;
     if (currentUser != null) {
       const token = currentUser.token;
       this.userLogin.Token = token;
@@ -38,14 +39,28 @@ export class LoginComponent implements OnInit {
     console.log(responseData, 'login');
     if (responseData != null ) {
       this.authService.login();
-      localStorage.setItem(this.userLogin.Username, JSON.stringify({token: responseData, name: this.userLogin.Username}));
+      localStorage.setItem('currentUser', JSON.stringify({token: responseData, name: this.userLogin.Username}));
     } else {
       this.authService.logout();
     }
-  })
+  });
 
   }
+
+  logoutUser() {
+    debugger;
+      const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+      const token = currentUser.token;
+      this.userLogin.Token = token;
+      debugger;
+      return this.http.delete('https://localhost:44384/api/logins/' + token).subscribe(responseData => {
+        this.authService.logout();
+        debugger;
+        localStorage.clear();
+      });
+  }
 }
+
 
 
 

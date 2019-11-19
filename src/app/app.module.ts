@@ -4,21 +4,18 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import {  DepositComponent } from './deposit/deposit.component';
 import { WithdrawComponent } from './withdraw/withdraw.component';
-import { ServersComponent } from './servers/servers.component';
-import { ServersService } from './servers/servers.service';
-import { HomeService } from './deposit/deposit.service';
+import { BankAccountComponent } from './bankAccount/bankAccount.component';
+import { BankAccountService } from './bankAccount/bankAccount.service';
 import { TradeComponent } from './trade/trade.component';
 import { MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {  MatFormFieldModule, MatInputModule, MatExpansionModule } from '@angular/material';
+import { MatInputModule, MatExpansionModule } from '@angular/material';
 import { MatSelectModule } from '@angular/material/select';
-import { Currency } from './servers/currency.component';
 import { TradeService } from './trade/trade.service';
 import { HttpClientModule } from '@angular/common/http';
 import { WithdrawService } from './withdraw/withdraw.service';
 import { AvailableCurrenciesComponent } from './availableCurrencies/availableCurrencies.component';
-import { FiatAccountComponent } from './fiat-account/fiat-account.component';
-import { BankAccount } from './bankAccount.component';
+import { BankComponent } from './bank/bank';
 import { ManageApplicationComponent } from './manage-application/manage-application.component';
 import { RegisterUserComponent } from './registerUser/registerUser.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
@@ -28,19 +25,26 @@ import { LoginModule } from 'src/Login/Login.module';
 import { AppRoutingModule } from './app-routing.module.module';
 import { UsersComponent } from './users/users.component';
 import {MatButtonModule} from '@angular/material/button';
+import { LoginComponent } from 'src/Login/Login.component';
+import {MatTableModule} from '@angular/material/table';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatCardModule} from '@angular/material/card';
+import { ValidateAccountComponent } from './validateAccount/validateAccount.component';
 
 @NgModule({
    declarations: [
       AppComponent,
       DepositComponent,
       WithdrawComponent,
-      ServersComponent,
+      BankAccountComponent,
       TradeComponent,
       AvailableCurrenciesComponent,
-      FiatAccountComponent,
+      BankComponent,
       ManageApplicationComponent,
       RegisterUserComponent,
-      UsersComponent
+      UsersComponent,
+      ValidateAccountComponent
    ],
    imports: [
       BrowserModule,
@@ -55,17 +59,19 @@ import {MatButtonModule} from '@angular/material/button';
       MatCheckboxModule,
       LoginModule,
       AppRoutingModule,
-      MatButtonModule
+      MatButtonModule,
+      MatTableModule,
+      MatPaginatorModule,
+      MatCardModule
    ],
    providers: [
-      ServersService,
-      HomeService,
+      BankAccountService,
       WithdrawService,
-      Currency,
       TradeService,
       ManageApplicationComponent,
       AuthService,
-      AuthGuard
+      AuthGuard,
+      LoginComponent
    ],
    bootstrap: [
       AppComponent

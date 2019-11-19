@@ -1,5 +1,5 @@
 .inputNew {
-    width: 300px;
+    width: 40%;
     display: inline-block;
     margin-left: 10px;
 }
@@ -13,4 +13,8 @@
 
 .buttons {
     margin-left: 10px;
+}
+
+.accordion {
+    width: 40%;
 }
