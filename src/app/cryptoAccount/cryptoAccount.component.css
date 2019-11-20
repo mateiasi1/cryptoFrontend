@@ -1,0 +1,25 @@
+.space {
+margin-left: 10px;
+}
+.buttonsWidth {
+    width: 90px;
+}
+.addRow {
+width:80px;
+}
+
+.table {
+    width: 100%;
+  }
+  table {
+    width: 100%;
+  }
+
+.tablelong {
+    width: 50%;
+    height: 60%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto 
+}
+

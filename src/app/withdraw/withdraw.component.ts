@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { WithdrawService } from './withdraw.service';
+import { BankAccountService } from '../bankAccount/bankAccount.service';
 
 @Component({
   selector: 'app-withdraw',
@@ -7,19 +7,12 @@ import { WithdrawService } from './withdraw.service';
   styleUrls: ['./withdraw.component.css']
 })
 export class WithdrawComponent {
-  constructor(public withdrawService: WithdrawService) {}
-  users = [
-    {
-      id: 1,
-      name: 'Max'
-    },
-    {
-      id: 2,
-      name: 'Anna'
-    },
-    {
-      id: 3,
-      name: 'Chris'
-    }
-  ];
+  id = 0;
+   amount: number;
+  constructor(public bankAccountService: BankAccountService
+    ) {}
+  
+  withdraw() {
+    this.bankAccountService.withdraw(this.amount);
+  }
 }

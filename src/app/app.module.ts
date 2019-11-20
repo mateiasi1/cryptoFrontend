@@ -13,7 +13,6 @@ import { MatInputModule, MatExpansionModule } from '@angular/material';
 import { MatSelectModule } from '@angular/material/select';
 import { TradeService } from './trade/trade.service';
 import { HttpClientModule } from '@angular/common/http';
-import { WithdrawService } from './withdraw/withdraw.service';
 import { AvailableCurrenciesComponent } from './availableCurrencies/availableCurrencies.component';
 import { BankComponent } from './bank/bank';
 import { ManageApplicationComponent } from './manage-application/manage-application.component';
@@ -66,7 +65,6 @@ import { ValidateAccountComponent } from './validateAccount/validateAccount.comp
    ],
    providers: [
       BankAccountService,
-      WithdrawService,
       TradeService,
       ManageApplicationComponent,
       AuthService,

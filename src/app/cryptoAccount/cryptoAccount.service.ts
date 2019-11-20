@@ -1,4 +1,4 @@
-import { BankAccount } from './currency.component';
+import { BankAccount } from './crypto.component';
 import { HttpClient } from '@angular/common/http';
 import { MatDialog } from '@angular/material/dialog';
 import { ManagerService } from '../manage-application/manager.service';

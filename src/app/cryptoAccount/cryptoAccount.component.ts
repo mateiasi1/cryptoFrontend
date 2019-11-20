@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { BankAccountService } from './bankAccount.service';
 import { MatTableDataSource } from '@angular/material';
-import { BankAccount } from './currency.component';
+import { BankAccount } from './crypto.component';
 import { HttpClient } from '@angular/common/http';
+import { BankAccountService } from '../bankAccount/bankAccount.service';
 
 
 @Component({
