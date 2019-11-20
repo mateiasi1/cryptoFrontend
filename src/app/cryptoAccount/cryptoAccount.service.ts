@@ -3,16 +3,17 @@ import { HttpClient } from '@angular/common/http';
 import { MatDialog } from '@angular/material/dialog';
 import { ManagerService } from '../manage-application/manager.service';
 import { BankAccount } from '../bankAccount/currency.component';
+import { CryptoAccount } from './crypto.component';
 
 
 
 
-export class BankAccountService {
+export class CryptoAccountService {
   id: number;
   tradeFee = 0; // vine din backend
   exchangeRate = 2; // vine din callul catre API cu parametrii selectedValueFrom si selectedValueTo
 
-  public bankAccounts: BankAccount[] = [];
+  public cryptoAccounts: CryptoAccount[] = [];
 errorMessage = 'ERROR';
 constructor(private http: HttpClient,
             public dialog: MatDialog,
@@ -44,13 +45,13 @@ constructor(private http: HttpClient,
 //#endregion
 
  depositCurrency(amount: number) {
-   const itemToUpdate = this.bankAccounts.find(item => item.id === this.id);
+   const itemToUpdate = this.cryptoAccounts.find(item => item.id === this.id);
    itemToUpdate.sold += amount;
  }
 
  withdrawCurrency( id: number, amount: number) {
    debugger;
-  const itemToUpdate = this.bankAccounts.find(item => item.id === id);
+  const itemToUpdate = this.cryptoAccounts.find(item => item.id === id);
   const verifyAmount = amount - this.managerService.actualFlat;
   if (verifyAmount > itemToUpdate.sold) {
     return window.alert(this.errorMessage);
@@ -59,7 +60,7 @@ constructor(private http: HttpClient,
   }
 }
  trade(selectedValueFrom: string, selectedValueTo: string, amountFrom: number) {
-  const tradeFrom = this.bankAccounts.find(item => item.bankName === selectedValueFrom);
+  const tradeFrom = this.cryptoAccounts.find(item => item.bankName === selectedValueFrom);
   const initialAmount = tradeFrom.sold;
   debugger;
 if (tradeFrom.sold < ((this.tradeFee / 100) * amountFrom + amountFrom) ) {
@@ -67,7 +68,7 @@ if (tradeFrom.sold < ((this.tradeFee / 100) * amountFrom + amountFrom) ) {
   alert('Insufficient founds!');
 } else {
   tradeFrom.sold -= (this.tradeFee / 100) * amountFrom + amountFrom;
-  const tradeTo = this.bankAccounts.find(item => item.bankName === selectedValueTo);
+  const tradeTo = this.cryptoAccounts.find(item => item.bankName === selectedValueTo);
   tradeTo.sold += (amountFrom * this.exchangeRate);
 
   // send HTTP POST request Nu Trebuie trimis trade to la users
