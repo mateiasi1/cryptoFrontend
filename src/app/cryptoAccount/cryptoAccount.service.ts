@@ -2,8 +2,7 @@
 import { HttpClient } from '@angular/common/http';
 import { MatDialog } from '@angular/material/dialog';
 import { ManagerService } from '../manage-application/manager.service';
-import { BankAccount } from '../bankAccount/currency.component';
-import { CryptoAccount } from './crypto.component';
+import { CryptoAccount } from './cryptoCurrency.component';
 
 
 
@@ -60,7 +59,7 @@ constructor(private http: HttpClient,
   }
 }
  trade(selectedValueFrom: string, selectedValueTo: string, amountFrom: number) {
-  const tradeFrom = this.cryptoAccounts.find(item => item.bankName === selectedValueFrom);
+  const tradeFrom = this.cryptoAccounts.find(item => item.cryptoName === selectedValueFrom);
   const initialAmount = tradeFrom.sold;
   debugger;
 if (tradeFrom.sold < ((this.tradeFee / 100) * amountFrom + amountFrom) ) {
@@ -68,7 +67,7 @@ if (tradeFrom.sold < ((this.tradeFee / 100) * amountFrom + amountFrom) ) {
   alert('Insufficient founds!');
 } else {
   tradeFrom.sold -= (this.tradeFee / 100) * amountFrom + amountFrom;
-  const tradeTo = this.cryptoAccounts.find(item => item.bankName === selectedValueTo);
+  const tradeTo = this.cryptoAccounts.find(item => item.cryptoName === selectedValueTo);
   tradeTo.sold += (amountFrom * this.exchangeRate);
 
   // send HTTP POST request Nu Trebuie trimis trade to la users

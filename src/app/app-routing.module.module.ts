@@ -13,6 +13,7 @@ import { ManageApplicationComponent } from './manage-application/manage-applicat
 import { RegisterUserComponent } from './registerUser/registerUser.component';
 import { UsersComponent } from './users/users.component';
 import { ValidateAccountComponent } from './validateAccount/validateAccount.component';
+import { CryptoAccountComponent } from './cryptoAccount/cryptoAccount.component';
 
 const appRoutes: Routes = [
   { path: '', canActivate: [AuthGuard], component: DepositComponent },
@@ -27,6 +28,7 @@ const appRoutes: Routes = [
   { path: 'registerUser', component: RegisterUserComponent},
   { path: 'usersUnconfirmed', component: UsersComponent},
   { path: 'validateAccount', component: ValidateAccountComponent},
+  { path: 'crypto', component: CryptoAccountComponent},
   { path: '**', redirectTo: '/not-found'},
 ];
 

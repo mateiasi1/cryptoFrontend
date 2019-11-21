@@ -30,6 +30,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatCardModule} from '@angular/material/card';
 import { ValidateAccountComponent } from './validateAccount/validateAccount.component';
+import { CryptoAccountComponent } from './cryptoAccount/cryptoAccount.component';
+import { CryptoAccountService } from './cryptoAccount/cryptoAccount.service';
 
 @NgModule({
    declarations: [
@@ -43,7 +45,8 @@ import { ValidateAccountComponent } from './validateAccount/validateAccount.comp
       ManageApplicationComponent,
       RegisterUserComponent,
       UsersComponent,
-      ValidateAccountComponent
+      ValidateAccountComponent,
+      CryptoAccountComponent
    ],
    imports: [
       BrowserModule,
@@ -65,6 +68,7 @@ import { ValidateAccountComponent } from './validateAccount/validateAccount.comp
    ],
    providers: [
       BankAccountService,
+      CryptoAccountService,
       TradeService,
       ManageApplicationComponent,
       AuthService,

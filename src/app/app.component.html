@@ -3,7 +3,7 @@
     <div >
       <ul class="nav nav-tabs">
         <li role="presentation" class="active"><a routerLink="/" routerLinkActive="router-link-active" >Deposit</a></li>
-        <li role="presentation"><a routerLink="/bank-account">Wallet</a></li>
+        <li role="presentation"><a routerLink="/bank-account">Fiat wallet</a></li>
         <li role="presentation"><a routerLink="/withdraw">Withdraw</a></li>
         <li role="presentation"><a routerLink="/trade">Trade</a></li>
         <li role="presentation"><a routerLink="/login">Login</a></li>
@@ -11,6 +11,7 @@
         <li role="presentation"><a routerLink="/user-details">Details</a></li>
         <li role="presentation"><a routerLink="/availableCurrencies">Available Currencies</a></li>
         <li role="presentation"><a routerLink="/bank">Bank </a></li>
+        <li role="presentation"><a routerLink="/crypto">Crypto wallet </a></li>
         <li role="presentation"><a routerLink="/manage-application">Manage Application</a></li>
         <li role="presentation"><a routerLink="/usersUnconfirmed">Users unconfirmed</a></li>
         <li *ngIf="authService.loggedIn"><button class="btn btn-primary" (click)="loginComponent.logoutUser()" [routerLink]="['/users']" routerLinkActive="router-link-active" >Logout</button></li>
