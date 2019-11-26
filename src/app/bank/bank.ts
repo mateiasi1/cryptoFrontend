@@ -3,6 +3,7 @@ import { BankAccount, Bank } from '../bank.component';
 import { HttpClient } from '@angular/common/http';
 import { MatTableDataSource } from '@angular/material';
 import { Currency, CurrencyList } from '../bankAccount/currency.component';
+import { CryptoAccount } from '../crypto.component';
 import { CurrencyListCrypto } from '../cryptoAccount/cryptoCurrency.component';
 
 @Component({
@@ -21,7 +22,7 @@ export class BankComponent implements OnInit {
   public bankAccounts: Bank[] = [];
   public cryptoAccounts: Crypto[] = [];
 
-  UserId: 0;
+  UserId: number = 0;
   BankName: string;
   IBAN: string;
   CurrencyAbbreviation: string;
@@ -90,6 +91,19 @@ export class BankComponent implements OnInit {
     });
   }
   // #endregion
+
+  // #region Crypto to Crypto Account
+
+  addCryptoAccount(id: number, cryptoCurrencyName: string, cryptoName: string, refference: string) {
+    // tslint:disable-next-line: max-line-length
+    const cryptoAccountToAdd: CryptoAccount = {id: 0, idUser: this.UserId, idCryptoCurrency: 0, cryptoCurrencyName: cryptoCurrencyName, idCrypto: id, cryptoName: cryptoName, refference: ' ', sold: 0};
+    debugger;
+    this.http.post('https://localhost:44384/api/CryptoAccount', cryptoAccountToAdd).subscribe((responseData: CryptoAccount[]) => {
+      debugger;
+      console.log(responseData);
+    });
+  }
+  // @endregion
 
   // #region Crypto
   getCrypto() {

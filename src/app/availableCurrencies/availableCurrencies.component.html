@@ -64,7 +64,7 @@
     <!-- Name Column -->
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef> Crypto Name </th>
-      <td mat-cell *matCellDef="let element"> {{element.currencyCryptoName}} </td>
+      <td mat-cell *matCellDef="let element"> {{element.cryptoCurrencyName}} </td>
     </ng-container>
 
  <!-- Actions Column -->
@@ -94,4 +94,4 @@
   </mat-select>
 </mat-form-field>
 <br>
-<button mat-raised-button color="primary" [routerLink]="['/availableCurrencies']"  (click)="addCurrencyToList()">Administrator Add Crypto</button>
+<button mat-raised-button color="primary" [routerLink]="['/availableCurrencies']"  (click)="addCryptoCurrencyToList()">Administrator Add Crypto</button>

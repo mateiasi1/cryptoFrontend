@@ -56,21 +56,42 @@ public  allCryptoCurrency: CryptoCurrencyList[] = [];
     const itemIndex = this.allCurrency.indexOf(currencyToAdd);
     this.allCurrency.splice(itemIndex, 1);
   }
+  
+  addCryptoCurrencyToList() {
+    const cryptoCurrencyToAdd = this.allCryptoCurrency.find(item => item.cryptoCurrencyName === this.selectedValueCrypto);
+    debugger;
+
+    this.http.post('https://localhost:44384/api/Crypto', cryptoCurrencyToAdd).subscribe((responseData: Crypto[]) => {
+      this.cryptoCurrencyFromBackend = responseData;
+       this.dataSourceCrypto = new MatTableDataSource(responseData);
+      console.log(responseData);
+    });
+    const itemIndex = this.allCryptoCurrency.indexOf(cryptoCurrencyToAdd);
+    this.allCryptoCurrency.splice(itemIndex, 1);
+  }
 
   getCurrencies() {
+    //get fiat currencies for dropdown
     this.http.get('https://localhost:44384/api/GetFiatCurrencyAPI').subscribe((responseData: CurrencyList[]) => {
       this.allCurrency = responseData;
       debugger;
       console.log(this.allCurrency);
     });
+    //get crypto currencies for dropdown
     this.http.get('https://localhost:44384/api/GetCryptoCurrencyAPI').subscribe((responseData: CryptoCurrencyList[]) => {
       this.allCryptoCurrency = responseData;
       console.log(this.allCryptoCurrency);
     });
-
+    // get saved currencies
     this.http.get('https://localhost:44384/api/Currencies').subscribe((responseData: Currency[]) => {
       this.currencyFromBackend = responseData;
        this.dataSource = new MatTableDataSource(responseData);
+      console.log(responseData);
+    });
+    // get saved crypto
+    this.http.get('https://localhost:44384/api/Crypto').subscribe((responseData: Crypto[]) => {
+      this.cryptoCurrencyFromBackend = responseData;
+       this.dataSourceCrypto = new MatTableDataSource(responseData);
       console.log(responseData);
     });
     
