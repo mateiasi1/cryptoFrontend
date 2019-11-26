@@ -83,7 +83,7 @@
 
 
 <div class="mat-elevation-z8 tablelong">
-  <table mat-table [dataSource]="dataSource">
+  <table mat-table [dataSource]="dataSourceCrypto">
 
     <!-- Position Column -->
     <ng-container matColumnDef="Id">
@@ -92,22 +92,11 @@
     </ng-container>
 
     <!-- Name Column -->
-    <ng-container matColumnDef="BankName">
-      <th mat-header-cell *matHeaderCellDef> Bank Name </th>
-      <td mat-cell *matCellDef="let element"> {{element.bankName}} </td>
+    <ng-container matColumnDef="CryptoName">
+      <th mat-header-cell *matHeaderCellDef> Crypto Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.cryptoName}} </td>
     </ng-container>
 
-    <!-- Weight Column -->
-    <ng-container matColumnDef="IBAN">
-      <th mat-header-cell *matHeaderCellDef> IBAN </th>
-      <td mat-cell *matCellDef="let element"> {{element.iban}} </td>
-    </ng-container>
- 
-  <!-- Currency Column -->
-  <ng-container matColumnDef="Currency">
-    <th mat-header-cell *matHeaderCellDef> Currency </th>
-    <td mat-cell *matCellDef="let element"> {{element.currencyName}} </td>
-  </ng-container>
  <!-- Actions Column -->
   <ng-container matColumnDef="Actions">
     <th mat-header-cell *matHeaderCellDef> Actions </th>
@@ -117,8 +106,8 @@
    </td>
   </ng-container>
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    <tr mat-header-row *matHeaderRowDef="displayedColumnsCrypto"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumnsCrypto;"></tr>
   </table>
 
   <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
@@ -136,28 +125,18 @@
 
 </mat-expansion-panel-header>
 
-<mat-form-field class="inputFields">
-            <mat-label>Crypto Name</mat-label>
-            <input type="text" matInput [(ngModel)]="BankName">
-</mat-form-field>  
-<span class="fields">
-<mat-form-field class="inputFields">
-        <mat-label>IBAN</mat-label>
-        <input type="text" matInput [(ngModel)]="IBAN">
-</mat-form-field> 
-</span>
 <span class="fields">
   <mat-form-field>
     <mat-label>Select crypto</mat-label>
-    <mat-select  [(ngModel)]="CurrencyAbbreviation">
-      <mat-option *ngFor="let currency of currencyList" [value]="currency.currencyAbbreviation">
-        {{currency.currencyName}}
+    <mat-select  [(ngModel)]="CryptoName">
+      <mat-option *ngFor="let crypto of cryptoList" [value]="crypto.currencyCryptoName">
+        {{currency.currencyCryptoName}}
       </mat-option>
     </mat-select>
   </mat-form-field>
 </span>
 <br>
-    <button mat-raised-button color="primary" class="button" [routerLink]="['/bank-account']"  (click)="addBank()">Add Crypto</button>
+    <button mat-raised-button color="primary" class="button" [routerLink]="['/bank-account']"  (click)="addCrypto()">Add Crypto</button>
 </mat-expansion-panel>
 </mat-accordion>
 </div>

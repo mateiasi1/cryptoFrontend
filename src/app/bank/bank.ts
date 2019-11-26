@@ -12,7 +12,7 @@ import { CurrencyListCrypto } from '../cryptoAccount/cryptoCurrency.component';
 })
 export class BankComponent implements OnInit {
   displayedColumns: string[] = ['Id', 'BankName', 'IBAN', 'Currency', 'Actions'];
-  displayedColumnsCrypto: string[] = ['Id', 'CryptoName', 'Refference', 'Actions'];
+  displayedColumnsCrypto: string[] = ['Id', 'CryptoName', 'Actions'];
   constructor(private http: HttpClient) { }
 
   dataSource: MatTableDataSource<Bank>;
@@ -38,6 +38,7 @@ export class BankComponent implements OnInit {
     this.dataSourceCrypto = new MatTableDataSource(this.cryptoAccounts);
     this.getCurrencies();
     this.getBanks();
+    this.getCrypto();
   }
   // #region Bank
   getBanks() {
@@ -92,7 +93,7 @@ export class BankComponent implements OnInit {
 
   // #region Crypto
   getCrypto() {
-    this.http.get('https://localhost:44384/api/Banks').subscribe((responseData: Crypto[]) => {
+    this.http.get('https://localhost:44384/api/Crypto').subscribe((responseData: Crypto[]) => {
       this.cryptoAccounts = responseData;
       debugger;
       this.dataSourceCrypto = new MatTableDataSource(responseData);

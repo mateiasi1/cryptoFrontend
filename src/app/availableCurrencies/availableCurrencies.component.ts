@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CurrencyList, Currency } from '../bankAccount/currency.component';
+import { CryptoCurrencyList, CurrencyList, Currency } from '../bankAccount/currency.component';
 import { BankAccountService } from '../bankAccount/bankAccount.service';
 import { MatTableDataSource } from '@angular/material';
 import { HttpClient } from '@angular/common/http';
@@ -12,12 +12,20 @@ import { HttpClient } from '@angular/common/http';
 export class AvailableCurrenciesComponent implements OnInit {
 
   selectedValue = '';
+  selectedValueCrypto = '';
   displayedColumns: string[] = ['id', 'name', 'viewValue', 'actions'];
+  displayedColumnsCrypto: string[] = ['id', 'name', 'actions'];
+
   dataSource: MatTableDataSource<Currency>;
+  dataSourceCrypto: MatTableDataSource<Crypto>;
+
   currency: Currency;
+  crypto: Crypto;
   public currencyFromBackend: Currency[] = [];
+  public cryptoCurrencyFromBackend: Crypto[] = [];
 
 public  allCurrency: CurrencyList[] = [];
+public  allCryptoCurrency: CryptoCurrencyList[] = [];
 
   constructor(public serversService: BankAccountService,
               private http: HttpClient) { }
@@ -55,10 +63,16 @@ public  allCurrency: CurrencyList[] = [];
       debugger;
       console.log(this.allCurrency);
     });
+    this.http.get('https://localhost:44384/api/GetCryptoCurrencyAPI').subscribe((responseData: CryptoCurrencyList[]) => {
+      this.allCryptoCurrency = responseData;
+      console.log(this.allCryptoCurrency);
+    });
+
     this.http.get('https://localhost:44384/api/Currencies').subscribe((responseData: Currency[]) => {
       this.currencyFromBackend = responseData;
        this.dataSource = new MatTableDataSource(responseData);
       console.log(responseData);
     });
+    
   }
 }

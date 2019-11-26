@@ -48,3 +48,50 @@
 </mat-form-field>
 <br>
 <button mat-raised-button color="primary" [routerLink]="['/availableCurrencies']"  (click)="addCurrencyToList()">Administrator Add Currency</button>
+
+
+<hr>
+
+<div class="mat-elevation-z8 tablelong">
+  <table mat-table [dataSource]="dataSourceCrypto">
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> Id. </th>
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Crypto Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.currencyCryptoName}} </td>
+    </ng-container>
+
+ <!-- Actions Column -->
+      <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef> Actions </th>
+          <td mat-cell *matCellDef="let element">
+            <button mat-raised-button color="primary" class="space buttonsWidth" [routerLink]="['/availableCurrencies']"  (click)="addCurrency(element.currencyName,element.currencyAbbreviation,element.id)">Add</button>
+         </td>
+        </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumnsCrypto"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumnsCrypto;"></tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</div>
+<br>
+<hr>
+<br>
+<h3>Administrator add crypto to the list</h3>
+<br>
+<mat-form-field>
+  <mat-label>Select crypto</mat-label>
+  <mat-select  [(ngModel)]="selectedValueCrypto">
+    <mat-option *ngFor="let crypto of allCryptoCurrency" [value]="crypto.cryptoCurrencyName">
+      {{crypto.cryptoCurrencyName}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+<br>
+<button mat-raised-button color="primary" [routerLink]="['/availableCurrencies']"  (click)="addCurrencyToList()">Administrator Add Crypto</button>

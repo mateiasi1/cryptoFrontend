@@ -18,3 +18,9 @@ export class Currency {
     Name: string;
     Symbol: string;
 }
+
+export interface CryptoCurrencyList {
+    id: number;
+    cryptoCurrencyAbbreviation: string;
+    cryptoCurrencyName: string;
+}
