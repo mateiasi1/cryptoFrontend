@@ -3,6 +3,7 @@ import { CryptoCurrencyList, CurrencyList, Currency } from '../bankAccount/curre
 import { BankAccountService } from '../bankAccount/bankAccount.service';
 import { MatTableDataSource } from '@angular/material';
 import { HttpClient } from '@angular/common/http';
+import { CryptoCurrency } from '../cryptoAccount/cryptoCurrency.component';
 
 @Component({
   selector: 'app-availableCurrencies',
@@ -17,12 +18,12 @@ export class AvailableCurrenciesComponent implements OnInit {
   displayedColumnsCrypto: string[] = ['id', 'name', 'actions'];
 
   dataSource: MatTableDataSource<Currency>;
-  dataSourceCrypto: MatTableDataSource<Crypto>;
+  dataSourceCrypto: MatTableDataSource<CryptoCurrency>;
 
   currency: Currency;
   crypto: Crypto;
   public currencyFromBackend: Currency[] = [];
-  public cryptoCurrencyFromBackend: Crypto[] = [];
+  public cryptoCurrencyFromBackend: CryptoCurrency[] = [];
 
 public  allCurrency: CurrencyList[] = [];
 public  allCryptoCurrency: CryptoCurrencyList[] = [];
@@ -61,7 +62,7 @@ public  allCryptoCurrency: CryptoCurrencyList[] = [];
     const cryptoCurrencyToAdd = this.allCryptoCurrency.find(item => item.cryptoCurrencyName === this.selectedValueCrypto);
     debugger;
 
-    this.http.post('https://localhost:44384/api/Crypto', cryptoCurrencyToAdd).subscribe((responseData: Crypto[]) => {
+    this.http.post('https://localhost:44384/api/CryptoCurrencies', cryptoCurrencyToAdd).subscribe((responseData: CryptoCurrency[]) => {
       this.cryptoCurrencyFromBackend = responseData;
        this.dataSourceCrypto = new MatTableDataSource(responseData);
       console.log(responseData);
@@ -89,7 +90,7 @@ public  allCryptoCurrency: CryptoCurrencyList[] = [];
       console.log(responseData);
     });
     // get saved crypto
-    this.http.get('https://localhost:44384/api/Crypto').subscribe((responseData: Crypto[]) => {
+    this.http.get('https://localhost:44384/api/CryptoCurrencies').subscribe((responseData: CryptoCurrency[]) => {
       this.cryptoCurrencyFromBackend = responseData;
        this.dataSourceCrypto = new MatTableDataSource(responseData);
       console.log(responseData);

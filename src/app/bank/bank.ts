@@ -3,7 +3,7 @@ import { BankAccount, Bank } from '../bank.component';
 import { HttpClient } from '@angular/common/http';
 import { MatTableDataSource } from '@angular/material';
 import { Currency, CurrencyList } from '../bankAccount/currency.component';
-import { CryptoAccount } from '../crypto.component';
+import { CryptoAccount, Crypto } from '../crypto.component';
 import { CurrencyListCrypto } from '../cryptoAccount/cryptoCurrency.component';
 
 @Component({
@@ -38,6 +38,7 @@ export class BankComponent implements OnInit {
     this.dataSource = new MatTableDataSource(this.bankAccounts);
     this.dataSourceCrypto = new MatTableDataSource(this.cryptoAccounts);
     this.getCurrencies();
+    this.getCryptoCurrencies();
     this.getBanks();
     this.getCrypto();
   }
@@ -78,6 +79,13 @@ export class BankComponent implements OnInit {
       console.log(responseData);
     });
   }
+
+  getCryptoCurrencies() {
+    this.http.get('https://localhost:44384/api/CryptoCurrencies').subscribe((responseData: CurrencyListCrypto[]) => {
+      this.cryptoList = responseData;
+      console.log(responseData);
+    });
+  }
   // #endregion
 
   // #region Bank to Bank Account
@@ -91,10 +99,9 @@ export class BankComponent implements OnInit {
     });
   }
   // #endregion
-
-  // #region Crypto to Crypto Account
-
-  addCryptoAccount(id: number, cryptoCurrencyName: string, cryptoName: string, refference: string) {
+ 
+ // #region Crypto to Crypto Account
+    addCryptoAccount(id: number, cryptoCurrencyName: string, cryptoName: string, refference: string) {
     // tslint:disable-next-line: max-line-length
     const cryptoAccountToAdd: CryptoAccount = {id: 0, idUser: this.UserId, idCryptoCurrency: 0, cryptoCurrencyName: cryptoCurrencyName, idCrypto: id, cryptoName: cryptoName, refference: ' ', sold: 0};
     debugger;
@@ -102,8 +109,8 @@ export class BankComponent implements OnInit {
       debugger;
       console.log(responseData);
     });
-  }
-  // @endregion
+    }
+  // #endregion
 
   // #region Crypto
   getCrypto() {
@@ -116,9 +123,9 @@ export class BankComponent implements OnInit {
   }
 
   addCrypto() {
-    const bankToAdd: Bank = {id: 0, bankName: this.BankName, iban: this.IBAN, currencyName: '', currencyAbbreviation: this.CurrencyAbbreviation }
+    const cryptoToAdd: Crypto = {id: 0, cryptoName: this.CryptoName, refference: this.Refference, cryptoCurrencyName: this.CryptoName, cryptoCurrencyAbbreviation: '' }
 
-    this.http.post('https://localhost:44384/api/Banks', bankToAdd).subscribe((responseData: Crypto[]) => {
+    this.http.post('https://localhost:44384/api/Crypto', cryptoToAdd).subscribe((responseData: Crypto[]) => {
       // de adaugat aici si de retrivuit din backend in lista ca in available
       this.cryptoAccounts = responseData;
        this.dataSourceCrypto = new MatTableDataSource(responseData);
@@ -127,7 +134,7 @@ export class BankComponent implements OnInit {
   }
 
   deleteCrypto(id: number) {
-    this.http.delete('https://localhost:44384/api/Banks/' + id).subscribe((responseData: Crypto[]) => {
+    this.http.delete('https://localhost:44384/api/Crypto/' + id).subscribe((responseData: Crypto[]) => {
       this.cryptoAccounts = responseData;
        this.dataSourceCrypto = new MatTableDataSource(responseData);
       console.log(responseData);
