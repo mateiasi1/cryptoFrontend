@@ -27,7 +27,7 @@ export class CryptoAccountComponent implements OnInit {
 
   ngOnInit() {
 
-    this.getBankAccounts();
+    this.getCryptoAccounts();
   }
 
   setID(idFromHTML: number) {
@@ -36,17 +36,18 @@ export class CryptoAccountComponent implements OnInit {
 
 //#region BankAccount
 
- getBankAccounts() {
+getCryptoAccounts() {
 
-  this.http.get('https://localhost:44384/api/BankAccounts').subscribe((responseData: CryptoAccount[]) => {
+  this.http.get('https://localhost:44384/api/CryptoAccount').subscribe((responseData: CryptoAccount[]) => {
      this.cryptoAccounts = responseData;
      this.dataSource = new MatTableDataSource(responseData);
+     debugger;
      console.log(responseData);
    });
  }
 
- deleteBankAccount(id: number) {
-  this.http.delete('https://localhost:44384/api/BankAccounts/' + id).subscribe((responseData: CryptoAccount[]) => {
+ deleteCryptoAccount(id: number) {
+  this.http.delete('https://localhost:44384/api/CryptoAccount/' + id).subscribe((responseData: CryptoAccount[]) => {
     this.cryptoAccounts = responseData;
      this.dataSource = new MatTableDataSource(responseData);
     console.log(responseData);

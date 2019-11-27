@@ -1,4 +1,3 @@
-
 import { HttpClient } from '@angular/common/http';
 import { MatDialog } from '@angular/material/dialog';
 import { ManagerService } from '../manage-application/manager.service';
@@ -29,14 +28,14 @@ constructor(private http: HttpClient,
   }
 
   deposit(amount: number) {
-    this.http.put( `https://localhost:44384/api/BankAccounts/add`, {'amount' : amount, 'id' : this.id}).subscribe(responseData => {
+    this.http.put( `https://localhost:44384/api/CryptoAccount/add`, {'amount' : amount, 'id' : this.id}).subscribe(responseData => {
       // tslint:disable-next-line: no-debugger
       console.log(responseData);
     });
   }
 
   withdraw(amount: number) {
-    this.http.put( `https://localhost:44384/api/BankAccounts/withdraw`, {'amount' : amount, 'id' : this.id}).subscribe(responseData => {
+    this.http.put( `https://localhost:44384/api/CryptoAccount/withdraw`, {'amount' : amount, 'id' : this.id}).subscribe(responseData => {
       // tslint:disable-next-line: no-debugger
       console.log(responseData);
     });
