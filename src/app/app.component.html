@@ -14,7 +14,7 @@
         <li role="presentation"><a routerLink="/crypto">Crypto wallet </a></li>
         <li role="presentation"><a routerLink="/manage-application">Manage Application</a></li>
         <li role="presentation"><a routerLink="/usersUnconfirmed">Users unconfirmed</a></li>
-        <li *ngIf="authService.loggedIn"><button class="btn btn-primary" (click)="loginComponent.logoutUser()" [routerLink]="['/users']" routerLinkActive="router-link-active" >Logout</button></li>
+        <li *ngIf="authService.loggedIn"><button class="loginButton" mat-raised-button color="primary" (click)="loginComponent.logoutUser()" [routerLink]="['/users']" routerLinkActive="router-link-active">Logout</button></li>
       </ul>
     </div>
   </div>

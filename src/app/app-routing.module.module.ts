@@ -26,9 +26,9 @@ const appRoutes: Routes = [
   { path: 'bank', canActivate: [AuthGuard], component: BankComponent},
   { path: 'manage-application', canActivate: [AuthGuard], component: ManageApplicationComponent},
   { path: 'registerUser', component: RegisterUserComponent},
-  { path: 'usersUnconfirmed', component: UsersComponent},
-  { path: 'validateAccount', component: ValidateAccountComponent},
-  { path: 'crypto', component: CryptoAccountComponent},
+  { path: 'usersUnconfirmed',canActivate: [AuthGuard], component: UsersComponent},
+  { path: 'validateAccount',canActivate: [AuthGuard], component: ValidateAccountComponent},
+  { path: 'crypto',canActivate: [AuthGuard], component: CryptoAccountComponent},
   { path: '**', redirectTo: '/not-found'},
 ];
 

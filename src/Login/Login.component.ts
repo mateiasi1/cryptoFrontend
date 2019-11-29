@@ -2,10 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { UserLogin } from 'src/Login/userLogin.component';
 import { AuthService } from 'src/app/auth-service';
-import { Guid } from 'guid-typescript';
-import { Subject } from 'rxjs/Subject';
-import { ReplaySubject } from 'rxjs/ReplaySubject';
-import { pluck, share, shareReplay, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +12,7 @@ export class LoginComponent implements OnInit {
   username = '';
   debugger;
   password = '';
-  token: Guid;
+  token: string;
 
   // tslint:disable-next-line: max-line-length
 
@@ -28,14 +24,7 @@ export class LoginComponent implements OnInit {
   }
 
   loginUser() {
-    const currentUser = JSON.parse(localStorage.getItem(this.userLogin.Username));
-    debugger;
-    if (currentUser != null) {
-      const token = currentUser.token;
-      this.userLogin.Token = token;
-    }
-    debugger;
-    return this.http.post( 'https://localhost:44384/api/logins', this.userLogin).subscribe(responseData => {
+    this.http.post('https://localhost:44384/api/Logins', this.userLogin).subscribe((responseData: UserLogin) => {
     console.log(responseData, 'login');
     if (responseData != null ) {
       this.authService.login();
@@ -46,7 +35,7 @@ export class LoginComponent implements OnInit {
   });
 
   }
-
+ 
   logoutUser() {
     debugger;
       const currentUser = JSON.parse(localStorage.getItem('currentUser'));

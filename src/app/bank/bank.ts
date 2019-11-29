@@ -42,6 +42,7 @@ export class BankComponent implements OnInit {
     this.getBanks();
     this.getCrypto();
   }
+  
   // #region Bank
   getBanks() {
     this.http.get('https://localhost:44384/api/Banks').subscribe((responseData: Bank[]) => {
