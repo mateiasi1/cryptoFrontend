@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthGuard } from './auth-guard.service';
 import { DepositComponent } from './deposit/deposit.component';
 import { WithdrawComponent } from './withdraw/withdraw.component';
 import { BankAccountComponent } from './bankAccount/bankAccount.component';
@@ -14,21 +13,27 @@ import { RegisterUserComponent } from './registerUser/registerUser.component';
 import { UsersComponent } from './users/users.component';
 import { ValidateAccountComponent } from './validateAccount/validateAccount.component';
 import { CryptoAccountComponent } from './cryptoAccount/cryptoAccount.component';
+import {
+  AuthGuardService as AuthGuard
+} from './auth-guard.service';
+import { 
+  RoleGuardService as RoleGuard
+} from './role-guard.service';
 
-const appRoutes: Routes = [
+export const appRoutes: Routes = [
   { path: '', canActivate: [AuthGuard], component: DepositComponent },
   { path: 'home', canActivate: [AuthGuard], component: DepositComponent},
   { path: 'withdraw', canActivate: [AuthGuard],  component: WithdrawComponent },
-  { path: 'bank-account', canActivate: [AuthGuard],  component: BankAccountComponent },
+  { path: 'bank-account', canActivate: [AuthGuard], component: BankAccountComponent },
   { path: 'trade', canActivate: [AuthGuard], component: TradeComponent },
   { path: 'login', component: LoginComponent},
   { path: 'availableCurrencies', canActivate: [AuthGuard], component: AvailableCurrenciesComponent},
-  { path: 'bank', canActivate: [AuthGuard], component: BankComponent},
-  { path: 'manage-application', canActivate: [AuthGuard], component: ManageApplicationComponent},
+  { path: 'bank', canActivate: [AuthGuard], data: { expectedRole: 'admin'} , component: BankComponent},
+  { path: 'manage-application', canActivate: [AuthGuard], data: { expectedRole: 'admin'}, component: ManageApplicationComponent},
   { path: 'registerUser', component: RegisterUserComponent},
-  { path: 'usersUnconfirmed',canActivate: [AuthGuard], component: UsersComponent},
-  { path: 'validateAccount',canActivate: [AuthGuard], component: ValidateAccountComponent},
-  { path: 'crypto',canActivate: [AuthGuard], component: CryptoAccountComponent},
+  { path: 'usersUnconfirmed', canActivate: [AuthGuard], data: { expectedRole: 'admin'}, component: UsersComponent},
+  { path: 'validateAccount', canActivate: [AuthGuard], data: { expectedRole: 'admin'}, component: ValidateAccountComponent},
+  { path: 'crypto', canActivate: [AuthGuard], data: { expectedRole: 'admin'}, component: CryptoAccountComponent},
   { path: '**', redirectTo: '/not-found'},
 ];
 

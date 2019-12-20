@@ -1,20 +1,17 @@
+import { Injectable } from '@angular/core';
+import { JwtHelperService } from '@auth0/angular-jwt';
+@Injectable()
 export class AuthService {
-    loggedIn = false;
-
-    isAuthenticated() {
-        const promise = new Promise(
-(resolve, reject) => {
-    setTimeout(() => {
-        resolve(this.loggedIn);
-    }, 300 );
-}
-        );
-        return promise;
-    }
-    login() {
-        this.loggedIn = true;
-    }
-    logout() {
-        this.loggedIn = false;
-    }
+  constructor(public jwtHelper: JwtHelperService) {}
+  // ...
+  public isAuthenticated(): boolean {
+    const token = localStorage.getItem('token');
+    if (token == null) {
+        return false;
+        } else {
+    // Check whether the token is expired and return
+    // true or false
+    return !this.jwtHelper.isTokenExpired(token);
+        }
+  }
 }

@@ -8,6 +8,8 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material';
 import {MatCardModule} from '@angular/material/card';
+import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
+
 
 @NgModule({
   imports: [
@@ -20,6 +22,11 @@ import {MatCardModule} from '@angular/material/card';
     MatInputModule,
     MatCardModule
   ],
-  declarations: [LoginComponent]
+  declarations: [LoginComponent],
+
+  providers: [
+    { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
+    JwtHelperService
+]
 })
 export class LoginModule { }

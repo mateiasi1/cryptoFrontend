@@ -18,10 +18,10 @@ import { BankComponent } from './bank/bank';
 import { ManageApplicationComponent } from './manage-application/manage-application.component';
 import { RegisterUserComponent } from './registerUser/registerUser.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
-import { AuthGuard } from './auth-guard.service';
+import { AuthGuardService } from './auth-guard.service';
 import { AuthService } from './auth-service';
 import { LoginModule } from 'src/Login/Login.module';
-import { AppRoutingModule } from './app-routing.module.module';
+import { AppRoutingModule } from './app-routing.module';
 import { UsersComponent } from './users/users.component';
 import {MatButtonModule} from '@angular/material/button';
 import { LoginComponent } from 'src/Login/Login.component';
@@ -72,7 +72,7 @@ import { CryptoAccountService } from './cryptoAccount/cryptoAccount.service';
       TradeService,
       ManageApplicationComponent,
       AuthService,
-      AuthGuard,
+      AuthGuardService,
       LoginComponent
    ],
    bootstrap: [

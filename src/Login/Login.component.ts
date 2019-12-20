@@ -27,10 +27,8 @@ export class LoginComponent implements OnInit {
     this.http.post('https://localhost:44384/api/Logins', this.userLogin).subscribe((responseData: UserLogin) => {
     console.log(responseData, 'login');
     if (responseData != null ) {
-      this.authService.login();
+      this.authService.isAuthenticated();
       localStorage.setItem('currentUser', JSON.stringify({token: responseData, name: this.userLogin.Username}));
-    } else {
-      this.authService.logout();
     }
   });
 
@@ -43,7 +41,7 @@ export class LoginComponent implements OnInit {
       this.userLogin.Token = token;
       debugger;
       return this.http.delete('https://localhost:44384/api/logins/' + token).subscribe(responseData => {
-        this.authService.logout();
+       
         debugger;
         localStorage.clear();
       });
