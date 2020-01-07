@@ -24,8 +24,9 @@ export class LoginComponent implements OnInit {
   }
 
   loginUser() {
-    this.http.post('https://localhost:44384/api/Logins', this.userLogin).subscribe((responseData: UserLogin) => {
+    this.http.post('https://localhost:44384/api/Logins/authenticate', this.userLogin).subscribe((responseData: UserLogin) => {
     console.log(responseData, 'login');
+    debugger;
     if (responseData != null ) {
       this.authService.isAuthenticated();
       localStorage.setItem('currentUser', JSON.stringify({token: responseData, name: this.userLogin.Username}));
