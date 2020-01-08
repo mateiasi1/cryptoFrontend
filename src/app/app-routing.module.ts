@@ -21,11 +21,14 @@ import {
 } from './role-guard.service';
 
 export const appRoutes: Routes = [
+
+  // canActivate: [RoleGuard],  pentru auth bazata pe roluri(verifica si authguard)
+
   { path: '', canActivate: [AuthGuard], component: DepositComponent },
   { path: 'home', canActivate: [AuthGuard], component: DepositComponent},
   { path: 'withdraw', canActivate: [AuthGuard],  component: WithdrawComponent },
   { path: 'bank-account', canActivate: [AuthGuard], component: BankAccountComponent },
-  { path: 'trade', canActivate: [AuthGuard], component: TradeComponent },
+  { path: 'trade', canActivate: [RoleGuard], component: TradeComponent, data: { expectedRole: 'admin'} },
   { path: 'login', component: LoginComponent},
   { path: 'availableCurrencies', canActivate: [AuthGuard], component: AvailableCurrenciesComponent},
   { path: 'bank', canActivate: [AuthGuard], data: { expectedRole: 'admin'} , component: BankComponent},

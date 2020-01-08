@@ -32,6 +32,7 @@ import {MatCardModule} from '@angular/material/card';
 import { ValidateAccountComponent } from './validateAccount/validateAccount.component';
 import { CryptoAccountComponent } from './cryptoAccount/cryptoAccount.component';
 import { CryptoAccountService } from './cryptoAccount/cryptoAccount.service';
+import { RoleGuardService } from './role-guard.service';
 
 @NgModule({
    declarations: [
@@ -73,7 +74,8 @@ import { CryptoAccountService } from './cryptoAccount/cryptoAccount.service';
       ManageApplicationComponent,
       AuthService,
       AuthGuardService,
-      LoginComponent
+      LoginComponent,
+      RoleGuardService
    ],
    bootstrap: [
       AppComponent

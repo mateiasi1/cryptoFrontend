@@ -34,15 +34,16 @@ export class LoginComponent implements OnInit {
   });
 
   }
- 
+
   logoutUser() {
     debugger;
       const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-      const token = currentUser.token;
+      const token = currentUser.token.token;
       this.userLogin.Token = token;
+      const userId = currentUser.token.id;
       debugger;
-      return this.http.delete('https://localhost:44384/api/logins/' + token).subscribe(responseData => {
-       
+      return this.http.delete('https://localhost:44384/api/Logins/' + userId).subscribe(responseData => {
+
         debugger;
         localStorage.clear();
       });
