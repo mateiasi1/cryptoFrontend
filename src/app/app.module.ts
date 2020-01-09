@@ -33,6 +33,7 @@ import { ValidateAccountComponent } from './validateAccount/validateAccount.comp
 import { CryptoAccountComponent } from './cryptoAccount/cryptoAccount.component';
 import { CryptoAccountService } from './cryptoAccount/cryptoAccount.service';
 import { RoleGuardService } from './role-guard.service';
+import {MatMenuModule} from '@angular/material/menu';
 
 @NgModule({
    declarations: [
@@ -65,7 +66,8 @@ import { RoleGuardService } from './role-guard.service';
       MatButtonModule,
       MatTableModule,
       MatPaginatorModule,
-      MatCardModule
+      MatCardModule,
+      MatMenuModule
    ],
    providers: [
       BankAccountService,

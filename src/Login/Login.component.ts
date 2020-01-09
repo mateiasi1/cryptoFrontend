@@ -29,6 +29,7 @@ export class LoginComponent implements OnInit {
     debugger;
     if (responseData != null ) {
       this.authService.isAuthenticated();
+      this.authService.isLoggedIn = true;
       localStorage.setItem('currentUser', JSON.stringify({token: responseData, name: this.userLogin.Username}));
     }
   });
@@ -43,7 +44,7 @@ export class LoginComponent implements OnInit {
       const userId = currentUser.token.id;
       debugger;
       return this.http.delete('https://localhost:44384/api/Logins/' + userId).subscribe(responseData => {
-
+        this.authService.isLoggedIn = false;
         debugger;
         localStorage.clear();
       });

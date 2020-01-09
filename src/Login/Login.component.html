@@ -8,13 +8,14 @@
 <br>
 <mat-form-field class="inputFields">
           <mat-label>Password</mat-label>
-    <input matInput type="password" [(ngModel)]="userLogin.Password">
+    <input matInput type="password" [(ngModel)]="userLogin.Password" (keyup.enter)="loginUser()" [routerLink]="['/bank-account']" >
   </mat-form-field> 
   <br>
 <mat-card-actions>
-<button class="loginButton" mat-raised-button color="primary"  [routerLink]="['/servers']"  (click)="loginUser()">Login</button>
+<button class="loginButton" mat-raised-button color="primary"  [routerLink]="['/bank-account']" (click)="loginUser()">Login</button>
 </mat-card-actions>
-<hr>
-<p class="text"> Forgot password?</p>
+<a style="color:blue" value="link" href="#" class="text"  [routerLink]="['/registerUser']"> Register</a>
+<br>
+<a style="color:blue" value="link" href="#" class="text"> Forgot password?</a>
 </mat-card>
 </div>

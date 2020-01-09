@@ -1,3 +1,4 @@
+import { AuthService } from 'src/app/auth-service';
 import { Component, OnInit } from '@angular/core';
 import { CryptoCurrencyList, CurrencyList, Currency } from '../bankAccount/currency.component';
 import { BankAccountService } from '../bankAccount/bankAccount.service';
@@ -16,6 +17,8 @@ export class AvailableCurrenciesComponent implements OnInit {
   selectedValueCrypto = '';
   displayedColumns: string[] = ['id', 'name', 'viewValue', 'actions'];
   displayedColumnsCrypto: string[] = ['id', 'name', 'actions'];
+  role: string;
+  isCurrentUserAdmin: boolean;
 
   dataSource: MatTableDataSource<Currency>;
   dataSourceCrypto: MatTableDataSource<CryptoCurrency>;
@@ -29,7 +32,8 @@ public  allCurrency: CurrencyList[] = [];
 public  allCryptoCurrency: CryptoCurrencyList[] = [];
 
   constructor(public serversService: BankAccountService,
-              private http: HttpClient) { }
+              private http: HttpClient,
+              public authService: AuthService) { }
 
   ngOnInit() {
     this.dataSource = new MatTableDataSource(this.currencyFromBackend);
@@ -57,7 +61,7 @@ public  allCryptoCurrency: CryptoCurrencyList[] = [];
     const itemIndex = this.allCurrency.indexOf(currencyToAdd);
     this.allCurrency.splice(itemIndex, 1);
   }
-  
+
   addCryptoCurrencyToList() {
     const cryptoCurrencyToAdd = this.allCryptoCurrency.find(item => item.cryptoCurrencyName === this.selectedValueCrypto);
     debugger;
@@ -95,6 +99,5 @@ public  allCryptoCurrency: CryptoCurrencyList[] = [];
        this.dataSourceCrypto = new MatTableDataSource(responseData);
       console.log(responseData);
     });
-    
   }
 }

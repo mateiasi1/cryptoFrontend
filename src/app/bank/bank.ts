@@ -1,3 +1,4 @@
+import { AuthService } from 'src/app/auth-service';
 import { Component, OnInit } from '@angular/core';
 import { BankAccount, Bank } from '../bank.component';
 import { HttpClient } from '@angular/common/http';
@@ -14,7 +15,8 @@ import { CurrencyListCrypto } from '../cryptoAccount/cryptoCurrency.component';
 export class BankComponent implements OnInit {
   displayedColumns: string[] = ['Id', 'BankName', 'IBAN', 'Currency', 'Actions'];
   displayedColumnsCrypto: string[] = ['Id', 'CryptoName', 'Actions'];
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+    public authService: AuthService) { }
 
   dataSource: MatTableDataSource<Bank>;
   dataSourceCrypto: MatTableDataSource<Crypto>;
@@ -22,10 +24,13 @@ export class BankComponent implements OnInit {
   public bankAccounts: Bank[] = [];
   public cryptoAccounts: Crypto[] = [];
 
-  UserId: number = 0;
+  UserId = 0;
   BankName: string;
   IBAN: string;
   CurrencyAbbreviation: string;
+
+ role: string;
+ isCurrentUserAdmin: boolean;
 
   CryptoName: string;
   Refference: string;

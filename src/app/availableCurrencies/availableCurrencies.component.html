@@ -33,9 +33,11 @@
 
   <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
 </div>
+<div *ngIf="authService.isAdmin">
 <br>
 <hr>
 <br>
+
 <h3>Administrator add currency to the list</h3>
 <br>
 <mat-form-field>
@@ -47,8 +49,9 @@
   </mat-select>
 </mat-form-field>
 <br>
-<button mat-raised-button color="primary" [routerLink]="['/availableCurrencies']"  (click)="addCurrencyToList()">Administrator Add Currency</button>
 
+<button mat-raised-button color="primary" [routerLink]="['/availableCurrencies']"  (click)="addCurrencyToList()">Administrator Add Currency</button>
+</div>
 
 <hr>
 
@@ -80,6 +83,7 @@
 
   <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
 </div>
+<div *ngIf="authService.isAdmin">
 <br>
 <hr>
 <br>
@@ -95,3 +99,4 @@
 </mat-form-field>
 <br>
 <button mat-raised-button color="primary" [routerLink]="['/availableCurrencies']"  (click)="addCryptoCurrencyToList()">Administrator Add Crypto</button>
+</div>

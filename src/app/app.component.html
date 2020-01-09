@@ -1,7 +1,22 @@
+<div *ngIf="authService.isLoggedIn">
+<button mat-button routerLink="/" routerLinkActive="router-link-active"  >Deposit</button>
+<button mat-button routerLink="/bank-account"  >Fiat wallet</button>
+<button mat-button routerLink="/withdraw" >Withdraw</button>
+<button mat-button routerLink="/trade" >Trade</button>
+<button mat-button routerLink="/user-details" >Details</button>
+<button mat-button routerLink="/availableCurrencies" >Available Currencies</button>
+<button mat-button routerLink="/bank"  >Bank</button>
+<button mat-button routerLink="/crypto"  >Crypto wallet</button>
+<button mat-button routerLink="/manage-application" >Manage Application</button>
+<button mat-button routerLink="/usersUnconfirmed" >Users unconfirmed</button>
+  <button mat-button class="loginButton" mat-raised-button color="primary" (click)="loginComponent.logoutUser()" [routerLink]="['/login']" routerLinkActive="router-link-active" >Logout</button>
+</div>
+
+
 <div class="container">
-  <div class="row">
+  <!-- <div class="row">
     <div >
-      <ul class="nav nav-tabs">
+      <ul class="nav nav-tabs" *ngIf="authService.isLoggedIn"> 
         <li role="presentation" class="active"><a routerLink="/" routerLinkActive="router-link-active" >Deposit</a></li>
         <li role="presentation"><a routerLink="/bank-account">Fiat wallet</a></li>
         <li role="presentation"><a routerLink="/withdraw">Withdraw</a></li>
@@ -17,7 +32,7 @@
         <li *ngIf="authService.isAuthenticated()"><button class="loginButton" mat-raised-button color="primary" (click)="loginComponent.logoutUser()" [routerLink]="['/users']" routerLinkActive="router-link-active">Logout</button></li>
       </ul>
     </div>
-  </div>
+  </div> -->
   <div class="row">
     <div >
      <br>
