@@ -24,7 +24,7 @@ export const appRoutes: Routes = [
 
   // canActivate: [RoleGuard],  pentru auth bazata pe roluri(verifica si authguard)
 
-  { path: '', canActivate: [AuthGuard], component: DepositComponent },
+  { path: '', component: LoginComponent },
   { path: 'home', canActivate: [AuthGuard], component: DepositComponent},
   { path: 'withdraw', canActivate: [AuthGuard],  component: WithdrawComponent },
   { path: 'bank-account', canActivate: [AuthGuard], component: BankAccountComponent },

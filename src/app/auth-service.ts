@@ -15,7 +15,11 @@ export class AuthService {
     return !this.jwtHelper.isTokenExpired(token);
         }
   }
-
+public get getName(): string {
+  const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+  const currentRole = currentUser.name;
+  return currentRole;
+}
   public get getRole(): string {
     const currentUser = JSON.parse(localStorage.getItem('currentUser'));
     const currentRole = currentUser.token.role;

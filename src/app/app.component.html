@@ -9,7 +9,15 @@
 <button mat-button routerLink="/crypto"  >Crypto wallet</button>
 <button mat-button routerLink="/manage-application" >Manage Application</button>
 <button mat-button routerLink="/usersUnconfirmed" >Users unconfirmed</button>
-  <button mat-button class="loginButton" mat-raised-button color="primary" (click)="loginComponent.logoutUser()" [routerLink]="['/login']" routerLinkActive="router-link-active" >Logout</button>
+  <div class="wrapper">
+    <button mat-button [matMenuTriggerFor]="menu"><img src="https://i2.cdn.turner.com/cnnnext/dam/assets/140926165711-john-sutter-profile-image-large-169.jpg" class="image--cover"></button>
+    <mat-menu #menu="matMenu">
+      <p style="text-align: center" >Hi, {{authService.getRole}}</p>
+      <button mat-menu-item>Profile</button>
+      <button mat-menu-item (click)="loginComponent.logoutUser()" [routerLink]="['/login']" routerLinkActive="router-link-active" >Logout</button>
+    </mat-menu>
+  </div>  
+
 </div>
 
 

@@ -9,6 +9,8 @@ import { amountState } from './state.component';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
+
   constructor(public authService: AuthService,
     public loginComponent: LoginComponent) {}
+
 }
