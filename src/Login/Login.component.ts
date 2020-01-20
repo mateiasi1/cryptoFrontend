@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { UserLogin } from 'src/Login/userLogin.component';
 import { AuthService } from 'src/app/auth-service';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -14,18 +15,34 @@ export class LoginComponent implements OnInit {
   password = '';
   token: string;
 
+  loginForm: FormGroup;
+
   // tslint:disable-next-line: max-line-length
 
   public userLogin: UserLogin = {Username: this.username, Password: this.password, Token: this.token};
   constructor(private http: HttpClient,
-    public authService: AuthService) { }
+    public authService: AuthService) {
+      this.loginForm = new FormGroup({
+        email: new FormControl('', [Validators.required, Validators.email]),
+        password: new FormControl('', [Validators.required])
+      });
+    }
   ngOnInit() {
 
   }
-
+  onSubmit() {
+    if(this.loginForm.valid) {
+      console.log(this._v());
+      console.log(this.loginForm.controls['email'].value)
+    }
+  }
+  _v() {
+    return this.loginForm.value;
+  }
   loginUser() {
     this.http.post('https://localhost:44384/api/Logins/authenticate', this.userLogin).subscribe((responseData: UserLogin) => {
     console.log(responseData, 'login');
+    console.log(this.loginForm.value);
     debugger;
     if (responseData != null ) {
       this.authService.isAuthenticated();
