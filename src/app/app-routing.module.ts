@@ -16,7 +16,7 @@ import { CryptoAccountComponent } from './cryptoAccount/cryptoAccount.component'
 import {
   AuthGuardService as AuthGuard
 } from './auth-guard.service';
-import { 
+import {
   RoleGuardService as RoleGuard
 } from './role-guard.service';
 
