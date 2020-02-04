@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { BankAccountService } from '../bankAccount/bankAccount.service';
+import { BankAccountService } from '../bank/bankAccount/bankAccount.service';
 
 @Component({
   selector: 'app-withdraw',

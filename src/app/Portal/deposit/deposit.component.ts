@@ -1,5 +1,6 @@
-import { BankAccountService } from '../bankAccount/bankAccount.service';
+
 import { Component, OnInit } from '@angular/core';
+import { BankAccountService } from '../bank/bankAccount/bankAccount.service';
 
 @Component({
   selector: 'app-deposit',

@@ -1,13 +1,13 @@
 import { AuthService } from 'src/app/auth-service';
 import { Component, OnInit } from '@angular/core';
-import { CryptoCurrencyList, CurrencyList, Currency } from '../bankAccount/currency.component';
-import { BankAccountService } from '../bankAccount/bankAccount.service';
 import { MatTableDataSource } from '@angular/material';
 import { HttpClient } from '@angular/common/http';
 import { CryptoCurrency } from '../cryptoAccount/cryptoCurrency.component';
+import { Currency, CurrencyList, CryptoCurrencyList } from '../bank/bankAccount/currency.component';
+import { BankAccountService } from '../bank/bankAccount/bankAccount.service';
 
 @Component({
-  selector: 'app-availableCurrencies',
+  selector: 'app-availablecurrencies',
   templateUrl: './availableCurrencies.component.html',
   styleUrls: ['./availableCurrencies.component.css']
 })

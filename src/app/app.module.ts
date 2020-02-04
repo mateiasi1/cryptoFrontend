@@ -2,38 +2,39 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
-import {  DepositComponent } from './deposit/deposit.component';
-import { WithdrawComponent } from './withdraw/withdraw.component';
-import { BankAccountComponent } from './bankAccount/bankAccount.component';
-import { BankAccountService } from './bankAccount/bankAccount.service';
-import { TradeComponent } from './trade/trade.component';
 import { MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatInputModule, MatExpansionModule } from '@angular/material';
 import { MatSelectModule } from '@angular/material/select';
-import { TradeService } from './trade/trade.service';
 import { HttpClientModule } from '@angular/common/http';
-import { AvailableCurrenciesComponent } from './availableCurrencies/availableCurrencies.component';
-import { BankComponent } from './bank/bank';
-import { ManageApplicationComponent } from './manage-application/manage-application.component';
 import { RegisterUserComponent } from './registerUser/registerUser.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { AuthGuardService } from './auth-guard.service';
 import { AuthService } from './auth-service';
 import { LoginModule } from 'src/Login/Login.module';
 import { AppRoutingModule } from './app-routing.module';
-import { UsersComponent } from './users/users.component';
 import {MatButtonModule} from '@angular/material/button';
 import { LoginComponent } from 'src/Login/Login.component';
 import {MatTableModule} from '@angular/material/table';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatCardModule} from '@angular/material/card';
-import { ValidateAccountComponent } from './validateAccount/validateAccount.component';
-import { CryptoAccountComponent } from './cryptoAccount/cryptoAccount.component';
-import { CryptoAccountService } from './cryptoAccount/cryptoAccount.service';
 import { RoleGuardService } from './role-guard.service';
 import {MatMenuModule} from '@angular/material/menu';
+import { PortalComponent } from './Portal/Portal.component';
+import { DepositComponent } from './Portal/deposit/deposit.component';
+import { WithdrawComponent } from './Portal/withdraw/withdraw.component';
+import { TradeComponent } from './Portal/trade/trade.component';
+import { BankAccountComponent } from './Portal/bank/bankAccount/bankAccount.component';
+import { AvailableCurrenciesComponent } from './Portal/availableCurrencies/availableCurrencies.component';
+import { BankComponent } from './Portal/bank/bank';
+import { ManageApplicationComponent } from './Portal/manage-application/manage-application.component';
+import { UsersComponent } from './Portal/users/users.component';
+import { ValidateAccountComponent } from './Portal/validateAccount/validateAccount.component';
+import { CryptoAccountComponent } from './Portal/cryptoAccount/cryptoAccount.component';
+import { BankAccountService } from './Portal/bank/bankAccount/bankAccount.service';
+import { CryptoAccountService } from './Portal/cryptoAccount/cryptoAccount.service';
+import { TradeService } from './Portal/trade/trade.service';
 
 @NgModule({
    declarations: [
@@ -48,7 +49,8 @@ import {MatMenuModule} from '@angular/material/menu';
       RegisterUserComponent,
       UsersComponent,
       ValidateAccountComponent,
-      CryptoAccountComponent
+      CryptoAccountComponent,
+      PortalComponent
    ],
    imports: [
       BrowserModule,

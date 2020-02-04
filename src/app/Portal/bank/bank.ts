@@ -1,11 +1,11 @@
 import { AuthService } from 'src/app/auth-service';
 import { Component, OnInit } from '@angular/core';
-import { BankAccount, Bank } from '../bank.component';
 import { HttpClient } from '@angular/common/http';
 import { MatTableDataSource } from '@angular/material';
-import { Currency, CurrencyList } from '../bankAccount/currency.component';
-import { CryptoAccount, Crypto } from '../crypto.component';
 import { CurrencyListCrypto } from '../cryptoAccount/cryptoCurrency.component';
+import { Bank, BankAccount } from 'src/app/bank.component';
+import { CurrencyList } from './bankAccount/currency.component';
+import { Crypto, CryptoAccount } from 'src/app/crypto.component';
 
 @Component({
   selector: 'app-fiat-account',
@@ -129,6 +129,7 @@ export class BankComponent implements OnInit {
   }
 
   addCrypto() {
+    // tslint:disable-next-line: max-line-length
     const cryptoToAdd: Crypto = {id: 0, cryptoName: this.CryptoName, refference: this.Refference, cryptoCurrencyName: this.CryptoName, cryptoCurrencyAbbreviation: '' }
 
     this.http.post('https://localhost:44384/api/Crypto', cryptoToAdd).subscribe((responseData: Crypto[]) => {

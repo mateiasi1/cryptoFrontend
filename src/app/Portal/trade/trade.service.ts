@@ -1,7 +1,8 @@
-import { BankAccountService } from '../bankAccount/bankAccount.service';
+
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { TradeComponent } from './trade.component';
+import { BankAccountService } from '../bank/bankAccount/bankAccount.service';
 
 @Injectable()
 export class TradeService {

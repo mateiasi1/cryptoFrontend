@@ -1,12 +1,11 @@
-<div *ngIf="authService.isLoggedIn">
-<button mat-button routerLink="/" routerLinkActive="router-link-active"  >Deposit</button>
-<button mat-button routerLink="/bank-account"  >Fiat wallet</button>
-<button mat-button routerLink="/withdraw" >Withdraw</button>
-<button mat-button routerLink="/trade" >Trade</button>
-<button mat-button routerLink="/user-details" >Details</button>
+<div *ngIf="authService.isLoggedIn"> 
+<button mat-button routerLink="/app-deposit" routerLinkActive="router-link-active" *ngIf="!authService.isAdmin"  >Deposit</button>
+<button mat-button routerLink="/bank-account"  *ngIf="!authService.isAdmin" >Fiat wallet</button>
+<button mat-button routerLink="/withdraw" *ngIf="!authService.isAdmin" >Withdraw</button>
+<button mat-button routerLink="/trade" *ngIf="!authService.isAdmin" >Trade</button>
 <button mat-button routerLink="/availableCurrencies" >Available Currencies</button>
 <button mat-button routerLink="/bank"  >Bank</button>
-<button mat-button routerLink="/crypto"  >Crypto wallet</button>
+<button mat-button routerLink="/crypto" *ngIf="!authService.isAdmin"  >Crypto wallet</button>
 <button mat-button routerLink="/manage-application" >Manage Application</button>
 <button mat-button routerLink="/usersUnconfirmed" >Users unconfirmed</button>
   <div class="wrapper">

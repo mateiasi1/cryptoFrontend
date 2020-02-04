@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
       });
     }
   ngOnInit() {
-
+    this.authService.isAuthenticated();
   }
   onSubmit() {
     if(this.loginForm.valid) {
@@ -45,7 +45,6 @@ export class LoginComponent implements OnInit {
     console.log(this.loginForm.value);
     debugger;
     if (responseData != null ) {
-      this.authService.isAuthenticated();
       this.authService.isLoggedIn = true;
       localStorage.setItem('currentUser', JSON.stringify({token: responseData, name: this.userLogin.Username}));
     }

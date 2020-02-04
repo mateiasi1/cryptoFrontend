@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { BankAccountService } from '../bankAccount/bankAccount.service';
 import { TradeService } from './trade.service';
 import { HttpClient } from '@angular/common/http';
+import { BankAccountService } from '../bank/bankAccount/bankAccount.service';
 
 
 @Component({

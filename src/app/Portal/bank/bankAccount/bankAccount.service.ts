@@ -1,7 +1,7 @@
 import { BankAccount } from './currency.component';
 import { HttpClient } from '@angular/common/http';
 import { MatDialog } from '@angular/material/dialog';
-import { ManagerService } from '../manage-application/manager.service';
+import { ManagerService } from '../../manage-application/manager.service';
 
 
 
