@@ -1,5 +1,6 @@
 import { Injectable, OnInit } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
+
 @Injectable()
 export class AuthService implements OnInit {
   public isLoggedIn = false;
@@ -12,8 +13,14 @@ this.isAuthenticated();
     const token = JSON.parse(localStorage.getItem('currentUser'));
     const currentToken = token.token.token;
     debugger;
-    if (currentToken == null || this.jwtHelper.isTokenExpired(currentToken)) {
+
+    const decodedToken = this.jwtHelper.decodeToken(currentToken);
+    const tokenExpirationDate = this.jwtHelper.getTokenExpirationDate(currentToken);
+  const date = Date.now();
+    if (currentToken == null) {
         return false;
+        } else if (date >= decodedToken.exp * 1000) {
+            return false;
         } else {
           this.isLoggedIn = true;
           return true;

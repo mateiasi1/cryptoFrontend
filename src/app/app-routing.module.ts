@@ -1,3 +1,4 @@
+import { AuthService } from './auth-service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
@@ -31,13 +32,13 @@ export const appRoutes: Routes = [
   { path: 'bank-account', canActivate: [AuthGuard], component: BankAccountComponent },
   { path: 'trade', canActivate: [RoleGuard], component: TradeComponent, data: { expectedRole: 'user'} },
   { path: 'login', component: LoginComponent},
-  { path: 'availableCurrencies', canActivate: [RoleGuard], component: AvailableCurrenciesComponent, data: { expectedRole: 'admin'} },
-  { path: 'bank', canActivate: [RoleGuard], data: { expectedRole: 'admin'} , component: BankComponent},
+  { path: 'availableCurrencies', canActivate: [AuthGuard], component: AvailableCurrenciesComponent },
+  { path: 'bank', canActivate: [AuthGuard], component: BankComponent},
   { path: 'manage-application', canActivate: [RoleGuard], data: { expectedRole: 'admin'}, component: ManageApplicationComponent},
   { path: 'registerUser', component: RegisterUserComponent},
   { path: 'usersUnconfirmed', canActivate: [RoleGuard], data: { expectedRole: 'admin'}, component: UsersComponent},
   { path: 'validateAccount', canActivate: [RoleGuard], data: { expectedRole: 'admin'}, component: ValidateAccountComponent},
-  { path: 'crypto', canActivate: [RoleGuard], data: { expectedRole: 'admin'}, component: CryptoAccountComponent},
+  { path: 'crypto', canActivate: [RoleGuard], data: { expectedRole: 'user'}, component: CryptoAccountComponent},
   { path: 'portal', canActivate: [AuthGuard], component: PortalComponent},
   { path: '**', redirectTo: '/not-found'},
 ];

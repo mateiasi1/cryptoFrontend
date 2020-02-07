@@ -15,22 +15,34 @@ public users: Users[] = [];
 public userId;
 displayedColumns: string[] = ['id', 'name', 'role', 'state', 'actions'];
 dataSource: MatTableDataSource<Users>;
+unconfirmedUsers: MatTableDataSource<Users>;
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
-    this.getUsers();
+    this.getConfirmedUsers();
+    this.getUsersUnconfirmed();
     debugger;
   }
 
 
-  getUsers() {
-    this.http.get('https://localhost:44384/api/users/1').subscribe((respondeData: Users[]) => {
+  getConfirmedUsers() {
+    this.http.get('https://localhost:44384/api/users').subscribe((respondeData: Users[]) => {
       this.users = respondeData;
       this.dataSource = new MatTableDataSource(this.users);
       debugger;
       console.log(this.users);
     });
   }
+
+  getUsersUnconfirmed() {
+    this.http.get('https://localhost:44384/api/users/1').subscribe((respondeData: Users[]) => {
+      this.users = respondeData;
+      this.unconfirmedUsers = new MatTableDataSource(this.users);
+      debugger;
+      console.log(this.users);
+    });
+  }
+
 //change password
   putUser(id: number) {
     debugger;
@@ -39,6 +51,15 @@ dataSource: MatTableDataSource<Users>;
       console.log(this.users);
     });
   }
+
+  suspendUser(id: number) {
+    debugger;
+    this.http.put('https://localhost:44384/api/Users/suspend', id).subscribe(respondeData => {
+      debugger;
+      console.log(this.users);
+    });
+  }
+
 //confirm user
 confirmUser(id: number, state: boolean) {
   debugger;

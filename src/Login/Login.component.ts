@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     if(this.loginForm.valid) {
       console.log(this._v());
-      console.log(this.loginForm.controls['email'].value)
+      console.log(this.loginForm.controls['email'].value);
     }
   }
   _v() {
