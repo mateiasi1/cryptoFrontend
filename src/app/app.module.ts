@@ -35,6 +35,7 @@ import { CryptoAccountComponent } from './Portal/cryptoAccount/cryptoAccount.com
 import { BankAccountService } from './Portal/bank/bankAccount/bankAccount.service';
 import { CryptoAccountService } from './Portal/cryptoAccount/cryptoAccount.service';
 import { TradeService } from './Portal/trade/trade.service';
+import { SetPasswordModule } from 'src/SetPassword/SetPassword.module';
 
 @NgModule({
    declarations: [
@@ -69,7 +70,8 @@ import { TradeService } from './Portal/trade/trade.service';
       MatTableModule,
       MatPaginatorModule,
       MatCardModule,
-      MatMenuModule
+      MatMenuModule,
+      SetPasswordModule
    ],
    providers: [
       BankAccountService,

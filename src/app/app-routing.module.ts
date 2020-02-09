@@ -21,6 +21,7 @@ import { UsersComponent } from './Portal/users/users.component';
 import { ValidateAccountComponent } from './Portal/validateAccount/validateAccount.component';
 import { CryptoAccountComponent } from './Portal/cryptoAccount/cryptoAccount.component';
 import { PortalComponent } from './Portal/Portal.component';
+import { SetPasswordComponent } from 'src/SetPassword/SetPassword.component';
 
 export const appRoutes: Routes = [
 
@@ -40,6 +41,7 @@ export const appRoutes: Routes = [
   { path: 'validateAccount', canActivate: [RoleGuard], data: { expectedRole: 'admin'}, component: ValidateAccountComponent},
   { path: 'crypto', canActivate: [RoleGuard], data: { expectedRole: 'user'}, component: CryptoAccountComponent},
   { path: 'portal', canActivate: [AuthGuard], component: PortalComponent},
+  { path: 'setPassword', component: SetPasswordComponent},
   { path: '**', redirectTo: '/not-found'},
 ];
 
