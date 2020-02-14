@@ -26,7 +26,7 @@ unconfirmedUsers: MatTableDataSource<Users>;
 
 
   getConfirmedUsers() {
-    this.http.get('https://localhost:44384/api/users').subscribe((respondeData: Users[]) => {
+    this.http.get('https://localhost:44384/api/users/confirmed').subscribe((respondeData: Users[]) => {
       this.users = respondeData;
       this.dataSource = new MatTableDataSource(this.users);
       debugger;
@@ -35,7 +35,7 @@ unconfirmedUsers: MatTableDataSource<Users>;
   }
 
   getUsersUnconfirmed() {
-    this.http.get('https://localhost:44384/api/users/1').subscribe((respondeData: Users[]) => {
+    this.http.get('https://localhost:44384/api/users/unconfirmed').subscribe((respondeData: Users[]) => {
       this.users = respondeData;
       this.unconfirmedUsers = new MatTableDataSource(this.users);
       debugger;
@@ -44,7 +44,7 @@ unconfirmedUsers: MatTableDataSource<Users>;
   }
 
 //change password
-  putUser(id: number) {
+  resetUser(id: number) {
     debugger;
     this.http.put('https://localhost:44384/api/Users', id).subscribe(respondeData => {
       debugger;
@@ -78,5 +78,13 @@ confirmUser(id: number, state: boolean) {
       debugger;
       console.log(this.users);
     });
+  }
+
+  forgotPassword(id: number) {
+    this.http.post( 'https://localhost:44384/api/users/forgot', id).subscribe(responseData => {
+    // tslint:disable-next-line: no-debugger
+    debugger;
+    console.log(responseData);
+  });
   }
 }
