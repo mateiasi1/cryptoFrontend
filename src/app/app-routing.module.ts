@@ -41,7 +41,7 @@ export const appRoutes: Routes = [
   { path: 'validateAccount', canActivate: [RoleGuard], data: { expectedRole: 'admin'}, component: ValidateAccountComponent},
   { path: 'crypto', canActivate: [RoleGuard], data: { expectedRole: 'user'}, component: CryptoAccountComponent},
   { path: 'portal', canActivate: [AuthGuard], component: PortalComponent},
-  { path: 'setPassword/:id', component: SetPasswordComponent},
+  { path: 'setPassword/:token', component: SetPasswordComponent},
   { path: '**', redirectTo: '/not-found'},
 ];
 

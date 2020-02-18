@@ -13,6 +13,7 @@ import { ManagerService } from './manager.service';
 export class ManageApplicationComponent implements OnInit {
   public newValueFee: number;
   public newValueFlat: number;
+  public role: string;
   
   constructor(private http: HttpClient,
               public managerService: ManagerService) { }
@@ -20,11 +21,12 @@ export class ManageApplicationComponent implements OnInit {
   ngOnInit() {
     this.managerService.getFee();
     this.managerService.getFlatRate();
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    this.role = currentUser.token.role;
   }
   addFee() {
-  const newFee: Fee = {Id: 0, Percentage: this.newValueFee, Obsolete: false};
+  const newFee: Fee = {Id: 0, Percentage: this.newValueFee, UserRole: this.role, Obsolete: false};
   this.http.post('https://localhost:44384/api/Fees', newFee).subscribe(respondeData => {
-    debugger;
       console.log(respondeData);
       this.managerService.getFee();
       this.newValueFee = 0;
