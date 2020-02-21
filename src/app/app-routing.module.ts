@@ -37,7 +37,7 @@ export const appRoutes: Routes = [
   { path: 'bank', canActivate: [AuthGuard], component: BankComponent},
   { path: 'manage-application', canActivate: [RoleGuard], data: { expectedRole: 'admin'}, component: ManageApplicationComponent},
   { path: 'registerUser', component: RegisterUserComponent},
-  { path: 'usersUnconfirmed', canActivate: [RoleGuard], data: { expectedRole: 'admin'}, component: UsersComponent},
+  { path: 'userManagement', canActivate: [RoleGuard], data: { expectedRole: 'admin'}, component: UsersComponent},
   { path: 'validateAccount', canActivate: [RoleGuard], data: { expectedRole: 'admin'}, component: ValidateAccountComponent},
   { path: 'crypto', canActivate: [RoleGuard], data: { expectedRole: 'user'}, component: CryptoAccountComponent},
   { path: 'portal', canActivate: [AuthGuard], component: PortalComponent},

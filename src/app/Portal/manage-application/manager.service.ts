@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Fee } from './fee.controller';
+import { FlatRate } from './flatRate.component';
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +10,8 @@ export class ManagerService {
 
 public actualFlat: number;
 public actualFee;
+public newValueFee = 0;
+public newValueFlat = 0;
 constructor(private http: HttpClient) { }
 
 
@@ -26,4 +30,21 @@ getFlatRate() {
     });
   }
 
+  addFee(role: string) {
+    const newFee: Fee = {Id: 0, Percentage: this.newValueFee, UserRole: role, Obsolete: false};
+    this.http.post('https://localhost:44384/api/Fees', newFee).subscribe(respondeData => {
+        console.log(respondeData);
+        this.getFee();
+        this.newValueFee = 0;
+      });
+  }
+
+  addFlatRate(role: string) {
+    const newFlatRate: FlatRate = {Id: 0, Ammount: this.newValueFlat, Obsolete: false, UserRole: role};
+    this.http.post('https://localhost:44384/api/FlatRateFees', newFlatRate).subscribe(respondeData => {
+        console.log(respondeData);
+        this.getFlatRate();
+        this.newValueFlat = 0;
+      });
+  }
 }

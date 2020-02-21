@@ -7,7 +7,7 @@
 <button mat-button routerLink="/bank">Bank</button>
 <button mat-button routerLink="/crypto" *ngIf="!authService.isAdmin"  >Crypto wallet</button>
 <button mat-button routerLink="/manage-application" *ngIf="authService.isAdmin">Manage Application</button>
-<button mat-button routerLink="/usersUnconfirmed" *ngIf="authService.isAdmin">Users unconfirmed</button>
+<button mat-button routerLink="/userManagement" *ngIf="authService.isAdmin">Users management</button>
   <div class="wrapper">
     <button mat-button [matMenuTriggerFor]="menu"><img src="https://i2.cdn.turner.com/cnnnext/dam/assets/140926165711-john-sutter-profile-image-large-169.jpg" class="image--cover"></button>
     <mat-menu #menu="matMenu">
