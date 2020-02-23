@@ -8,7 +8,7 @@ import { FlatRate } from './flatRate.component';
 })
 export class ManagerService {
 
-public actualFlat: number;
+public actualFlat;
 public actualFee;
 public newValueFee = 0;
 public newValueFlat = 0;
@@ -17,15 +17,14 @@ constructor(private http: HttpClient) { }
 
 getFee() {
     this.http.get('https://localhost:44384/api/Fees').subscribe(respondeData => {
-      this.actualFee = parseFloat(respondeData.toString());
+      this.actualFee = respondeData;
       console.log(this.actualFee);
     });
   }
 
 getFlatRate() {
     this.http.get('https://localhost:44384/api/FlatRateFees').subscribe(respondeData => {
-      debugger;
-      this.actualFlat = parseFloat(respondeData.toString());
+      this.actualFlat = respondeData;
       console.log(this.actualFlat);
     });
   }

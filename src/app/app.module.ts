@@ -26,7 +26,7 @@ import { DepositComponent } from './Portal/deposit/deposit.component';
 import { WithdrawComponent } from './Portal/withdraw/withdraw.component';
 import { TradeComponent } from './Portal/trade/trade.component';
 import { BankAccountComponent } from './Portal/bank/bankAccount/bankAccount.component';
-import { AvailableCurrenciesComponent } from './Portal/availableCurrencies/availableCurrencies.component';
+import { AvailableCurrenciesComponent, DialogContentExampleDialogComponent } from './Portal/availableCurrencies/availableCurrencies.component';
 import { BankComponent } from './Portal/bank/bank';
 import { ManageApplicationComponent } from './Portal/manage-application/manage-application.component';
 import { UsersComponent } from './Portal/users/users.component';
@@ -51,7 +51,8 @@ import { SetPasswordModule } from 'src/SetPassword/SetPassword.module';
       UsersComponent,
       ValidateAccountComponent,
       CryptoAccountComponent,
-      PortalComponent
+      PortalComponent,
+      DialogContentExampleDialogComponent
    ],
    imports: [
       BrowserModule,
@@ -85,6 +86,7 @@ import { SetPasswordModule } from 'src/SetPassword/SetPassword.module';
    ],
    bootstrap: [
       AppComponent
-   ]
+   ],
+   entryComponents: [DialogContentExampleDialogComponent]
 })
 export class AppModule { }
