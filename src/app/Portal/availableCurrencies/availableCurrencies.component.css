@@ -1,4 +1,3 @@
-
     .buttonsWidth {
         width: 80px;
     }
@@ -9,13 +8,6 @@
     .space {
         margin-left: 10px;
         }
-        .buttonsWidth {
-            width: 90px;
-        }
-        .addRow {
-        width:80px;
-        }
-        
         .table {
             width: 100%;
           }
@@ -28,7 +20,10 @@
             height: 60%;
             display: block;
             margin-left: auto;
-            margin-right: auto 
+            margin-right: auto;
         }
-        
-        
+.addButton {
+    margin-left: 60px;
+    margin-right: 0px;
+}
+.addButton:hover {background-color: light-gray;}
