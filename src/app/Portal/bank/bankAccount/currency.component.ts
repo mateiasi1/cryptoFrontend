@@ -7,7 +7,6 @@ export class BankAccount {
 }
 
 export interface CurrencyList {
-    id: number;
     currencyAbbreviation: string;
     currencyName: string;
 }
@@ -20,7 +19,6 @@ export class Currency {
 }
 
 export interface CryptoCurrencyList {
-    id: number;
     cryptoCurrencyAbbreviation: string;
     cryptoCurrencyName: string;
 }

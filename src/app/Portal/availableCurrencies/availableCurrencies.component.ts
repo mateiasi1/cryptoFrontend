@@ -45,8 +45,15 @@ export class AvailableCurrenciesComponent implements OnInit {
   getCurrencies() {
     this.availableSevice.getCurrencies();
   }
-  openDialog() {
-    const dialogRef = this.dialog.open(DialogContentExampleDialogComponent);
+  addCurrency() {
+    const dialogRef = this.dialog.open(AddCurrencyComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+  addCrypto() {
+    const dialogRef = this.dialog.open(AddCryptoComponent);
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
@@ -59,7 +66,17 @@ export class AvailableCurrenciesComponent implements OnInit {
   selector: 'dialog-content-example-dialog',
   templateUrl: 'addCurrency.html',
 })
-export class DialogContentExampleDialogComponent {
+export class AddCurrencyComponent {
+  constructor(
+    public availableSevice: AvailableService) { }
+}
+
+@Component({
+  // tslint:disable-next-line:component-selector
+  selector: 'dialog-content-example-dialog',
+  templateUrl: 'addCrypto.html',
+})
+export class AddCryptoComponent {
   constructor(
     public availableSevice: AvailableService) { }
 }

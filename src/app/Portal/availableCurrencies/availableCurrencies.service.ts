@@ -12,12 +12,12 @@ import { CryptoCurrency } from '../cryptoAccount/cryptoCurrency.component';
 export class AvailableService {
     selectedValue = '';
     selectedValueCrypto = '';
-    public  allCurrency: CurrencyList[] = [];
+    public  allCurrency: CurrencyList[];
 public  allCryptoCurrency: CryptoCurrencyList[] = [];
 public cryptoCurrencyFromBackend: CryptoCurrency[] = [];
 public currencyFromBackend: Currency[] = [];
-dataSource: MatTableDataSource<Currency>;
-dataSourceCrypto: MatTableDataSource<CryptoCurrency>;
+dataSource: MatTableDataSource<CurrencyList>;
+dataSourceCrypto: MatTableDataSource<CryptoCurrencyList>;
 
 constructor(public serversService: BankAccountService,
     private http: HttpClient,
@@ -27,8 +27,8 @@ constructor(public serversService: BankAccountService,
 addCurrencyToList() {
     const currencyToAdd = this.allCurrency.find(item => item.currencyAbbreviation === this.selectedValue);
 
-    this.http.post('https://localhost:44384/api/Currencies', currencyToAdd).subscribe((responseData: Currency[]) => {
-      this.currencyFromBackend = responseData;
+    this.http.post('https://localhost:44384/api/Currencies', currencyToAdd).subscribe((responseData: CurrencyList[]) => {
+      // this.currencyFromBackend = responseData;
        this.dataSource = new MatTableDataSource(responseData);
       console.log(responseData);
     });
@@ -39,8 +39,8 @@ addCurrencyToList() {
     // tslint:disable-next-line:max-line-length
     const cryptoCurrencyToAdd = this.allCryptoCurrency.find(item => item.cryptoCurrencyName === this.selectedValueCrypto);
 
-    this.http.post('https://localhost:44384/api/CryptoCurrencies', cryptoCurrencyToAdd).subscribe((responseData: CryptoCurrency[]) => {
-      this.cryptoCurrencyFromBackend = responseData;
+    this.http.post('https://localhost:44384/api/CryptoCurrencies', cryptoCurrencyToAdd).subscribe((responseData: CryptoCurrencyList[]) => {
+     // this.cryptoCurrencyFromBackend = responseData;
        this.dataSourceCrypto = new MatTableDataSource(responseData);
       console.log(responseData);
     });
@@ -59,14 +59,14 @@ addCurrencyToList() {
       console.log(this.allCryptoCurrency);
     });
     // get saved currencies
-    this.http.get('https://localhost:44384/api/Currencies').subscribe((responseData: Currency[]) => {
-      this.currencyFromBackend = responseData;
+    this.http.get('https://localhost:44384/api/Currencies').subscribe((responseData: CurrencyList[]) => {
+      // this.currencyFromBackend = responseData;
        this.dataSource = new MatTableDataSource(responseData);
       console.log(responseData);
     });
     // get saved crypto
-    this.http.get('https://localhost:44384/api/CryptoCurrencies').subscribe((responseData: CryptoCurrency[]) => {
-      this.cryptoCurrencyFromBackend = responseData;
+    this.http.get('https://localhost:44384/api/CryptoCurrencies').subscribe((responseData: CryptoCurrencyList[]) => {
+      // this.cryptoCurrencyFromBackend = responseData;
        this.dataSourceCrypto = new MatTableDataSource(responseData);
       console.log(responseData);
     });
