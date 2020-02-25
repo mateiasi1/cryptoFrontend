@@ -147,5 +147,25 @@ export class BankComponent implements OnInit {
       console.log(responseData);
   });
   }
+  
   // #endregion
+}
+
+
+@Component({
+  // tslint:disable-next-line:component-selector
+  selector: 'dialog-content-example-dialog',
+  templateUrl: 'addBank.html',
+})
+export class AddBankAccountComponent {
+  constructor() { }
+}
+
+@Component({
+  // tslint:disable-next-line:component-selector
+  selector: 'dialog-content-example-dialog',
+  templateUrl: 'addCryptoAccount.html',
+})
+export class AddCryptoAccountComponent {
+  constructor() { }
 }
