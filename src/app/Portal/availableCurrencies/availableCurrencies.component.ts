@@ -28,7 +28,6 @@ export class AvailableCurrenciesComponent implements OnInit {
               public availableSevice: AvailableService) { }
 
   ngOnInit() {
-    this.availableSevice.dataSource = new MatTableDataSource(this.availableSevice.currencyFromBackend);
     this.getCurrencies();
   }
 

@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatInputModule, MatExpansionModule } from '@angular/material';
+import { MatInputModule, MatExpansionModule, MatIconModule } from '@angular/material';
 import { MatSelectModule } from '@angular/material/select';
 import { HttpClientModule } from '@angular/common/http';
 import { RegisterUserComponent } from './registerUser/registerUser.component';
@@ -73,7 +73,9 @@ import { SetPasswordModule } from 'src/SetPassword/SetPassword.module';
       MatPaginatorModule,
       MatCardModule,
       MatMenuModule,
-      SetPasswordModule
+      SetPasswordModule,
+      MatButtonModule,
+      MatIconModule
    ],
    providers: [
       BankAccountService,

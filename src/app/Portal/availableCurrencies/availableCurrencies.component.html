@@ -5,6 +5,7 @@
     <ng-container matColumnDef="id">
       <th mat-header-cell *matHeaderCellDef> Id. </th>
       <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+      
     </ng-container>
 
     <!-- Name Column --> 
@@ -21,19 +22,28 @@
  
  <!-- Actions Column -->
       <ng-container matColumnDef="actions">
-          <th mat-header-cell *matHeaderCellDef> Actions </th>
+          <th mat-header-cell *matHeaderCellDef> Actions 
+            <button mat-icon-button [routerLink]="['/availableCurrencies']" (click)="addCurrency()">
+              <i class="material-icons">
+                add
+                </i>
+            </button>
+          </th> 
           <td mat-cell *matCellDef="let element">
-            <button mat-raised-button color="primary" class="space buttonsWidth" [routerLink]="['/availableCurrencies']"  (click)="availableSevice.addCurrency(element.currencyName,element.currencyAbbreviation,element.id)">Add</button>
+            <button mat-icon-button color="warn" [routerLink]="['/availableCurrencies']">
+              <i class="material-icons">
+                delete
+                </i>
+            </button>
          </td>
         </ng-container>
+
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
 
   <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
 </div>
-
-<button mat-button (click)="addCurrency()">Add Currency</button>
 
 
 <hr>
@@ -55,16 +65,27 @@
 
  <!-- Actions Column -->
       <ng-container matColumnDef="actions">
-          <th mat-header-cell *matHeaderCellDef> Actions </th>
+          <th mat-header-cell *matHeaderCellDef> Actions 
+            <button mat-icon-button [routerLink]="['/availableCurrencies']" (click)="addCrypto()">
+              <i class="material-icons">
+                add
+                </i>
+            </button>
+          </th>
           <td mat-cell *matCellDef="let element">
-            <button mat-raised-button color="primary" class="space buttonsWidth" [routerLink]="['/availableCurrencies']"  (click)="addCurrency(element.currencyName,element.currencyAbbreviation,element.id)">Add</button>
-         </td>
+            <button mat-icon-button color="warn" [routerLink]="['/availableCurrencies']">
+              <i class="material-icons">
+                delete
+                </i>
+            </button></td>
         </ng-container>
     <tr mat-header-row *matHeaderRowDef="displayedColumnsCrypto"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumnsCrypto;"></tr>
+    
   </table>
 
   <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
 </div>
-<button mat-button (click)="addCrypto()">Add Crypto</button>
+
+
 
