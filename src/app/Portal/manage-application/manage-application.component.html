@@ -1,3 +1,4 @@
+<div class="flex-container">
 <mat-accordion>
   <mat-expansion-panel (opened)="panelOpenState = true"
   (closed)="panelOpenState = false">
@@ -14,10 +15,6 @@
               <input type="number" matInput [(ngModel)]="managerService.newValueFee">
     </mat-form-field>
     <button mat-raised-button color="primary" class="buttons" (click)="addFee()" [routerLink]="['/manage-application']">Add fee</button>
-
- 
-  
-<hr>
 <br>
 <mat-form-field class="inputFields">
           <mat-label>Old value </mat-label>
@@ -26,9 +23,10 @@
 
 </mat-expansion-panel>
 </mat-accordion>
+</div>
 <br>
-<hr>
 <br>
+<div class="flex-container">
 <mat-accordion>
     <mat-expansion-panel (opened)="panelOpenState = true"
     (closed)="panelOpenState = false">
@@ -44,10 +42,7 @@
                 <input type="number" matInput [(ngModel)]="managerService.newValueFlat">
       </mat-form-field>
       <button mat-raised-button color="primary" class=" buttons" (click)="addFlatRate()" [routerLink]="['/manage-application']">Add flat</button>
-
-   
-    
-  <hr>
+      <br>
   <mat-form-field class="inputFields">
             <mat-label>New value </mat-label>
             <input type="number" matInput [(ngModel)]="managerService.actualFlat" disabled>
@@ -55,3 +50,4 @@
   
   </mat-expansion-panel>
   </mat-accordion>
+  </div>
