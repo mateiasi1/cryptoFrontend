@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource, MatDialog } from '@angular/material';
 import { HttpClient } from '@angular/common/http';
 import { CryptoCurrency } from '../cryptoAccount/cryptoCurrency.component';
-import { Currency, CurrencyList, CryptoCurrencyList } from '../bank/bankAccount/currency.component';
+import { Currency } from '../bank/bankAccount/currency.component';
 import { BankAccountService } from '../bank/bankAccount/bankAccount.service';
 import { AvailableService } from './availableCurrencies.service';
 
@@ -44,12 +44,13 @@ export class AvailableCurrenciesComponent implements OnInit {
   getCurrencies() {
     this.availableSevice.getCurrencies();
   }
-  addCurrency() {
+  addCurrency(currencyAbbreviation: string) {
     const dialogRef = this.dialog.open(AddCurrencyComponent);
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });
+    this.getCurrencies();
   }
   addCrypto() {
     const dialogRef = this.dialog.open(AddCryptoComponent);

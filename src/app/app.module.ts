@@ -1,10 +1,11 @@
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatInputModule, MatExpansionModule, MatIconModule } from '@angular/material';
+import { MatInputModule, MatExpansionModule, MatIconModule, MatTooltipModule } from '@angular/material';
 import { MatSelectModule } from '@angular/material/select';
 import { HttpClientModule } from '@angular/common/http';
 import { RegisterUserComponent } from './registerUser/registerUser.component';
@@ -36,6 +37,8 @@ import { BankAccountService } from './Portal/bank/bankAccount/bankAccount.servic
 import { CryptoAccountService } from './Portal/cryptoAccount/cryptoAccount.service';
 import { TradeService } from './Portal/trade/trade.service';
 import { SetPasswordModule } from 'src/SetPassword/SetPassword.module';
+import { IconSpriteModule } from 'ng-svg-icon-sprite';
+import { SvgIconComponent } from './svg-icon.component';
 
 @NgModule({
    declarations: [
@@ -53,7 +56,8 @@ import { SetPasswordModule } from 'src/SetPassword/SetPassword.module';
       CryptoAccountComponent,
       PortalComponent,
       AddCurrencyComponent,
-      AddCryptoComponent
+      AddCryptoComponent,
+      SvgIconComponent
    ],
    imports: [
       BrowserModule,
@@ -75,7 +79,9 @@ import { SetPasswordModule } from 'src/SetPassword/SetPassword.module';
       MatMenuModule,
       SetPasswordModule,
       MatButtonModule,
-      MatIconModule
+      MatIconModule,
+      MatTooltipModule,
+      IconSpriteModule
    ],
    providers: [
       BankAccountService,
@@ -88,7 +94,8 @@ import { SetPasswordModule } from 'src/SetPassword/SetPassword.module';
       RoleGuardService
    ],
    bootstrap: [
-      AppComponent
+      AppComponent,
+      SvgIconComponent
    ],
    entryComponents: [AddCurrencyComponent, AddCryptoComponent]
 })

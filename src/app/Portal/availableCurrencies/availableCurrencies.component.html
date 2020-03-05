@@ -23,18 +23,29 @@
  <!-- Actions Column -->
       <ng-container matColumnDef="actions" fxFlex="20">
           <th mat-header-cell *matHeaderCellDef> Actions 
+            <div *ngIf="authService.isAdmin">
             <button mat-icon-button class="addButton" [routerLink]="['/availableCurrencies']" (click)="addCurrency()">
               <i class="material-icons" color="primary">
                 add
                 </i>
             </button>
+          </div>
           </th> 
           <td mat-cell *matCellDef="let element">
+            <div *ngIf="authService.isAdmin">
             <button mat-icon-button color="warn" [routerLink]="['/availableCurrencies']">
               <i class="material-icons">
                 delete
                 </i>
             </button>
+          </div>
+          <div *ngIf="!authService.isAdmin">
+            <button mat-icon-button class="addButton" [routerLink]="['/bank']" (click)="availableSevice.addCurrencyToList(element.currencyAbbreviation)">
+              <i class="material-icons" color="primary">
+                add
+                </i>
+            </button>
+          </div>
          </td>
         </ng-container>
 
@@ -64,18 +75,30 @@
  <!-- Actions Column -->
       <ng-container matColumnDef="actions">
           <th mat-header-cell *matHeaderCellDef> Actions 
+            <div *ngIf="authService.isAdmin">
             <button mat-icon-button [routerLink]="['/availableCurrencies']" (click)="addCrypto()">
               <i class="material-icons">
                 add
                 </i>
             </button>
+            </div>
           </th>
           <td mat-cell *matCellDef="let element">
+            <div *ngIf="authService.isAdmin">
             <button mat-icon-button color="warn" [routerLink]="['/availableCurrencies']">
               <i class="material-icons">
                 delete
                 </i>
-            </button></td>
+            </button>
+            </div>
+            <div *ngIf="!authService.isAdmin">
+              <button mat-icon-button class="addButton" [routerLink]="['/bank']" (click)="availableSevice.addCryptoCurrencyToList()" >
+                <i class="material-icons" color="primary">
+                  add
+                  </i>
+              </button>
+            </div>
+          </td>
         </ng-container>
     <tr mat-header-row *matHeaderRowDef="displayedColumnsCrypto"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumnsCrypto;"></tr>

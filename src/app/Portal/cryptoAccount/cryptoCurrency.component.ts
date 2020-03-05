@@ -7,9 +7,8 @@ export class CryptoAccount {
 }
 
 export interface CurrencyListCrypto {
-    id: number;
-    curencyCryptoAbbreviation: string;
-    currencyCryptoName: string;
+    cryptoCurrencyAbbreviation: string;
+    cryptoCurrencyName: string;
 }
 
 export class CryptoCurrency {

@@ -33,10 +33,17 @@
         <ng-container matColumnDef="actions">
             <th mat-header-cell *matHeaderCellDef> Actions </th>
             <td mat-cell *matCellDef="let element">
-              <button mat-raised-button color="primary" class="space buttonsWidth" [routerLink]="['/home']" routerLinkActive="router-link-active" (click)="bankAccountService.setID(element.id)">Deposit</button>
-              <button mat-raised-button color="primary" class="space buttonsWidth" [routerLink]="['/withdraw']" routerLinkActive="router-link-active" (click)="bankAccountService.setID(element.id)">Withdraw</button>
-              <button mat-raised-button color="primary" class="space buttonsWidth" [routerLink]="['/trade']" routerLinkActive="router-link-active" >Trade</button>
-              <button mat-raised-button color="warn" class="space buttonsWidth"  [routerLink]="['/servers']" (click)="deleteBankAccount(element.id)">Delete</button>
+              <button mat-raised-button color="primary" class="space buttonsWidth" [routerLink]="['/home']" routerLinkActive="router-link-active" (click)="bankAccountService.setID(element.id)" matTooltip="Deposit">Deposit</button>
+              <button mat-raised-button color="primary" class="space buttonsWidth" [routerLink]="['/withdraw']" routerLinkActive="router-link-active" (click)="bankAccountService.setID(element.id)" matTooltip="Withdraw">Withdraw</button>
+              <button mat-icon-button color="primary" class="space buttonsWidth" [routerLink]="['/trade']" routerLinkActive="router-link-active"><i class="material-icons" matTooltip="Trade">
+                swap_horiz
+                </i></button>
+                <svg class="cdm-Icon_Cancel">
+                  <use xlink:href="#cdm-Icon_Cancel"></use>
+                  </svg>
+              <button mat-icon-button color="warn" class="space buttonsWidth"  [routerLink]="['/servers']" (click)="deleteBankAccount(element.id)" matTooltip="Delete"> <i class="material-icons">
+                delete
+                </i></button>
            </td>
           </ng-container>
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -44,4 +51,5 @@
     </table>
   
     <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+    
   </div>

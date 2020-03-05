@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { CurrencyList, CryptoCurrencyList, Currency } from '../bank/bankAccount/currency.component';
+import { CurrencyList, Currency } from '../bank/bankAccount/currency.component';
 import { BankAccountService } from '../bank/bankAccount/bankAccount.service';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from 'src/app/auth-service';
 import { MatDialog, MatTableDataSource } from '@angular/material';
-import { CryptoCurrency } from '../cryptoAccount/cryptoCurrency.component';
+import { CryptoCurrency, CurrencyListCrypto } from '../cryptoAccount/cryptoCurrency.component';
 
 @Injectable({
     providedIn: 'root'
@@ -13,11 +13,11 @@ export class AvailableService {
     selectedValue = '';
     selectedValueCrypto = '';
     public  allCurrency: CurrencyList[];
-public  allCryptoCurrency: CryptoCurrencyList[] = [];
+public  allCryptoCurrency: CurrencyListCrypto[] = [];
 public cryptoCurrencyFromBackend: CryptoCurrency[] = [];
 public currencyFromBackend: Currency[] = [];
 dataSource: MatTableDataSource<CurrencyList>;
-dataSourceCrypto: MatTableDataSource<CryptoCurrencyList>;
+dataSourceCrypto: MatTableDataSource<CurrencyListCrypto>;
 
 constructor(public serversService: BankAccountService,
     private http: HttpClient,
@@ -32,6 +32,7 @@ addCurrencyToList() {
        this.dataSource = new MatTableDataSource(responseData);
       console.log(responseData);
     });
+    debugger;
     const itemIndex = this.allCurrency.indexOf(currencyToAdd);
     this.allCurrency.splice(itemIndex, 1);
   }
@@ -39,7 +40,7 @@ addCurrencyToList() {
     // tslint:disable-next-line:max-line-length
     const cryptoCurrencyToAdd = this.allCryptoCurrency.find(item => item.cryptoCurrencyName === this.selectedValueCrypto);
 
-    this.http.post('https://localhost:44384/api/CryptoCurrencies', cryptoCurrencyToAdd).subscribe((responseData: CryptoCurrencyList[]) => {
+    this.http.post('https://localhost:44384/api/CryptoCurrencies', cryptoCurrencyToAdd).subscribe((responseData: CurrencyListCrypto[]) => {
      // this.cryptoCurrencyFromBackend = responseData;
        this.dataSourceCrypto = new MatTableDataSource(responseData);
       console.log(responseData);
@@ -54,7 +55,7 @@ addCurrencyToList() {
       console.log(this.allCurrency);
     });
     // get crypto currencies for dropdown
-    this.http.get('https://localhost:44384/api/GetCryptoCurrencyAPI').subscribe((responseData: CryptoCurrencyList[]) => {
+    this.http.get('https://localhost:44384/api/GetCryptoCurrencyAPI').subscribe((responseData: CurrencyListCrypto[]) => {
       this.allCryptoCurrency = responseData;
       console.log(this.allCryptoCurrency);
     });
@@ -65,7 +66,7 @@ addCurrencyToList() {
       console.log(responseData);
     });
     // get saved crypto
-    this.http.get('https://localhost:44384/api/CryptoCurrencies').subscribe((responseData: CryptoCurrencyList[]) => {
+    this.http.get('https://localhost:44384/api/CryptoCurrencies').subscribe((responseData: CurrencyListCrypto[]) => {
       // this.cryptoCurrencyFromBackend = responseData;
        this.dataSourceCrypto = new MatTableDataSource(responseData);
       console.log(responseData);

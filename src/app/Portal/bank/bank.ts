@@ -47,7 +47,7 @@ export class BankComponent implements OnInit {
     this.getBanks();
     this.getCrypto();
   }
-  
+
   // #region Bank
   getBanks() {
     this.http.get('https://localhost:44384/api/Banks').subscribe((responseData: Bank[]) => {
@@ -105,7 +105,7 @@ export class BankComponent implements OnInit {
     });
   }
   // #endregion
- 
+
  // #region Crypto to Crypto Account
     addCryptoAccount(id: number, cryptoCurrencyName: string, cryptoName: string, refference: string) {
     // tslint:disable-next-line: max-line-length
@@ -120,17 +120,16 @@ export class BankComponent implements OnInit {
 
   // #region Crypto
   getCrypto() {
-    this.http.get('https://localhost:44384/api/Crypto').subscribe((responseData: Crypto[]) => {
-      this.cryptoAccounts = responseData;
+    this.http.get('https://localhost:44384/api/Crypto').subscribe((responseData: CurrencyListCrypto[]) => {
+      this.cryptoList = responseData;
       debugger;
-      this.dataSourceCrypto = new MatTableDataSource(responseData);
       console.log(responseData);
     });
   }
 
   addCrypto() {
     // tslint:disable-next-line: max-line-length
-    const cryptoToAdd: Crypto = {id: 0, cryptoName: this.CryptoName, refference: this.Refference, cryptoCurrencyName: this.CryptoName, cryptoCurrencyAbbreviation: '' }
+    const cryptoToAdd: Crypto = {id: 0, refference: this.Refference, cryptoCurrencyName: this.CryptoName, cryptoCurrencyAbbreviation: '' }
 
     this.http.post('https://localhost:44384/api/Crypto', cryptoToAdd).subscribe((responseData: Crypto[]) => {
       // de adaugat aici si de retrivuit din backend in lista ca in available
@@ -149,23 +148,4 @@ export class BankComponent implements OnInit {
   }
   
   // #endregion
-}
-
-
-@Component({
-  // tslint:disable-next-line:component-selector
-  selector: 'dialog-content-example-dialog',
-  templateUrl: 'addBank.html',
-})
-export class AddBankAccountComponent {
-  constructor() { }
-}
-
-@Component({
-  // tslint:disable-next-line:component-selector
-  selector: 'dialog-content-example-dialog',
-  templateUrl: 'addCryptoAccount.html',
-})
-export class AddCryptoAccountComponent {
-  constructor() { }
 }
