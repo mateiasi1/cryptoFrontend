@@ -33,7 +33,11 @@
         <ng-container matColumnDef="actions">
             <th mat-header-cell *matHeaderCellDef> Actions </th>
             <td mat-cell *matCellDef="let element">
-              <button mat-raised-button color="primary" class="space buttonsWidth" [routerLink]="['/home']" routerLinkActive="router-link-active" (click)="bankAccountService.setID(element.id)" matTooltip="Deposit">Deposit</button>
+              <button mat-raised-button color="primary" class="space buttonsWidth" [routerLink]="['/home']" routerLinkActive="router-link-active" (click)="bankAccountService.setID(element.id)" matTooltip="Deposit">
+                <div class="icon-row icon-examples-1">
+                  <svg-icon-sprite src="deposit" [width]="'100px'"></svg-icon-sprite>
+                </div>
+           </button>
               <button mat-raised-button color="primary" class="space buttonsWidth" [routerLink]="['/withdraw']" routerLinkActive="router-link-active" (click)="bankAccountService.setID(element.id)" matTooltip="Withdraw">Withdraw</button>
               <button mat-icon-button color="primary" class="space buttonsWidth" [routerLink]="['/trade']" routerLinkActive="router-link-active"><i class="material-icons" matTooltip="Trade">
                 swap_horiz

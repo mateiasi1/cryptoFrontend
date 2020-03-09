@@ -39,6 +39,7 @@ import { TradeService } from './Portal/trade/trade.service';
 import { SetPasswordModule } from 'src/SetPassword/SetPassword.module';
 import { IconSpriteModule } from 'ng-svg-icon-sprite';
 import { SvgIconComponent } from './svg-icon.component';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
    declarations: [
@@ -81,7 +82,7 @@ import { SvgIconComponent } from './svg-icon.component';
       MatButtonModule,
       MatIconModule,
       MatTooltipModule,
-      IconSpriteModule
+      IconSpriteModule.forRoot({ path: environment.spritePath })
    ],
    providers: [
       BankAccountService,
