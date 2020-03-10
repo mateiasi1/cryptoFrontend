@@ -33,9 +33,9 @@
         <ng-container matColumnDef="actions">
             <th mat-header-cell *matHeaderCellDef> Actions </th>
             <td mat-cell *matCellDef="let element">
-              <button mat-raised-button color="primary" class="space buttonsWidth" [routerLink]="['/home']" routerLinkActive="router-link-active" (click)="bankAccountService.setID(element.id)" matTooltip="Deposit">
+              <button mat-icon-button color="primary" class="space buttonsWidth" [routerLink]="['/home']" routerLinkActive="router-link-active" (click)="bankAccountService.setID(element.id)" matTooltip="Deposit">
                 <div class="icon-row icon-examples-1">
-                  <svg-icon-sprite src="deposit" [width]="'100px'"></svg-icon-sprite>
+                  <svg-icon-sprite src="arrow" [width]="'50px'" [viewBox]="'0 0 40 40'"></svg-icon-sprite>
                 </div>
            </button>
               <button mat-raised-button color="primary" class="space buttonsWidth" [routerLink]="['/withdraw']" routerLinkActive="router-link-active" (click)="bankAccountService.setID(element.id)" matTooltip="Withdraw">Withdraw</button>
