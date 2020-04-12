@@ -48,4 +48,9 @@ public get getName(): string {
     }
     return false;
   }
+  public getToken() {
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    const currentToken = currentUser.token.token;
+    return currentToken;
+  }
 }

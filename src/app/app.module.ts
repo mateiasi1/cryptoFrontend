@@ -7,7 +7,7 @@ import { MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/d
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatInputModule, MatExpansionModule, MatIconModule, MatTooltipModule } from '@angular/material';
 import { MatSelectModule } from '@angular/material/select';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RegisterUserComponent } from './registerUser/registerUser.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { AuthGuardService } from './auth-guard.service';
@@ -40,6 +40,7 @@ import { SetPasswordModule } from 'src/SetPassword/SetPassword.module';
 import { IconSpriteModule } from 'ng-svg-icon-sprite';
 import { SvgIconComponent } from './svg-icon.component';
 import { environment } from 'src/environments/environment';
+import { TokenInterceptor } from './TokenInterceptor';
 
 @NgModule({
    declarations: [
@@ -92,7 +93,11 @@ import { environment } from 'src/environments/environment';
       AuthService,
       AuthGuardService,
       LoginComponent,
-      RoleGuardService
+      RoleGuardService,
+      { provide: HTTP_INTERCEPTORS,
+         useClass: TokenInterceptor,
+         multi: true
+      }
    ],
    bootstrap: [
       AppComponent,
