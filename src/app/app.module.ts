@@ -37,7 +37,6 @@ import { BankAccountService } from './Portal/bank/bankAccount/bankAccount.servic
 import { CryptoAccountService } from './Portal/cryptoAccount/cryptoAccount.service';
 import { TradeService } from './Portal/trade/trade.service';
 import { SetPasswordModule } from 'src/SetPassword/SetPassword.module';
-import { IconSpriteModule } from 'ng-svg-icon-sprite';
 import { SvgIconComponent } from './svg-icon.component';
 import { environment } from 'src/environments/environment';
 import { TokenInterceptor } from './TokenInterceptor';
