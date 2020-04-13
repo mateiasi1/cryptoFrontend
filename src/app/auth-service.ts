@@ -12,22 +12,8 @@ this.isAuthenticated();
   public isAuthenticated(): boolean {
     const token = JSON.parse(localStorage.getItem('currentUser'));
     const currentToken = token.token.token;
-    debugger;
-
-    const decodedToken = this.jwtHelper.decodeToken(currentToken);
-    const tokenExpirationDate = this.jwtHelper.getTokenExpirationDate(currentToken);
-  const date = Date.now();
-    if (currentToken == null) {
-        return false;
-        } else if (date >= decodedToken.exp * 1000) {
-            return false;
-        } else {
-          this.isLoggedIn = true;
-          return true;
-    // Check whether the token is expired and return
-    // true or false
-    // return !this.jwtHelper.isTokenExpired(token);
-        }
+     this.isLoggedIn = true;
+     return true;
   }
 public get getName(): string {
   const currentUser = JSON.parse(localStorage.getItem('currentUser'));
@@ -50,6 +36,9 @@ public get getName(): string {
   }
   public getToken() {
     const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    if (currentUser == null || currentUser.token) {
+      return null;
+    }
     const currentToken = currentUser.token.token;
     return currentToken;
   }

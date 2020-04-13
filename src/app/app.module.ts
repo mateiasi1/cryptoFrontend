@@ -27,6 +27,7 @@ import { DepositComponent } from './Portal/deposit/deposit.component';
 import { WithdrawComponent } from './Portal/withdraw/withdraw.component';
 import { TradeComponent } from './Portal/trade/trade.component';
 import { BankAccountComponent } from './Portal/bank/bankAccount/bankAccount.component';
+// tslint:disable-next-line:max-line-length
 import { AvailableCurrenciesComponent, AddCurrencyComponent, AddCryptoComponent } from './Portal/availableCurrencies/availableCurrencies.component';
 import { BankComponent } from './Portal/bank/bank';
 import { ManageApplicationComponent } from './Portal/manage-application/manage-application.component';
@@ -81,8 +82,7 @@ import { TokenInterceptor } from './TokenInterceptor';
       SetPasswordModule,
       MatButtonModule,
       MatIconModule,
-      MatTooltipModule,
-      IconSpriteModule.forRoot({ path: environment.spritePath })
+      MatTooltipModule
    ],
    providers: [
       BankAccountService,
