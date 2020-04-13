@@ -110,9 +110,15 @@
       
     </th>
     <td mat-cell *matCellDef="let element">
-        <button mat-raised-button color="primary" class="button" [routerLink]="['/crypto']"  (click)="addCryptoAccount(element.id, element.cryptoCurrencyName)">Add Crypto To Wallet</button>
-          <button mat-raised-button color="warn" class="space buttonsWidth" (click)="deleteCrypto(element.id)">Delete</button>
-   </td>
+        <button mat-icon-button color="primary" class="button" [routerLink]="['/bank']"  (click)="addCryptoAccount(element.id, element.cryptoCurrencyName)"><i class="material-icons">
+          account_balance_wallet
+          </i></button>  
+        <button mat-icon-button color="warn" [routerLink]="['/bank']" (click)="deleteCrypto(element.id)">
+            <i class="material-icons">
+              delete
+              </i>
+          </button>
+        </td>
   </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumnsCrypto"></tr>

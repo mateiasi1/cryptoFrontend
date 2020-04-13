@@ -33,19 +33,18 @@
         <ng-container matColumnDef="actions">
             <th mat-header-cell *matHeaderCellDef> Actions </th>
             <td mat-cell *matCellDef="let element">
-              <button mat-icon-button color="primary" class="space buttonsWidth" [routerLink]="['/home']" routerLinkActive="router-link-active" (click)="bankAccountService.setID(element.id)" matTooltip="Deposit">
-                <div class="icon-row icon-examples-1">
-                 
-                </div>
+              <button mat-icon-button color="primary" [routerLink]="['/deposit']" routerLinkActive="router-link-active" (click)="bankAccountService.setID(element.id)">
+                  <i class="material-icons" matTooltip="Deposit">
+                    library_add
+                    </i>
            </button>
-              <button mat-raised-button color="primary" class="space buttonsWidth" [routerLink]="['/withdraw']" routerLinkActive="router-link-active" (click)="bankAccountService.setID(element.id)" matTooltip="Withdraw">Withdraw</button>
-              <button mat-icon-button color="primary" class="space buttonsWidth" [routerLink]="['/trade']" routerLinkActive="router-link-active"><i class="material-icons" matTooltip="Trade">
+                <button mat-icon-button color="primary" [routerLink]="['/withdraw']" (click)="bankAccountService.setID(element.id)" ><i class="material-icons" matTooltip="Withdraw">
+                  remove_circle_outline
+                  </i></button>
+              <button mat-icon-button color="primary" [routerLink]="['/trade']" routerLinkActive="router-link-active"><i class="material-icons" matTooltip="Trade">
                 swap_horiz
                 </i></button>
-                <svg class="cdm-Icon_Cancel">
-                  <use xlink:href="#cdm-Icon_Cancel"></use>
-                  </svg>
-              <button mat-icon-button color="warn" class="space buttonsWidth"  [routerLink]="['/servers']" (click)="deleteBankAccount(element.id)" matTooltip="Delete"> <i class="material-icons">
+              <button mat-icon-button color="warn" [routerLink]="['/servers']" (click)="deleteBankAccount(element.id)" matTooltip="Delete"> <i class="material-icons">
                 delete
                 </i></button>
            </td>
