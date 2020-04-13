@@ -120,13 +120,14 @@ export class BankComponent implements OnInit {
 
   // #region Crypto
   getCrypto() {
-    this.http.get('https://localhost:44384/api/Crypto').subscribe((responseData: CurrencyListCrypto[]) => {
+    this.http.get('https://localhost:44384/api/Crypto').subscribe((responseData: Crypto[]) => {
       this.cryptoList = responseData;
       debugger;
+      this.dataSourceCrypto = new MatTableDataSource(responseData);
       console.log(responseData);
     });
   }
-
+  
   addCrypto() {
     // tslint:disable-next-line: max-line-length
     const cryptoToAdd: Crypto = {id: 0, refference: this.Refference, cryptoCurrencyName: this.CryptoName, cryptoCurrencyAbbreviation: '' }
