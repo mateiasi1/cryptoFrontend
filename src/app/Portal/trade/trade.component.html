@@ -2,8 +2,11 @@
 <mat-form-field>
   <mat-label>Select currency</mat-label>
   <mat-select  [(ngModel)]="tradeService.selectedValueFrom">
-    <mat-option *ngFor="let currency of currencies" [value]="currency.currencyName">
-      {{currency.currencyAbbreviation}}
+    <mat-option *ngFor="let crypto of tradeService.cryptoList" [value]="crypto.cryptoCurrencyAbbreviation">
+      {{crypto.cryptoCurrencyName}}
+    </mat-option>
+    <mat-option *ngFor="let currency of tradeService.currencyList" [value]="currency.currencyAbbreviation">
+      {{currency.currencyName}}
     </mat-option>
   </mat-select>
 </mat-form-field>
@@ -17,8 +20,8 @@
 <mat-form-field>
   <mat-label>Select currency</mat-label>
   <mat-select [(ngModel)]="tradeService.selectedValueTo">
-    <mat-option *ngFor="let currency of currencies" [value]="currency.currencyName">
-      {{currency.currencyAbbreviation}}
+    <mat-option *ngFor="let crypto of tradeService.cryptoList" [value]="crypto.cryptoCurrencyAbbreviation">
+      {{crypto.cryptoCurrencyName}}
     </mat-option>
   </mat-select>
 </mat-form-field>

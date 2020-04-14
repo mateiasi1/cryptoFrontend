@@ -10,6 +10,7 @@ export class BankAccountService {
   id: number;
   tradeFee = 0; // vine din backend
   exchangeRate = 2; // vine din callul catre API cu parametrii selectedValueFrom si selectedValueTo
+  amount: number;
 
   public bankAccounts: BankAccount[] = [];
 errorMessage = 'ERROR';
@@ -25,13 +26,6 @@ constructor(private http: HttpClient,
 //#region Operations
   setID(idFromHTML: number) {
   this.id = idFromHTML;
-  }
-
-  deposit(amount: number) {
-    this.http.put( `https://localhost:44384/api/BankAccounts/add`, {'amount' : amount, 'id' : this.id}).subscribe(responseData => {
-      // tslint:disable-next-line: no-debugger
-      console.log(responseData);
-    });
   }
 
   withdraw(amount: number) {
@@ -75,6 +69,16 @@ if (tradeFrom.sold < ((this.tradeFee / 100) * amountFrom + amountFrom) ) {
     console.log(responseData);
   });
  }
+}
+depositAmount() {
+  console.log(this.id);
+  debugger;
+  // tslint:disable-next-line:max-line-length
+  this.http.put( `https://localhost:44384/api/BankAccounts/add`, JSON.stringify({'amount' : this.amount, 'id' : this.id})).subscribe(responseData => {
+    // tslint:disable-next-line: no-debugger
+    console.log(responseData);
+    this.amount = null;
+  });
 }
 
 }

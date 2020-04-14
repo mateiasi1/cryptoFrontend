@@ -8,8 +8,8 @@ import { CryptoAccount } from './cryptoCurrency.component';
 
 export class CryptoAccountService {
   id: number;
-  tradeFee = 0; // vine din backend
-  exchangeRate = 2; // vine din callul catre API cu parametrii selectedValueFrom si selectedValueTo
+  public tradeFee; // vine din backend
+  public exchangeRate; // vine din callul catre API cu parametrii selectedValueFrom si selectedValueTo
 
   public cryptoAccounts: CryptoAccount[] = [];
 errorMessage = 'ERROR';
@@ -17,7 +17,8 @@ constructor(private http: HttpClient,
             public dialog: MatDialog,
             public managerService: ManagerService
   ) {
-    this.managerService.getFlatRate();
+    this.tradeFee = this.managerService.getFlatRate();
+    this.managerService.getFee();
   }
 
   public lastId: number;

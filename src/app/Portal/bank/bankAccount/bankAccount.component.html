@@ -35,9 +35,9 @@
         <button
           mat-icon-button
           color="primary"
-          [routerLink]="['/deposit']"
+          [routerLink]="['/bank-account']"
           routerLinkActive="router-link-active"
-          (click)="bankAccountService.setID(element.id)"
+          (click)="deposit(); bankAccountService.setID(element.id)"
         >
           <i class="material-icons" matTooltip="Deposit">
             library_add

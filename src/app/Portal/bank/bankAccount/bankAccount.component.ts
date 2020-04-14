@@ -1,7 +1,7 @@
 import { AuthService } from 'src/app/auth-service';
 import { Component, OnInit } from '@angular/core';
 import { BankAccountService } from './bankAccount.service';
-import { MatTableDataSource } from '@angular/material';
+import { MatTableDataSource, MatDialog } from '@angular/material';
 import { BankAccount } from './currency.component';
 import { HttpClient } from '@angular/common/http';
 
@@ -24,7 +24,8 @@ export class BankAccountComponent implements OnInit {
 
   constructor(public bankAccountService: BankAccountService,
               private http: HttpClient,
-              private authService: AuthService
+              private authService: AuthService,
+              public dialog: MatDialog,
     ) { }
 
   ngOnInit() {
@@ -33,7 +34,9 @@ export class BankAccountComponent implements OnInit {
   }
 
   setID(idFromHTML: number) {
+    debugger;
     this.id = idFromHTML;
+    console.log(this.id);
     }
 
 //#region BankAccount
@@ -61,4 +64,26 @@ export class BankAccountComponent implements OnInit {
 
 //#endregion
 
+deposit() {
+  console.log(this.id);
+  debugger;
+  const dialogRef = this.dialog.open(DepositFiatComponent);
+
+  dialogRef.afterClosed().subscribe(result => {
+    this.ngOnInit();
+    console.log(`Dialog result: ${result}`);
+  });
+}
+
+
+}
+
+@Component({
+  // tslint:disable-next-line:component-selector
+  selector: 'dialog-content-example-dialog',
+  templateUrl: 'deposit.html',
+})
+export class DepositFiatComponent {
+  constructor(public bankAccountComponent: BankAccountComponent,
+    public bankAccountService: BankAccountService) { }
 }

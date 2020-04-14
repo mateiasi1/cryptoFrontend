@@ -26,7 +26,8 @@ import { PortalComponent } from './Portal/Portal.component';
 import { DepositComponent } from './Portal/deposit/deposit.component';
 import { WithdrawComponent } from './Portal/withdraw/withdraw.component';
 import { TradeComponent } from './Portal/trade/trade.component';
-import { BankAccountComponent } from './Portal/bank/bankAccount/bankAccount.component';
+// tslint:disable-next-line:max-line-length
+import { BankAccountComponent, DepositFiatComponent } from './Portal/bank/bankAccount/bankAccount.component';
 // tslint:disable-next-line:max-line-length
 import { AvailableCurrenciesComponent, AddCurrencyComponent, AddCryptoComponent } from './Portal/availableCurrencies/availableCurrencies.component';
 import { BankComponent } from './Portal/bank/bank';
@@ -59,7 +60,8 @@ import { TokenInterceptor } from './TokenInterceptor';
       PortalComponent,
       AddCurrencyComponent,
       AddCryptoComponent,
-      SvgIconComponent
+      SvgIconComponent,
+      DepositFiatComponent
    ],
    imports: [
       BrowserModule,
@@ -93,6 +95,7 @@ import { TokenInterceptor } from './TokenInterceptor';
       AuthGuardService,
       LoginComponent,
       RoleGuardService,
+      BankAccountComponent,
       { provide: HTTP_INTERCEPTORS,
          useClass: TokenInterceptor,
          multi: true
@@ -102,6 +105,6 @@ import { TokenInterceptor } from './TokenInterceptor';
       AppComponent,
       SvgIconComponent
    ],
-   entryComponents: [AddCurrencyComponent, AddCryptoComponent]
+   entryComponents: [AddCurrencyComponent, AddCryptoComponent, DepositFiatComponent]
 })
 export class AppModule { }
