@@ -81,4 +81,12 @@ depositAmount() {
   });
 }
 
+withdrawAmount() {
+  // tslint:disable-next-line:max-line-length
+  this.http.put( `https://localhost:44384/api/BankAccounts/withdraw`, JSON.stringify({'amount' : this.amount, 'id' : this.id})).subscribe(responseData => {
+    // tslint:disable-next-line: no-debugger
+    console.log(responseData);
+  });
+}
+
 }

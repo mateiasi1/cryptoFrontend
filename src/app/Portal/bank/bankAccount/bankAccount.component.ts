@@ -74,7 +74,16 @@ deposit() {
     console.log(`Dialog result: ${result}`);
   });
 }
+withdraw() {
+  console.log(this.id);
+  debugger;
+  const dialogRef = this.dialog.open(WithdrawFiatComponent);
 
+  dialogRef.afterClosed().subscribe(result => {
+    this.ngOnInit();
+    console.log(`Dialog result: ${result}`);
+  });
+}
 
 }
 
@@ -84,6 +93,16 @@ deposit() {
   templateUrl: 'deposit.html',
 })
 export class DepositFiatComponent {
+  constructor(public bankAccountComponent: BankAccountComponent,
+    public bankAccountService: BankAccountService) { }
+}
+
+@Component({
+  // tslint:disable-next-line:component-selector
+  selector: 'dialog-content-example-dialog',
+  templateUrl: 'withdraw.html',
+})
+export class WithdrawFiatComponent {
   constructor(public bankAccountComponent: BankAccountComponent,
     public bankAccountService: BankAccountService) { }
 }

@@ -46,8 +46,8 @@
         <button
           mat-icon-button
           color="primary"
-          [routerLink]="['/withdraw']"
-          (click)="bankAccountService.setID(element.id)"
+          [routerLink]="['/bank-account']"
+          (click)="withdraw(); bankAccountService.setID(element.id)"
         >
           <i class="material-icons" matTooltip="Withdraw">
             remove_circle_outline
