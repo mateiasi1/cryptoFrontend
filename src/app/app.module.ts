@@ -27,7 +27,7 @@ import { DepositComponent } from './Portal/deposit/deposit.component';
 import { WithdrawComponent } from './Portal/withdraw/withdraw.component';
 import { TradeComponent } from './Portal/trade/trade.component';
 // tslint:disable-next-line:max-line-length
-import { BankAccountComponent, DepositFiatComponent, WithdrawFiatComponent } from './Portal/bank/bankAccount/bankAccount.component';
+import { BankAccountComponent, DepositFiatComponent, WithdrawFiatComponent, TradeFiatComponent } from './Portal/bank/bankAccount/bankAccount.component';
 // tslint:disable-next-line:max-line-length
 import { AvailableCurrenciesComponent, AddCurrencyComponent, AddCryptoComponent } from './Portal/availableCurrencies/availableCurrencies.component';
 import { BankComponent } from './Portal/bank/bank';
@@ -62,7 +62,8 @@ import { TokenInterceptor } from './TokenInterceptor';
       AddCryptoComponent,
       SvgIconComponent,
       DepositFiatComponent,
-      WithdrawFiatComponent
+      WithdrawFiatComponent,
+      TradeFiatComponent
    ],
    imports: [
       BrowserModule,
@@ -106,6 +107,6 @@ import { TokenInterceptor } from './TokenInterceptor';
       AppComponent,
       SvgIconComponent
    ],
-   entryComponents: [AddCurrencyComponent, AddCryptoComponent, DepositFiatComponent, WithdrawFiatComponent]
+   entryComponents: [AddCurrencyComponent, AddCryptoComponent, DepositFiatComponent, WithdrawFiatComponent, TradeFiatComponent]
 })
 export class AppModule { }

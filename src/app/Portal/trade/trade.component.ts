@@ -23,9 +23,6 @@ export class TradeComponent implements OnInit {
    this.http.get('https://localhost:44384/api/Fees').subscribe(respondeData => {
     this.serverService.tradeFee = parseFloat(respondeData.toString());
     console.log(this.serverService.tradeFee);
-    this.tradeService.getBankAccounts();
-    this.tradeService.getCurrencies();
-    this.tradeService.getCryptoCurrencies();
   });
   }
  

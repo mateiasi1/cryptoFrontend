@@ -56,8 +56,8 @@
         <button
           mat-icon-button
           color="primary"
-          [routerLink]="['/trade']"
-          routerLinkActive="router-link-active"
+          [routerLink]="['/bank-account']"
+          (click)="trade(); bankAccountService.setID(element.id)"
         >
           <i class="material-icons" matTooltip="Trade">
             swap_horiz

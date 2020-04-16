@@ -13,6 +13,6 @@ export class WithdrawComponent {
     ) {}
   
   withdraw() {
-    this.bankAccountService.withdraw(this.amount);
+    
   }
 }

@@ -1,7 +1,10 @@
-import { BankAccount } from './currency.component';
 import { HttpClient } from '@angular/common/http';
 import { MatDialog } from '@angular/material/dialog';
 import { ManagerService } from '../../manage-application/manager.service';
+import { MatTableDataSource } from '@angular/material';
+
+import { BankAccount, CurrencyList } from './currency.component';
+import { CurrencyListCrypto } from '../../cryptoAccount/cryptoCurrency.component';
 
 
 
@@ -11,82 +14,103 @@ export class BankAccountService {
   tradeFee = 0; // vine din backend
   exchangeRate = 2; // vine din callul catre API cu parametrii selectedValueFrom si selectedValueTo
   amount: number;
+  amountFrom = 0;
+  selectedValueFrom = '';
+  selectedValueTo = '';
+  dataSource: MatTableDataSource<BankAccount>;
+
+  public currencyList: CurrencyList[] = [];
+  public cryptoList: CurrencyListCrypto[] = [];
+
+
 
   public bankAccounts: BankAccount[] = [];
-errorMessage = 'ERROR';
-constructor(private http: HttpClient,
-            public dialog: MatDialog,
-            public managerService: ManagerService
+  errorMessage = 'ERROR';
+  constructor(private http: HttpClient,
+    public dialog: MatDialog,
+    public managerService: ManagerService
   ) {
     this.managerService.getFlatRate();
   }
 
   public lastId: number;
 
-//#region Operations
+  //#region Operations
   setID(idFromHTML: number) {
-  this.id = idFromHTML;
+    this.id = idFromHTML;
   }
 
-  withdraw(amount: number) {
-    this.http.put( `https://localhost:44384/api/BankAccounts/withdraw`, {'amount' : amount, 'id' : this.id}).subscribe(responseData => {
+  //#endregion
+
+  trade(selectedValueFrom: string, selectedValueTo: string, amountFrom: number) {
+    const tradeFrom = this.bankAccounts.find(item => item.bankName === selectedValueFrom);
+    const initialAmount = tradeFrom.sold;
+    debugger;
+    if (tradeFrom.sold < ((this.tradeFee / 100) * amountFrom + amountFrom)) {
+      debugger;
+      alert('Insufficient founds!');
+    } else {
+      tradeFrom.sold -= (this.tradeFee / 100) * amountFrom + amountFrom;
+      const tradeTo = this.bankAccounts.find(item => item.bankName === selectedValueTo);
+      tradeTo.sold += (amountFrom * this.exchangeRate);
+
+      // send HTTP POST request Nu Trebuie trimis trade to la users
+      this.http.post('https://localhost:44384/api/users', tradeTo).subscribe(responseData => {
+        // tslint:disable-next-line: no-debugger
+        console.log(responseData);
+      });
+    }
+  }
+  depositAmount() {
+    console.log(this.id);
+    debugger;
+    // tslint:disable-next-line:max-line-length
+    this.http.put(`https://localhost:44384/api/BankAccounts/add`, JSON.stringify({ 'amount': this.amount, 'id': this.id })).subscribe(responseData => {
+      // tslint:disable-next-line: no-debugger
+      console.log(responseData);
+      this.amount = null;
+    });
+  }
+
+  withdrawAmount() {
+    // tslint:disable-next-line:max-line-length
+    this.http.put(`https://localhost:44384/api/BankAccounts/withdraw`, JSON.stringify({ 'amount': this.amount, 'id': this.id })).subscribe(responseData => {
       // tslint:disable-next-line: no-debugger
       console.log(responseData);
     });
   }
-//#endregion
 
- depositCurrency(amount: number) {
-   const itemToUpdate = this.bankAccounts.find(item => item.id === this.id);
-   itemToUpdate.sold += amount;
- }
-
- withdrawCurrency( id: number, amount: number) {
-   debugger;
-  const itemToUpdate = this.bankAccounts.find(item => item.id === id);
-  const verifyAmount = amount - this.managerService.actualFlat;
-  if (verifyAmount > itemToUpdate.sold) {
-    return window.alert(this.errorMessage);
-  } else {
-  itemToUpdate.sold -= amount + this.managerService.actualFlat;
+  tradeAmount() {
+    console.log(this.selectedValueFrom, this.selectedValueTo, this.amountFrom, this.id);
+    // tslint:disable-next-line:max-line-length
+    this.http.put(`https://localhost:44384/api/conversions/exchangeFiat`, JSON.stringify({'selectedValueFrom': this.selectedValueFrom, 'selectedValueTo': this.selectedValueTo, 'amountFrom': this.amountFrom, 'id': this.id })).subscribe(responseData => {
+      // tslint:disable-next-line: no-debugger
+      console.log(responseData);
+    });
+    console.log(this.selectedValueFrom, this.selectedValueTo, this.amountFrom, this.id);
   }
-}
- trade(selectedValueFrom: string, selectedValueTo: string, amountFrom: number) {
-  const tradeFrom = this.bankAccounts.find(item => item.bankName === selectedValueFrom);
-  const initialAmount = tradeFrom.sold;
-  debugger;
-if (tradeFrom.sold < ((this.tradeFee / 100) * amountFrom + amountFrom) ) {
-  debugger;
-  alert('Insufficient founds!');
-} else {
-  tradeFrom.sold -= (this.tradeFee / 100) * amountFrom + amountFrom;
-  const tradeTo = this.bankAccounts.find(item => item.bankName === selectedValueTo);
-  tradeTo.sold += (amountFrom * this.exchangeRate);
 
-  // send HTTP POST request Nu Trebuie trimis trade to la users
-  this.http.post( 'https://localhost:44384/api/users', tradeTo).subscribe(responseData => {
-    // tslint:disable-next-line: no-debugger
-    console.log(responseData);
-  });
- }
-}
-depositAmount() {
-  console.log(this.id);
-  debugger;
-  // tslint:disable-next-line:max-line-length
-  this.http.put( `https://localhost:44384/api/BankAccounts/add`, JSON.stringify({'amount' : this.amount, 'id' : this.id})).subscribe(responseData => {
-    // tslint:disable-next-line: no-debugger
-    console.log(responseData);
-    this.amount = null;
-  });
-}
+  getBankAccounts() {
 
-withdrawAmount() {
-  // tslint:disable-next-line:max-line-length
-  this.http.put( `https://localhost:44384/api/BankAccounts/withdraw`, JSON.stringify({'amount' : this.amount, 'id' : this.id})).subscribe(responseData => {
-    // tslint:disable-next-line: no-debugger
-    console.log(responseData);
-  });
-}
+    this.http.get('https://localhost:44384/api/BankAccounts').subscribe((responseData: BankAccount[]) => {
+       this.bankAccounts = responseData;
+       this.dataSource = new MatTableDataSource(responseData);
+       console.log(responseData);
+     });
+   }
+   // #region Currency
+  getCurrencies() {
+    this.http.get('https://localhost:44384/api/Currencies').subscribe((responseData: CurrencyList[]) => {
+      this.currencyList = responseData;
+      console.log(responseData);
+    });
+  }
 
+  getCryptoCurrencies() {
+    this.http.get('https://localhost:44384/api/CryptoCurrencies').subscribe((responseData: CurrencyListCrypto[]) => {
+      this.cryptoList = responseData;
+      console.log(responseData);
+    });
+  }
+  // #endregion
 }

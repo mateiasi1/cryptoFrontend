@@ -29,8 +29,10 @@ export class BankAccountComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-  
     this.getBankAccounts();
+    this.bankAccountService.getBankAccounts();
+    this.bankAccountService.getCurrencies();
+    this.bankAccountService.getCryptoCurrencies();
   }
 
   setID(idFromHTML: number) {
@@ -84,7 +86,16 @@ withdraw() {
     console.log(`Dialog result: ${result}`);
   });
 }
+trade() {
+  console.log(this.id);
+  debugger;
+  const dialogRef = this.dialog.open(TradeFiatComponent);
 
+  dialogRef.afterClosed().subscribe(result => {
+    this.ngOnInit();
+    console.log(`Dialog result: ${result}`);
+  });
+}
 }
 
 @Component({
@@ -103,6 +114,16 @@ export class DepositFiatComponent {
   templateUrl: 'withdraw.html',
 })
 export class WithdrawFiatComponent {
+  constructor(public bankAccountComponent: BankAccountComponent,
+    public bankAccountService: BankAccountService) { }
+}
+
+@Component({
+  // tslint:disable-next-line:component-selector
+  selector: 'dialog-content-example-dialog',
+  templateUrl: 'trade.html',
+})
+export class TradeFiatComponent {
   constructor(public bankAccountComponent: BankAccountComponent,
     public bankAccountService: BankAccountService) { }
 }
