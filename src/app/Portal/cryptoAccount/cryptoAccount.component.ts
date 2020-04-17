@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MatTableDataSource } from '@angular/material';
+import { MatTableDataSource, MatDialog } from '@angular/material';
 import { HttpClient } from '@angular/common/http';
 import { CryptoAccount } from './cryptoCurrency.component';
 import { CryptoAccountService } from './cryptoAccount.service';
@@ -21,13 +21,16 @@ export class CryptoAccountComponent implements OnInit {
  currentPrice: number;
  id: number;
 
-  constructor(public bankAccountService: CryptoAccountService,
-              private http: HttpClient
+  constructor(private http: HttpClient,
+              public cryptoAccountService: CryptoAccountService,
+              public dialog: MatDialog
     ) { }
 
   ngOnInit() {
-
     this.getCryptoAccounts();
+    this.cryptoAccountService.getCryptoCurrencies();
+    this.cryptoAccountService.getCurrencies();
+    this.cryptoAccountService.getCryptoCurrencies();
   }
 
   setID(idFromHTML: number) {
@@ -46,9 +49,9 @@ getCryptoAccounts() {
    });
  }
 
- deleteCryptoAccount(id: number) {
-  this.http.delete('https://localhost:44384/api/CryptoAccount/' + id).subscribe((responseData: CryptoAccount[]) => {
-    this.cryptoAccounts = responseData;
+ deleteBankAccount(id: number) {
+  this.http.delete('https://localhost:44384/api/BankAccounts/' + id).subscribe((responseData: CryptoAccount[]) => {
+
      this.dataSource = new MatTableDataSource(responseData);
     console.log(responseData);
   });
@@ -60,4 +63,44 @@ getCryptoAccounts() {
 
 //#endregion
 
+deposit() {
+  console.log(this.id);
+  debugger;
+  const dialogRef = this.dialog.open(DepositCryptoComponent);
+
+  dialogRef.afterClosed().subscribe(result => {
+    this.ngOnInit();
+    console.log(`Dialog result: ${result}`);
+  });
+}
+trade() {
+  console.log(this.id);
+  debugger;
+  const dialogRef = this.dialog.open(TradeCryptoComponent);
+
+  dialogRef.afterClosed().subscribe(result => {
+    this.ngOnInit();
+    console.log(`Dialog result: ${result}`);
+  });
+}
+}
+
+@Component({
+  // tslint:disable-next-line:component-selector
+  selector: 'dialog-content-example-dialog',
+  templateUrl: 'deposit.html',
+})
+export class DepositCryptoComponent {
+  constructor(public cryptoAccountComponent: CryptoAccountComponent,
+    public cryptoAccountService: CryptoAccountService) { }
+}
+
+@Component({
+  // tslint:disable-next-line:component-selector
+  selector: 'dialog-content-example-dialog',
+  templateUrl: 'trade.html',
+})
+export class TradeCryptoComponent {
+  constructor(public cryptoAccountComponent: CryptoAccountComponent,
+    public cryptoAccountService : CryptoAccountService) { }
 }

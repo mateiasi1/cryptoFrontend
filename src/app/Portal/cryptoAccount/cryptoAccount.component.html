@@ -31,9 +31,9 @@
         <button
           mat-icon-button
           color="primary"
-          [routerLink]="['/deposit']"
+          [routerLink]="['/crypto']"
           routerLinkActive="router-link-active"
-          (click)="bankAccountService.setID(element.id)"
+          (click)="deposit(); cryptoAccountService.setID(element.id)"
         >
           <i class="material-icons" matTooltip="Deposit">
             library_add
@@ -42,18 +42,8 @@
         <button
           mat-icon-button
           color="primary"
-          [routerLink]="['/withdraw']"
-          (click)="bankAccountService.setID(element.id)"
-        >
-          <i class="material-icons" matTooltip="Withdraw">
-            remove_circle_outline
-          </i>
-        </button>
-        <button
-          mat-icon-button
-          color="primary"
-          [routerLink]="['/trade']"
-          routerLinkActive="router-link-active"
+          [routerLink]="['/crypto']"
+          (click)="trade(); cryptoAccountService.setID(element.id)"
         >
           <i class="material-icons" matTooltip="Trade">
             swap_horiz
@@ -62,7 +52,7 @@
         <button
           mat-icon-button
           color="warn"
-          [routerLink]="['/servers']"
+          [routerLink]="['/crypto']"
           (click)="deleteCryptoAccount(element.id)"
           matTooltip="Delete"
         >

@@ -1,4 +1,3 @@
-import { AuthService } from 'src/app/auth-service';
 import { Component, OnInit } from '@angular/core';
 import { BankAccountService } from './bankAccount.service';
 import { MatTableDataSource, MatDialog } from '@angular/material';
@@ -24,7 +23,6 @@ export class BankAccountComponent implements OnInit {
 
   constructor(public bankAccountService: BankAccountService,
               private http: HttpClient,
-              private authService: AuthService,
               public dialog: MatDialog,
     ) { }
 

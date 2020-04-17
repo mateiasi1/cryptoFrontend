@@ -23,6 +23,7 @@ export class RegisterUserComponent implements OnInit {
     // tslint:disable-next-line: no-debugger
     debugger;
     console.log(responseData);
+    this.ngOnInit();
   });
   }
 

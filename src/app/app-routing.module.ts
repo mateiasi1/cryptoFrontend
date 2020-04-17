@@ -1,4 +1,3 @@
-import { AuthService } from './auth-service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
@@ -10,10 +9,7 @@ import {
 import {
   RoleGuardService as RoleGuard
 } from './role-guard.service';
-import { DepositComponent } from './Portal/deposit/deposit.component';
-import { WithdrawComponent } from './Portal/withdraw/withdraw.component';
 import { BankAccountComponent } from './Portal/bank/bankAccount/bankAccount.component';
-import { TradeComponent } from './Portal/trade/trade.component';
 import { AvailableCurrenciesComponent } from './Portal/availableCurrencies/availableCurrencies.component';
 import { BankComponent } from './Portal/bank/bank';
 import { ManageApplicationComponent } from './Portal/manage-application/manage-application.component';
@@ -28,10 +24,7 @@ export const appRoutes: Routes = [
   // canActivate: [RoleGuard],  pentru auth bazata pe roluri(verifica si authguard)
 
   { path: '', component: LoginComponent },
-  { path: 'deposit', canActivate: [RoleGuard], data: { expectedRole: 'user'}, component: DepositComponent},
-  { path: 'withdraw', canActivate: [RoleGuard], data: { expectedRole: 'user'}, component: WithdrawComponent },
   { path: 'bank-account', canActivate: [AuthGuard], component: BankAccountComponent },
-  { path: 'trade', canActivate: [RoleGuard], component: TradeComponent, data: { expectedRole: 'user'} },
   { path: 'login', component: LoginComponent},
   { path: 'availableCurrencies', canActivate: [AuthGuard], component: AvailableCurrenciesComponent },
   { path: 'bank', canActivate: [AuthGuard], component: BankComponent},

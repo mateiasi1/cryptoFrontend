@@ -41,26 +41,6 @@ export class BankAccountService {
   }
 
   //#endregion
-
-  trade(selectedValueFrom: string, selectedValueTo: string, amountFrom: number) {
-    const tradeFrom = this.bankAccounts.find(item => item.bankName === selectedValueFrom);
-    const initialAmount = tradeFrom.sold;
-    debugger;
-    if (tradeFrom.sold < ((this.tradeFee / 100) * amountFrom + amountFrom)) {
-      debugger;
-      alert('Insufficient founds!');
-    } else {
-      tradeFrom.sold -= (this.tradeFee / 100) * amountFrom + amountFrom;
-      const tradeTo = this.bankAccounts.find(item => item.bankName === selectedValueTo);
-      tradeTo.sold += (amountFrom * this.exchangeRate);
-
-      // send HTTP POST request Nu Trebuie trimis trade to la users
-      this.http.post('https://localhost:44384/api/users', tradeTo).subscribe(responseData => {
-        // tslint:disable-next-line: no-debugger
-        console.log(responseData);
-      });
-    }
-  }
   depositAmount() {
     console.log(this.id);
     debugger;

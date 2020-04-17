@@ -1,8 +1,5 @@
-<div *ngIf="authService.isLoggedIn"> 
-<button mat-button routerLink="/deposit" *ngIf="!authService.isAdmin" >Deposit</button>
-<button mat-button routerLink="/bank-account"  *ngIf="!authService.isAdmin" >Fiat wallet</button>
-<button mat-button routerLink="/withdraw" *ngIf="!authService.isAdmin" >Withdraw</button>
-<button mat-button routerLink="/trade" *ngIf="!authService.isAdmin" >Trade</button>
+<div *ngIf="authService.isLoggedIn">
+<button mat-button routerLink="/bank-account"  *ngIf="!authService.isAdmin" >Fiat wallet</button> 
 <button mat-button routerLink="/availableCurrencies" >Available Currencies</button>
 <button mat-button routerLink="/bank" *ngIf="!authService.isAdmin">Bank</button>
 <button mat-button routerLink="/crypto" *ngIf="!authService.isAdmin"  >Crypto wallet</button>

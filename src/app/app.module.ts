@@ -23,9 +23,6 @@ import {MatCardModule} from '@angular/material/card';
 import { RoleGuardService } from './role-guard.service';
 import {MatMenuModule} from '@angular/material/menu';
 import { PortalComponent } from './Portal/Portal.component';
-import { DepositComponent } from './Portal/deposit/deposit.component';
-import { WithdrawComponent } from './Portal/withdraw/withdraw.component';
-import { TradeComponent } from './Portal/trade/trade.component';
 // tslint:disable-next-line:max-line-length
 import { BankAccountComponent, DepositFiatComponent, WithdrawFiatComponent, TradeFiatComponent } from './Portal/bank/bankAccount/bankAccount.component';
 // tslint:disable-next-line:max-line-length
@@ -34,10 +31,10 @@ import { BankComponent } from './Portal/bank/bank';
 import { ManageApplicationComponent } from './Portal/manage-application/manage-application.component';
 import { UsersComponent } from './Portal/users/users.component';
 import { ValidateAccountComponent } from './Portal/validateAccount/validateAccount.component';
-import { CryptoAccountComponent } from './Portal/cryptoAccount/cryptoAccount.component';
+// tslint:disable-next-line:max-line-length
+import { CryptoAccountComponent, TradeCryptoComponent, DepositCryptoComponent} from './Portal/cryptoAccount/cryptoAccount.component';
 import { BankAccountService } from './Portal/bank/bankAccount/bankAccount.service';
 import { CryptoAccountService } from './Portal/cryptoAccount/cryptoAccount.service';
-import { TradeService } from './Portal/trade/trade.service';
 import { SetPasswordModule } from 'src/SetPassword/SetPassword.module';
 import { SvgIconComponent } from './svg-icon.component';
 import { environment } from 'src/environments/environment';
@@ -46,10 +43,7 @@ import { TokenInterceptor } from './TokenInterceptor';
 @NgModule({
    declarations: [
       AppComponent,
-      DepositComponent,
-      WithdrawComponent,
       BankAccountComponent,
-      TradeComponent,
       AvailableCurrenciesComponent,
       BankComponent,
       ManageApplicationComponent,
@@ -63,7 +57,9 @@ import { TokenInterceptor } from './TokenInterceptor';
       SvgIconComponent,
       DepositFiatComponent,
       WithdrawFiatComponent,
-      TradeFiatComponent
+      TradeFiatComponent,
+      DepositCryptoComponent,
+      TradeCryptoComponent
    ],
    imports: [
       BrowserModule,
@@ -91,13 +87,13 @@ import { TokenInterceptor } from './TokenInterceptor';
    providers: [
       BankAccountService,
       CryptoAccountService,
-      TradeService,
       ManageApplicationComponent,
       AuthService,
       AuthGuardService,
       LoginComponent,
       RoleGuardService,
       BankAccountComponent,
+      CryptoAccountComponent,
       { provide: HTTP_INTERCEPTORS,
          useClass: TokenInterceptor,
          multi: true
@@ -107,6 +103,7 @@ import { TokenInterceptor } from './TokenInterceptor';
       AppComponent,
       SvgIconComponent
    ],
-   entryComponents: [AddCurrencyComponent, AddCryptoComponent, DepositFiatComponent, WithdrawFiatComponent, TradeFiatComponent]
+   entryComponents: [AddCurrencyComponent, AddCryptoComponent, DepositFiatComponent, WithdrawFiatComponent, TradeFiatComponent,
+      TradeCryptoComponent, DepositCryptoComponent ]
 })
 export class AppModule { }

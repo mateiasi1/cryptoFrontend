@@ -1,12 +1,9 @@
-<h2 mat-dialog-title>Withdraw Fiat</h2>
+<h2 mat-dialog-title>Trade</h2>
 <mat-dialog-content class="mat-typography">
     <h4>From</h4>
     <mat-form-field>
       <mat-label>Select currency</mat-label>
       <mat-select  [(ngModel)]="bankAccountService.selectedValueFrom">
-        <mat-option *ngFor="let crypto of bankAccountService.cryptoList" [value]="crypto.cryptoCurrencyAbbreviation">
-          {{crypto.cryptoCurrencyName}}
-        </mat-option>
         <mat-option *ngFor="let currency of bankAccountService.currencyList" [value]="currency.currencyAbbreviation">
           {{currency.currencyName}}
         </mat-option>
