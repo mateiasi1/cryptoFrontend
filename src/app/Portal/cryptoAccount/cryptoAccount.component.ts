@@ -102,5 +102,5 @@ export class DepositCryptoComponent {
 })
 export class TradeCryptoComponent {
   constructor(public cryptoAccountComponent: CryptoAccountComponent,
-    public cryptoAccountService : CryptoAccountService) { }
+    public cryptoAccountService: CryptoAccountService) { }
 }
