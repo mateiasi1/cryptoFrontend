@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatInputModule, MatExpansionModule, MatIconModule, MatTooltipModule } from '@angular/material';
+import { MatInputModule, MatExpansionModule, MatIconModule, MatTooltipModule, MatSnackBarModule } from '@angular/material';
 import { MatSelectModule } from '@angular/material/select';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RegisterUserComponent } from './registerUser/registerUser.component';
@@ -82,7 +82,8 @@ import { TokenInterceptor } from './TokenInterceptor';
       SetPasswordModule,
       MatButtonModule,
       MatIconModule,
-      MatTooltipModule
+      MatTooltipModule,
+      MatSnackBarModule
    ],
    providers: [
       BankAccountService,

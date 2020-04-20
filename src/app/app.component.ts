@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AuthService } from './auth-service';
 import { LoginComponent } from 'src/Login/Login.component';
 import { amountState } from './state.component';
+import { MatDialog, MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-root',
@@ -11,6 +12,16 @@ import { amountState } from './state.component';
 export class AppComponent {
 
   constructor(public authService: AuthService,
-    public loginComponent: LoginComponent) {}
+    public loginComponent: LoginComponent,
+    public dialog: MatDialog,
+    public snackBar: MatSnackBar
+    ) {}
 
+    openSnackBarSuccess(message: string, action: string) {
+      this.snackBar.open(message, action, {
+         duration: 5000,
+         verticalPosition: 'bottom',
+         horizontalPosition: 'right'
+      });
+    }
 }
