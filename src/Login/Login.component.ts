@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { UserLogin } from 'src/Login/userLogin.component';
 import { AuthService } from 'src/app/auth-service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router, CanActivate } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -19,12 +20,13 @@ export class LoginComponent implements OnInit {
 
   // tslint:disable-next-line: max-line-length
 
-  public userLogin: UserLogin = {Username: this.username, Password: this.password, Token: this.token};
+  public userLogin: UserLogin = {Username: this.username, Password: this.password, Token: this.token, Role: this.token};
   constructor(private http: HttpClient,
-    public authService: AuthService) {
+    public authService: AuthService,
+    public router: Router) {
       this.loginForm = new FormGroup({
         email: new FormControl('', [Validators.required]),
-        password: new FormControl('', [Validators.required])
+        password: new FormControl('', [Validators.required]),
       });
     }
   ngOnInit() {
@@ -43,10 +45,15 @@ export class LoginComponent implements OnInit {
     this.http.post('https://localhost:44384/api/Logins/authenticate', this.userLogin).subscribe((responseData: UserLogin) => {
     console.log(responseData, 'login');
     console.log(this.loginForm.value);
-    debugger;
     if (responseData != null ) {
       this.authService.isLoggedIn = true;
       localStorage.setItem('currentUser', JSON.stringify({token: responseData, name: this.userLogin.Username}));
+      debugger;
+      if (this.authService.getRole === 'admin') {
+        this.router.navigate(['userManagement']);
+      } else {
+        this.router.navigate(['bank-account']);
+      }
     }
   });
 
