@@ -13,8 +13,8 @@ import { Crypto, CryptoAccount } from 'src/app/crypto.component';
   styleUrls: ['./bank.css']
 })
 export class BankComponent implements OnInit {
-  displayedColumns: string[] = ['Id', 'BankName', 'IBAN', 'Currency', 'Actions'];
-  displayedColumnsCrypto: string[] = ['Id', 'CryptoName', 'Actions'];
+  displayedColumns: string[] = ['BankName', 'IBAN', 'Currency', 'Actions'];
+  displayedColumnsCrypto: string[] = ['CryptoName', 'Actions'];
   constructor(private http: HttpClient,
     public authService: AuthService) { }
 

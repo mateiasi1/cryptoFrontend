@@ -12,7 +12,7 @@ import { CryptoAccountService } from './cryptoAccount.service';
 })
 export class CryptoAccountComponent implements OnInit {
  public cryptoAccounts: CryptoAccount[] = [];
- displayedColumns: string[] = ['id', 'cryptoName', 'iban', 'sold', 'actions' ];
+ displayedColumns: string[] = ['cryptoName', 'iban', 'sold', 'actions' ];
  dataSource: MatTableDataSource<CryptoAccount>;
 
  cryptoName: string;

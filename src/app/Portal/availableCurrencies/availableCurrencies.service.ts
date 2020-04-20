@@ -24,9 +24,9 @@ constructor(public serversService: BankAccountService,
     public authService: AuthService,
     public dialog: MatDialog) { }
 
-addCurrencyToList(currencyAbbreviation: string) {
-    const currencyToAdd = this.allCurrency.find(item => item.currencyAbbreviation === currencyAbbreviation);
-
+addCurrencyToList() {
+    const currencyToAdd = this.allCurrency.find(item => item.currencyAbbreviation === this.selectedValue);
+    debugger;
     this.http.post('https://localhost:44384/api/Currencies', currencyToAdd).subscribe((responseData: CurrencyList[]) => {
       // this.currencyFromBackend = responseData;
        this.dataSource = new MatTableDataSource(responseData);

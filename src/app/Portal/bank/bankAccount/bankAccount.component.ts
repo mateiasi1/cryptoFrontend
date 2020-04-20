@@ -12,7 +12,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class BankAccountComponent implements OnInit {
  public bankAccounts: BankAccount[] = [];
- displayedColumns: string[] = ['id', 'currencyName', 'bankName', 'iban', 'sold', 'actions' ];
+ displayedColumns: string[] = ['currencyName', 'bankName', 'iban', 'sold', 'actions' ];
  dataSource: MatTableDataSource<BankAccount>;
 
  currencyName: string;

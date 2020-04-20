@@ -13,7 +13,7 @@ import { AngularWaitBarrier } from 'blocking-proxy/built/lib/angular_wait_barrie
 export class UsersComponent implements OnInit {
 public users: Users[] = [];
 public userId;
-displayedColumns: string[] = ['id', 'name', 'role', 'state', 'actions'];
+displayedColumns: string[] = ['name', 'role', 'state', 'actions'];
 dataSource: MatTableDataSource<Users>;
 unconfirmedUsers: MatTableDataSource<Users>;
   constructor(private http: HttpClient) { }

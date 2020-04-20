@@ -2,13 +2,6 @@
 <div class="mat-elevation-z8 tablelong">
   <table mat-table [dataSource]="dataSource">
 
-    <!-- Position Column -->
-    <ng-container matColumnDef="Id">
-      <th mat-header-cell *matHeaderCellDef> Id. 
-      </th>
-      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
-    </ng-container>
-
     <!-- Name Column -->
     <ng-container matColumnDef="BankName">
       <th mat-header-cell *matHeaderCellDef> Bank Name </th>
@@ -91,12 +84,6 @@
 
 <div class="mat-elevation-z8 tablelong">
   <table mat-table [dataSource]="dataSourceCrypto">
-
-    <!-- Position Column -->
-    <ng-container matColumnDef="Id">
-      <th mat-header-cell *matHeaderCellDef> Id. </th>
-      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
-    </ng-container>
 
     <!-- Name Column -->
     <ng-container matColumnDef="CryptoName">

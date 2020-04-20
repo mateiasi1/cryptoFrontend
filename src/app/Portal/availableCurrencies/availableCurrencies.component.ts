@@ -14,8 +14,8 @@ import { AvailableService } from './availableCurrencies.service';
 })
 export class AvailableCurrenciesComponent implements OnInit {
 
-  displayedColumns: string[] = ['id', 'name', 'viewValue', 'actions'];
-  displayedColumnsCrypto: string[] = ['id', 'name', 'actions'];
+  displayedColumns: string[] = ['name', 'viewValue', 'actions'];
+  displayedColumnsCrypto: string[] = ['name', 'actions'];
   role: string;
   isCurrentUserAdmin: boolean;
 
@@ -49,6 +49,7 @@ export class AvailableCurrenciesComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
+      this.ngOnInit();
     });
     this.getCurrencies();
   }
@@ -57,6 +58,7 @@ export class AvailableCurrenciesComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
+      this.ngOnInit();
     });
   }
 }
