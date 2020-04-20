@@ -7,3 +7,13 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
+
+.blue-snackbar {
+    background: #33ff33;
+    height: 70px !important;
+}
+
+.red-snackbar {
+    background: #F44336;
+    height: 70px !important;
+}

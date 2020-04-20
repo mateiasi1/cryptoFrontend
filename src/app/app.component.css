@@ -23,9 +23,3 @@
   object-fit: cover;
   object-position: center right;
 }
-
-.flexcontainer {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-}

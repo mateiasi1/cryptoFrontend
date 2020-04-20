@@ -5,7 +5,8 @@
 <button mat-button routerLink="/bank" *ngIf="!authService.isAdmin">Bank</button>
 <button mat-button routerLink="/manage-application" *ngIf="authService.isAdmin">Manage Application</button>
 <button mat-button routerLink="/userManagement" *ngIf="authService.isAdmin">Users management</button>
-<button mat-button (click)="openSnackBarSuccess('Party', 'X')">Show snack-bar</button>
+<button mat-button (click)="openSnackBar('Hello', 'X', 'blue-snackbar')">Blue snack-bar</button>
+<button mat-button (click)="openSnackBar('Hello', 'X', 'red-snackbar')">Red snack-bar</button>
 
   <div class="wrapper">
     <button mat-button [matMenuTriggerFor]="menu"><img src="https://i2.cdn.turner.com/cnnnext/dam/assets/140926165711-john-sutter-profile-image-large-169.jpg" class="image--cover"></button>
