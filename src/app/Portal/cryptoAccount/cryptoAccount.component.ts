@@ -57,6 +57,7 @@ getCryptoAccounts() {
      this.dataSource = new MatTableDataSource(responseData);
     console.log(responseData);
   });
+  this.ngOnInit();
   }
 
 //#endregion

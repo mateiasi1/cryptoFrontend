@@ -67,6 +67,7 @@ export class BankComponent implements OnInit {
        this.dataSource = new MatTableDataSource(responseData);
       console.log(responseData);
     });
+    this.ngOnInit();
   }
 
   deleteBank(id: number) {
@@ -75,6 +76,7 @@ export class BankComponent implements OnInit {
        this.dataSource = new MatTableDataSource(responseData);
       console.log(responseData);
   });
+  this.ngOnInit();
   }
   // #endregion
 
@@ -103,6 +105,7 @@ export class BankComponent implements OnInit {
       debugger;
       console.log(responseData);
     });
+    this.ngOnInit();
   }
   // #endregion
 
@@ -115,6 +118,7 @@ export class BankComponent implements OnInit {
       debugger;
       console.log(responseData);
     });
+    this.ngOnInit();
     }
   // #endregion
 
@@ -127,7 +131,7 @@ export class BankComponent implements OnInit {
       console.log(responseData);
     });
   }
-  
+
   addCrypto() {
     // tslint:disable-next-line: max-line-length
     const cryptoToAdd: Crypto = {id: 0, refference: this.Refference, cryptoCurrencyName: this.CryptoName, cryptoCurrencyAbbreviation: '' }
@@ -138,6 +142,7 @@ export class BankComponent implements OnInit {
        this.dataSourceCrypto = new MatTableDataSource(responseData);
       console.log(responseData);
     });
+    this.ngOnInit();
   }
 
   deleteCrypto(id: number) {
@@ -146,7 +151,8 @@ export class BankComponent implements OnInit {
        this.dataSourceCrypto = new MatTableDataSource(responseData);
       console.log(responseData);
   });
+  this.ngOnInit();
   }
-  
+
   // #endregion
 }

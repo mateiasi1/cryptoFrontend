@@ -56,6 +56,7 @@ export class BankAccountComponent implements OnInit {
      this.dataSource = new MatTableDataSource(responseData);
     console.log(responseData);
   });
+  this.ngOnInit();
   }
 
 //#endregion

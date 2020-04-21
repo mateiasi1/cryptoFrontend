@@ -50,6 +50,7 @@ unconfirmedUsers: MatTableDataSource<Users>;
       debugger;
       console.log(this.users);
     });
+    this.ngOnInit();
   }
 
   suspendUser(id: number) {
@@ -58,6 +59,7 @@ unconfirmedUsers: MatTableDataSource<Users>;
       debugger;
       console.log(this.users);
     });
+    this.ngOnInit();
   }
 
 //confirm user
@@ -69,6 +71,7 @@ confirmUser(id: number, state: boolean) {
   .set('Id', id.toString());
     console.log(this.users);
   });
+  this.ngOnInit();
 }
   deleteUser(id: number) {
     debugger;
@@ -78,6 +81,7 @@ confirmUser(id: number, state: boolean) {
       debugger;
       console.log(this.users);
     });
+    this.ngOnInit();
   }
 
   forgotPassword(id: number) {
@@ -86,5 +90,6 @@ confirmUser(id: number, state: boolean) {
     debugger;
     console.log(responseData);
   });
+  this.ngOnInit();
   }
 }

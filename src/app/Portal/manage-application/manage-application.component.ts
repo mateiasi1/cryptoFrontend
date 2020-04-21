@@ -24,8 +24,10 @@ export class ManageApplicationComponent implements OnInit {
   }
   addFee() {
     this.managerService.addFee(this.role);
+    this.ngOnInit();
 }
   addFlatRate() {
     this.managerService.addFlatRate(this.role);
+    this.ngOnInit();
   }
 }
