@@ -1,10 +1,9 @@
-import { HttpClient } from '@angular/common/http';
-import { MatDialog } from '@angular/material/dialog';
 import { ManagerService } from '../../manage-application/manager.service';
-import { MatTableDataSource } from '@angular/material';
 
 import { BankAccount, CurrencyList } from './currency.component';
 import { CurrencyListCrypto } from '../../cryptoAccount/cryptoCurrency.component';
+import { HttpClient } from '@angular/common/http';
+import { MatDialog, MatTableDataSource } from '@angular/material';
 
 
 
@@ -43,7 +42,6 @@ export class BankAccountService {
   //#endregion
   depositAmount() {
     console.log(this.id);
-    debugger;
     // tslint:disable-next-line:max-line-length
     this.http.put(`https://localhost:44384/api/BankAccounts/add`, JSON.stringify({ 'amount': this.amount, 'id': this.id })).subscribe(responseData => {
       // tslint:disable-next-line: no-debugger
@@ -54,10 +52,7 @@ export class BankAccountService {
 
   withdrawAmount() {
     // tslint:disable-next-line:max-line-length
-    this.http.put(`https://localhost:44384/api/BankAccounts/withdraw`, JSON.stringify({ 'amount': this.amount, 'id': this.id })).subscribe(responseData => {
-      // tslint:disable-next-line: no-debugger
-      console.log(responseData);
-    });
+    return this.http.put(`https://localhost:44384/api/BankAccounts/withdraw`, JSON.stringify({ 'amount': this.amount, 'id': this.id }));
   }
 
   tradeAmount() {

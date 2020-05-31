@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { MatTableDataSource, MatDialog, MatSnackBar } from '@angular/material';
-import { HttpClient } from '@angular/common/http';
+
 import { CryptoAccount } from './cryptoCurrency.component';
 import { CryptoAccountService } from './cryptoAccount.service';
+import { Component, OnInit } from '@angular/core';
+import { MatTableDataSource, MatDialog } from '@angular/material';
+import { HttpClient } from '@angular/common/http';
 
 
 @Component({
@@ -46,7 +47,6 @@ getCryptoAccounts() {
   this.http.get('https://localhost:44384/api/CryptoAccount').subscribe((responseData: CryptoAccount[]) => {
      this.cryptoAccounts = responseData;
      this.dataSource = new MatTableDataSource(responseData);
-     debugger;
      console.log(responseData);
    });
  }
@@ -68,7 +68,6 @@ getCryptoAccounts() {
 
 deposit() {
   console.log(this.id);
-  debugger;
   const dialogRef = this.dialog.open(DepositCryptoComponent);
 
   dialogRef.afterClosed().subscribe(result => {
@@ -78,7 +77,6 @@ deposit() {
 }
 trade() {
   console.log(this.id);
-  debugger;
   const dialogRef = this.dialog.open(TradeCryptoComponent);
 
   dialogRef.afterClosed().subscribe(result => {

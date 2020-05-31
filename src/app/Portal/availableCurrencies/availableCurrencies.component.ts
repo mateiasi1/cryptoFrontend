@@ -1,11 +1,11 @@
 import { AuthService } from 'src/app/auth-service';
-import { Component, OnInit } from '@angular/core';
-import { MatTableDataSource, MatDialog } from '@angular/material';
-import { HttpClient } from '@angular/common/http';
 import { CryptoCurrency } from '../cryptoAccount/cryptoCurrency.component';
 import { Currency } from '../bank/bankAccount/currency.component';
 import { BankAccountService } from '../bank/bankAccount/bankAccount.service';
 import { AvailableService } from './availableCurrencies.service';
+import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { MatDialog } from '@angular/material';
 
 @Component({
   selector: 'app-availablecurrencies',

@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
 import { BankAccountService } from './bankAccount.service';
-import { MatTableDataSource, MatDialog } from '@angular/material';
 import { BankAccount } from './currency.component';
+import { Component, OnInit } from '@angular/core';
+import { MatTableDataSource, MatDialog } from '@angular/material';
 import { HttpClient } from '@angular/common/http';
 
 
@@ -34,7 +34,6 @@ export class BankAccountComponent implements OnInit {
   }
 
   setID(idFromHTML: number) {
-    debugger;
     this.id = idFromHTML;
     console.log(this.id);
     }
@@ -67,7 +66,6 @@ export class BankAccountComponent implements OnInit {
 
 deposit() {
   console.log(this.id);
-  debugger;
   const dialogRef = this.dialog.open(DepositFiatComponent);
 
   dialogRef.afterClosed().subscribe(result => {
@@ -77,7 +75,6 @@ deposit() {
 }
 withdraw() {
   console.log(this.id);
-  debugger;
   const dialogRef = this.dialog.open(WithdrawFiatComponent);
 
   dialogRef.afterClosed().subscribe(result => {
@@ -87,7 +84,6 @@ withdraw() {
 }
 trade() {
   console.log(this.id);
-  debugger;
   const dialogRef = this.dialog.open(TradeFiatComponent);
 
   dialogRef.afterClosed().subscribe(result => {
@@ -115,6 +111,13 @@ export class DepositFiatComponent {
 export class WithdrawFiatComponent {
   constructor(public bankAccountComponent: BankAccountComponent,
     public bankAccountService: BankAccountService) { }
+
+    withdraw() {
+      this.bankAccountService.withdrawAmount().subscribe(responseData => {
+        // tslint:disable-next-line: no-debugger
+        console.log(responseData);
+      });
+    }
 }
 
 @Component({

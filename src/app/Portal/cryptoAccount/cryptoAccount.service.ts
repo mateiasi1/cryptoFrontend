@@ -1,9 +1,8 @@
-import { HttpClient } from '@angular/common/http';
-import { MatDialog } from '@angular/material/dialog';
 import { ManagerService } from '../manage-application/manager.service';
 import { CryptoAccount, CurrencyListCrypto } from './cryptoCurrency.component';
-import { MatTableDataSource } from '@angular/material';
 import { CurrencyList, BankAccount } from '../bank/bankAccount/currency.component';
+import { MatTableDataSource, MatDialog } from '@angular/material';
+import { HttpClient } from '@angular/common/http';
 
 
 
@@ -41,7 +40,6 @@ constructor(private http: HttpClient,
   }
   depositAmount() {
     console.log(this.id);
-    debugger;
     // tslint:disable-next-line:max-line-length
     this.http.put(`https://localhost:44384/api/CryptoAccount/add`, JSON.stringify({ 'amount': this.amount, 'id': this.id })).subscribe(responseData => {
       // tslint:disable-next-line: no-debugger

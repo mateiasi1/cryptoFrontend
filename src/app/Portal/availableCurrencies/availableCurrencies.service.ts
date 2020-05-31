@@ -1,10 +1,11 @@
-import { Injectable } from '@angular/core';
+
 import { CurrencyList, Currency } from '../bank/bankAccount/currency.component';
 import { BankAccountService } from '../bank/bankAccount/bankAccount.service';
-import { HttpClient } from '@angular/common/http';
 import { AuthService } from 'src/app/auth-service';
-import { MatDialog, MatTableDataSource } from '@angular/material';
 import { CryptoCurrency, CurrencyListCrypto } from '../cryptoAccount/cryptoCurrency.component';
+import { Injectable } from '@angular/core';
+import { MatTableDataSource, MatDialog } from '@angular/material';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
     providedIn: 'root'
@@ -26,13 +27,11 @@ constructor(public serversService: BankAccountService,
 
 addCurrencyToList() {
     const currencyToAdd = this.allCurrency.find(item => item.currencyAbbreviation === this.selectedValue);
-    debugger;
     this.http.post('https://localhost:44384/api/Currencies', currencyToAdd).subscribe((responseData: CurrencyList[]) => {
       // this.currencyFromBackend = responseData;
        this.dataSource = new MatTableDataSource(responseData);
       console.log(responseData);
     });
-    debugger;
     const itemIndex = this.allCurrency.indexOf(currencyToAdd);
     this.allCurrency.splice(itemIndex, 1);
   }

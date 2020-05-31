@@ -1,27 +1,19 @@
 import { Component } from '@angular/core';
-import { AuthService } from './auth-service';
-import { LoginComponent } from 'src/Login/Login.component';
-import { amountState } from './state.component';
-import { MatDialog, MatSnackBar } from '@angular/material';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  title = 'AngularNestedRouting';
 
-  constructor(public authService: AuthService,
-    public loginComponent: LoginComponent,
-    public dialog: MatDialog,
-    public snackBar: MatSnackBar
-    ) {}
-    openSnackBar(message: string, action: string, className: string) {
-      this.snackBar.open(message, action, {
-        duration: 5000,
-        verticalPosition: 'bottom',
-        horizontalPosition: 'right',
-        panelClass: [className]
-      });
-    }
+  environmentName = '';
+  environmentUrl = '';
+
+  constructor() {
+    this.environmentName = environment.environmentName;
+    this.environmentUrl = environment.apiUrl;
+  }
 }
