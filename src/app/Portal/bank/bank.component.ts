@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { MatTableDataSource } from '@angular/material';
 import { AuthService } from 'src/app/services/auth-service';
@@ -7,6 +7,7 @@ import { CurrencyList } from 'src/app/components/currency.component';
 import { CurrencyListCrypto } from 'src/app/components/cryptoCurrency.component';
 import { CryptoAccount, Crypto } from 'src/app/components/crypto.component';
 import { environment } from 'src/environments/environment';
+import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-bank',
@@ -20,6 +21,8 @@ export class BankComponent implements OnInit {
   environmentURL = environment.apiUrl;
   displayedColumns: string[] = ['BankName', 'IBAN', 'Currency', 'Actions'];
   displayedColumnsCrypto: string[] = ['CryptoName', 'Actions'];
+
+  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
   dataSource: MatTableDataSource<Bank>;
   dataSourceCrypto: MatTableDataSource<Crypto>;
@@ -57,6 +60,7 @@ export class BankComponent implements OnInit {
     this.getCrypto();
     const currentUser = JSON.parse(localStorage.getItem('currentUser'));
     this.token = currentUser.token.token;
+    this.dataSource.paginator = this.paginator;
   }
   // #region Bank
   getBanks() {

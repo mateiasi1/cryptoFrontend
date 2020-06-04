@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { AvailableService } from 'src/app/services/availableCurrencies.service';
 import { Currency } from 'src/app/components/currency.component';
 import { BankAccountService } from 'src/app/services/bankAccount.service';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from 'src/app/services/auth-service';
-import { MatDialog } from '@angular/material';
+import { MatDialog, MatPaginator } from '@angular/material';
 
 @Component({
   selector: 'app-available-currencies',
@@ -18,13 +18,23 @@ export class AvailableCurrenciesComponent implements OnInit {
   role: string;
   isCurrentUserAdmin: boolean;
 
+  @ViewChild('paginator', {static:true}) paginator: MatPaginator;
+  @ViewChild('paginator2', {static: false}) paginator2: MatPaginator;
+
+
   currency: Currency;
   crypto: Crypto;
   constructor(public serversService: BankAccountService,
               private http: HttpClient,
               public authService: AuthService,
               public dialog: MatDialog,
-              public availableSevice: AvailableService) { }
+              public availableSevice: AvailableService) { 
+                this.availableSevice.sub.subscribe(e => {
+
+                  this.availableSevice.dataSource.paginator = this.paginator;
+                  this.availableSevice.dataSourceCrypto.paginator = this.paginator2;
+                });
+              }
 
   ngOnInit() {
     this.getCurrencies();

@@ -1,3 +1,4 @@
+import { Subject } from 'rxjs';
 
 
 import { Injectable } from '@angular/core';
@@ -18,11 +19,15 @@ export class AvailableService {
     selectedValue = '';
     selectedValueCrypto = '';
     public  allCurrency: CurrencyList[];
-public  allCryptoCurrency: CurrencyListCrypto[] = [];
-public cryptoCurrencyFromBackend: CryptoCurrency[] = [];
-public currencyFromBackend: Currency[] = [];
-dataSource: MatTableDataSource<CurrencyList>;
-dataSourceCrypto: MatTableDataSource<CurrencyListCrypto>;
+    public  allCryptoCurrency: CurrencyListCrypto[] = [];
+    public cryptoCurrencyFromBackend: CryptoCurrency[] = [];
+    public currencyFromBackend: Currency[] = [];
+
+    public sub: Subject<boolean> = new Subject<boolean>();
+  
+
+    dataSource: MatTableDataSource<CurrencyList>;
+    dataSourceCrypto: MatTableDataSource<CurrencyListCrypto>;
 
 constructor(public serversService: BankAccountService,
             private http: HttpClient,
@@ -30,8 +35,8 @@ constructor(public serversService: BankAccountService,
             public dialog: MatDialog) { }
 addCurrencyToList(currencyName: string) {
     // this.selectedValue = currencyName;
-    const currencyToAdd = this.allCurrency.find(item => item.currencyAbbreviation === currencyName);
-    this.http.post(this.environmentURL + 'Currencies', currencyToAdd).subscribe((responseData: CurrencyList[]) => {
+    const currencyToAdd = this.allCurrency.find(item => item.currencyAbbreviation === this.selectedValue);
+    this.http.post(this.environmentURL +  'Currencies', currencyToAdd).subscribe((responseData: CurrencyList[]) => {
       // this.currencyFromBackend = responseData;
        this.dataSource = new MatTableDataSource(responseData);
        console.log(responseData);
@@ -54,7 +59,7 @@ addCurrencyToList(currencyName: string) {
   getCurrencies() {
     // get fiat currencies for dropdown
     this.http.get(this.environmentURL + 'GetFiatCurrencyAPI').subscribe((responseData: any) => {
-      this.allCurrency = responseData.data.items;
+      this.allCurrency = responseData;
     });
     // get crypto currencies for dropdown
     this.http.get(this.environmentURL + 'GetCryptoCurrencyAPI').subscribe((responseData: any) => {
@@ -69,6 +74,8 @@ addCurrencyToList(currencyName: string) {
     this.http.get(this.environmentURL + 'CryptoCurrencies').subscribe((responseData: any) => {
       // this.cryptoCurrencyFromBackend = responseData;
        this.dataSourceCrypto = new MatTableDataSource(responseData.data.items);
+       this.sub.next(true);
     });
+
   }
 }

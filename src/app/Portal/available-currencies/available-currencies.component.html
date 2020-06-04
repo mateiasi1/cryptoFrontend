@@ -1,3 +1,5 @@
+<mat-tab-group>
+  <mat-tab label="Currency">
 <div class="mat-elevation-z8 tablelong">
     <table mat-table [dataSource]="availableSevice.dataSource" fxLayout="row">
   
@@ -45,11 +47,11 @@
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
   </div>
+</mat-tab>
   
-  
-  <hr>
-  
+  <mat-tab label="Crypto">
   <div class="mat-elevation-z8 tablelong">
     <table mat-table [dataSource]="availableSevice.dataSourceCrypto">
   
@@ -94,7 +96,8 @@
   
     <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
   </div>
-  
+</mat-tab>
+</mat-tab-group>
   
   
   

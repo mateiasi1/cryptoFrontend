@@ -1,4 +1,4 @@
-<div class="tablelong" *ngIf="authService.isAdmin">
+<div class="tablelong" *ngIf="!authService.isAdmin">
     <mat-accordion>
         <mat-expansion-panel (opened)="panelOpenState = true"
         (closed)="panelOpenState = false">

@@ -1,11 +1,11 @@
 import { AuthService } from 'src/app/auth-service';
-import { CurrencyListCrypto } from '../cryptoAccount/cryptoCurrency.component';
 import { Bank, BankAccount } from 'src/app/bank.component';
-import { CurrencyList } from './bankAccount/currency.component';
 import { Crypto, CryptoAccount } from 'src/app/crypto.component';
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { MatTableDataSource } from '@angular/material';
+import { CurrencyListCrypto } from 'src/app/components/cryptoCurrency.component';
+import { CurrencyList } from 'src/app/components/currency.component';
 
 @Component({
   selector: 'app-fiat-account',

@@ -18,7 +18,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 // tslint:disable-next-line:max-line-length
-import { MatPaginatorModule, MatInputModule, MatMenuModule, MatSnackBar, MatButtonModule, MatDialogModule } from '@angular/material';
+import { MatPaginatorModule, MatInputModule, MatMenuModule, MatSnackBar, MatButtonModule, MatDialogModule, MatTabsModule } from '@angular/material';
 import { TradeCryptoComponent } from './crypto-account/TradeCryptoComponent';
 import { DepositCryptoComponent } from './crypto-account/DepositCryptoComponent';
 import { AuthService } from '../services/auth-service';
@@ -32,8 +32,13 @@ import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { CryptoAccountService } from '../services/cryptoAccount.service';
 import { LoginComponent } from '../login/LoginComponent';
 import { AlertModule } from '../_alert';
+import { FlexLayoutModule } from "@angular/flex-layout";
 
 @NgModule({
+
+exports: [
+  MatTableModule
+],
   declarations: [
     PortalComponent,
     AvailableCurrenciesComponent,
@@ -64,7 +69,9 @@ import { AlertModule } from '../_alert';
     MatMenuModule,
     MatButtonModule,
     MatDialogModule,
-    AlertModule
+    AlertModule,
+    MatTabsModule,
+    FlexLayoutModule
   ],
   providers: [
     AuthService,
