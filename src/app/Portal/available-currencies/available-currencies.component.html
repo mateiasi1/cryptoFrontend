@@ -5,19 +5,19 @@
   
       <!-- Name Column --> 
       <ng-container matColumnDef="name" >
-        <th fxLayoutAlign=" center" fxFlex="20" mat-header-cell *matHeaderCellDef> Name </th>
-        <td fxLayoutAlign=" center" fxFlex="20" mat-cell *matCellDef="let element"> {{element.currencyName}} </td>
+        <th fxLayoutAlign=" center" fxFlex="50" mat-header-cell *matHeaderCellDef> Name </th>
+        <td fxLayoutAlign=" center" fxFlex="50" mat-cell *matCellDef="let element"> {{element.currencyName}} </td>
       </ng-container>
   
       <!-- Weight Column -->
       <ng-container matColumnDef="viewValue" >
-        <th fxLayoutAlign=" center" fxFlex="20" mat-header-cell *matHeaderCellDef> Symbol </th>
-        <td fxLayoutAlign=" center" fxFlex="20" mat-cell *matCellDef="let element"> {{element.currencyAbbreviation}} </td>
+        <th fxLayoutAlign=" center" fxFlex="30" mat-header-cell *matHeaderCellDef> Symbol </th>
+        <td fxLayoutAlign=" center" fxFlex="30" mat-cell *matCellDef="let element"> {{element.currencyAbbreviation}} </td>
       </ng-container>
    
    <!-- Actions Column -->
         <ng-container matColumnDef="actions" >
-            <th fxLayoutAlign=" center" fxFlex="20" mat-header-cell *matHeaderCellDef> Actions 
+            <th fxLayoutAlign="center center" fxFlex="20" mat-header-cell *matHeaderCellDef> Actions 
               <div *ngIf="authService.isAdmin">
               <button mat-icon-button class="addButton" (click)="addCurrency()">
                 <i class="material-icons" color="primary">
@@ -26,7 +26,7 @@
               </button>
             </div>
             </th> 
-            <td  mat-cell *matCellDef="let element">
+            <td fxLayoutAlign="center center" fxFlex="20" mat-cell *matCellDef="let element">
               <div *ngIf="authService.isAdmin">
               <button mat-icon-button color="warn">
                 <i class="material-icons">
@@ -57,13 +57,13 @@
   
       <!-- Name Column -->
       <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef> Crypto Name </th>
-        <td mat-cell *matCellDef="let element"> {{element.cryptoCurrencyName}} </td>
+        <th fxLayoutAlign=" center" fxFlex="70"  mat-header-cell *matHeaderCellDef> Crypto Name </th>
+        <td fxLayoutAlign=" center" fxFlex="70"  mat-cell *matCellDef="let element"> {{element.cryptoCurrencyName}} </td>
       </ng-container>
   
    <!-- Actions Column -->
         <ng-container matColumnDef="actions">
-            <th mat-header-cell *matHeaderCellDef> Actions 
+            <th fxLayoutAlign="center center" fxFlex="30"  mat-header-cell *matHeaderCellDef> Actions 
               <div *ngIf="authService.isAdmin">
               <button mat-icon-button (click)="addCrypto()">
                 <i class="material-icons">
@@ -72,7 +72,7 @@
               </button>
               </div>
             </th>
-            <td mat-cell *matCellDef="let element">
+            <td fxLayoutAlign="center center" fxFlex="30"  mat-cell *matCellDef="let element">
               <div *ngIf="authService.isAdmin">
               <button mat-icon-button color="warn" >
                 <i class="material-icons">
@@ -81,7 +81,7 @@
               </button>
               </div>
               <div *ngIf="!authService.isAdmin">
-                <button mat-icon-button class="addButton"  (click)="availableSevice.addCryptoCurrencyToList()" >
+                <button mat-icon-button (click)="availableSevice.addCryptoCurrencyToList()" >
                   <i class="material-icons" color="primary">
                     add
                     </i>

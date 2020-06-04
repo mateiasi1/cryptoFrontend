@@ -25,6 +25,7 @@ import { TokenInterceptor } from './components/token-nterceptor';
 import { BankAccountService } from './services/bankAccount.service';
 import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { AlertModule } from './_alert';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 const modules = [
   MatCardModule,
@@ -59,7 +60,8 @@ const modules = [
     ReactiveFormsModule,
     BrowserAnimationsModule,
     ...modules,
-    AlertModule
+    AlertModule,
+    FlexLayoutModule
   ],
   exports: [...modules],
   providers: [

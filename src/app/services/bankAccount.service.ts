@@ -5,6 +5,7 @@ import { BankAccount, CurrencyList } from '../components/currency.component';
 import { CurrencyListCrypto } from '../components/cryptoCurrency.component';
 import { AlertService } from '../_alert';
 import { environment } from 'src/environments/environment';
+import { Subject } from 'rxjs';
 
 
 
@@ -24,6 +25,7 @@ export class BankAccountService {
   public currencyList: CurrencyList[] = [];
   public cryptoList: CurrencyListCrypto[] = [];
 
+  public sub: Subject<boolean> = new Subject<boolean>();
 
 
   public bankAccounts: BankAccount[] = [];
@@ -96,6 +98,7 @@ export class BankAccountService {
        this.bankAccounts = responseData.data.items;
        this.dataSource = new MatTableDataSource(responseData.data.items);
        console.log('BANK ACCOUNTS', responseData.data.items);
+       this.sub.next(true);
      });
    }
    // #region Currency

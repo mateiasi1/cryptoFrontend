@@ -24,7 +24,7 @@ export class AvailableService {
     public currencyFromBackend: Currency[] = [];
 
     public sub: Subject<boolean> = new Subject<boolean>();
-  
+
 
     dataSource: MatTableDataSource<CurrencyList>;
     dataSourceCrypto: MatTableDataSource<CurrencyListCrypto>;

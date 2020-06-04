@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { BankAccount } from 'src/app/components/currency.component';
-import { MatTableDataSource, MatDialog } from '@angular/material';
+import { MatTableDataSource, MatDialog, MatPaginator } from '@angular/material';
 import { BankAccountService } from 'src/app/services/bankAccount.service';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
@@ -12,6 +12,8 @@ import { environment } from 'src/environments/environment';
 })
 export class BankAccountComponent implements OnInit {
 
+  @ViewChild('paginator', {static:true}) paginator: MatPaginator;
+  
   environmentURL = environment.apiUrl;
   public bankAccounts: BankAccount[] = [];
   displayedColumns: string[] = ['currencyName', 'bankName', 'iban', 'sold', 'actions' ];
@@ -26,7 +28,11 @@ export class BankAccountComponent implements OnInit {
    constructor(public bankAccountService: BankAccountService,
                private http: HttpClient,
                public dialog: MatDialog,
-     ) { }
+     ) {
+      this.bankAccountService.sub.subscribe(e => {
+      this.dataSource.paginator = this.paginator;
+    });
+  }
 
    ngOnInit() {
      this.getBankAccounts();
