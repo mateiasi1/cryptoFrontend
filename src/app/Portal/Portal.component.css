@@ -1,6 +1,6 @@
 .wrapper {
-    padding: 5px;
-    float: right;
+    right: 1%;
+    position:fixed;
   }
   .image--cover {
     width: 40px;
@@ -16,4 +16,9 @@
 
   .button-white {
     color: white;
+  }
+
+  .logo {
+    width: 30%;
+    height: 30%;
   }
