@@ -4,6 +4,7 @@ import { ManagerService } from './manager.service';
 import { CryptoAccount, CurrencyListCrypto } from '../components/cryptoCurrency.component';
 import { CurrencyList, BankAccount } from '../components/currency.component';
 import { environment } from 'src/environments/environment';
+import { Subject } from 'rxjs';
 
 
 
@@ -21,8 +22,6 @@ export class CryptoAccountService {
 
   public currencyList: CurrencyList[] = [];
   public cryptoList: CurrencyListCrypto[] = [];
-
-
 
   public bankAccounts: BankAccount[] = [];
   errorMessage = 'ERROR';

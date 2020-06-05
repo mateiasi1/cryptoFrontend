@@ -1,3 +1,4 @@
+
 <div class="mat-elevation-z8 tablelong">
     <table mat-table [dataSource]="dataSource">
      
@@ -16,13 +17,13 @@
       </ng-container>
       <!-- Amount Column -->
       <ng-container matColumnDef="sold">
-        <th fxLayoutAlign="start center" fxFlex="30" mat-header-cell *matHeaderCellDef>Sold</th>
-        <td fxLayoutAlign="start center" fxFlex="30" mat-cell *matCellDef="let element">{{ element.sold }}</td>
+        <th fxLayoutAlign="start center" fxFlex="25" mat-header-cell *matHeaderCellDef>Sold</th>
+        <td fxLayoutAlign="start center" fxFlex="25" mat-cell *matCellDef="let element">{{ element.sold }}</td>
       </ng-container>
       <!-- Actions Column -->
       <ng-container matColumnDef="actions">
-        <th fxLayoutAlign="center center" fxFlex="20" mat-header-cell *matHeaderCellDef>Actions</th>
-        <td fxLayoutAlign="center center" fxFlex="20" mat-cell *matCellDef="let element">
+        <th fxLayoutAlign="center center" fxFlex="25" mat-header-cell *matHeaderCellDef>Actions</th>
+        <td fxLayoutAlign="center center" fxFlex="25" mat-cell *matCellDef="let element">
           <button
             mat-icon-button
             color="primary"
@@ -56,10 +57,6 @@
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
     </table>
-  
-    <mat-paginator
-      [pageSizeOptions]="[5, 10, 20]"
-      showFirstLastButtons
-    ></mat-paginator>
+    <mat-paginator  #paginator  [pageSize]="10"  [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
   </div>
   

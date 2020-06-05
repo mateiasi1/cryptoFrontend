@@ -8,6 +8,7 @@ import { CurrencyListCrypto } from 'src/app/components/cryptoCurrency.component'
 import { CryptoAccount, Crypto } from 'src/app/components/crypto.component';
 import { environment } from 'src/environments/environment';
 import { MatPaginator } from '@angular/material/paginator';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-bank',
@@ -16,13 +17,22 @@ import { MatPaginator } from '@angular/material/paginator';
 })
 export class BankComponent implements OnInit {
   constructor(private http: HttpClient,
-              public authService: AuthService) { }
+              public authService: AuthService) {
+                this.sub.subscribe(e => {
+
+                  this.dataSource.paginator = this.paginator;
+                  this.dataSourceCrypto.paginator = this.paginator2;
+                });
+               }
+
+  public sub: Subject<boolean> = new Subject<boolean>();
 
   environmentURL = environment.apiUrl;
   displayedColumns: string[] = ['BankName', 'IBAN', 'Currency', 'Actions'];
   displayedColumnsCrypto: string[] = ['CryptoName', 'Actions'];
 
-  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+  @ViewChild('paginator', {static:true}) paginator: MatPaginator;
+  @ViewChild('paginator2', {static: false}) paginator2: MatPaginator;
 
   dataSource: MatTableDataSource<Bank>;
   dataSourceCrypto: MatTableDataSource<Crypto>;
@@ -68,6 +78,7 @@ export class BankComponent implements OnInit {
       this.bankAccounts = responseData.data.items;
       this.dataSource = new MatTableDataSource(responseData.data.items);
       console.log(responseData.data.items);
+      this.sub.next(true);
     });
   }
 
@@ -144,6 +155,7 @@ export class BankComponent implements OnInit {
 
       this.dataSourceCrypto = new MatTableDataSource(responseData.data.items);
       console.log(responseData.data.items);
+      this.sub.next(true);
     });
   }
 

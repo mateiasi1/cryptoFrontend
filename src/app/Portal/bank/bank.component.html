@@ -39,7 +39,7 @@
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </mat-table>
   
-    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+    <mat-paginator  #paginator  [pageSize]="10"  [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
   </div>
   <br>
   
@@ -112,7 +112,7 @@
       <tr mat-header-row *matHeaderRowDef="displayedColumnsCrypto"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumnsCrypto;"></tr>
     </mat-table>
-  
+    <mat-paginator  #paginator2  [pageSize]="10"  [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
   </div>
   <br>
   <div class="tablelong" *ngIf="!authService.isAdmin">
