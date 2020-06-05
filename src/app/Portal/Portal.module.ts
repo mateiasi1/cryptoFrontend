@@ -18,7 +18,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 // tslint:disable-next-line:max-line-length
-import { MatPaginatorModule, MatInputModule, MatMenuModule, MatSnackBar, MatButtonModule, MatDialogModule, MatTabsModule } from '@angular/material';
+import { MatPaginatorModule, MatInputModule, MatMenuModule, MatSnackBar, MatButtonModule, MatDialogModule, MatTabsModule, MatToolbarModule } from '@angular/material';
 import { TradeCryptoComponent } from './crypto-account/TradeCryptoComponent';
 import { DepositCryptoComponent } from './crypto-account/DepositCryptoComponent';
 import { AuthService } from '../services/auth-service';
@@ -71,7 +71,8 @@ exports: [
     MatDialogModule,
     AlertModule,
     MatTabsModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatToolbarModule
   ],
   providers: [
     AuthService,

@@ -1,12 +1,12 @@
-
-<div *ngIf="authService.isLoggedIn">
-  <button mat-button routerLink="bank-account"  *ngIf="!authService.isAdmin" >Fiat wallet</button> 
-  <button mat-button routerLink="crypto-account" *ngIf="!authService.isAdmin"  >Crypto wallet</button>
-  <button mat-button routerLink="available-currencies" >Available Currencies</button>
-  <button mat-button routerLink="bank" *ngIf="!authService.isAdmin">Bank</button>
-  <button mat-button routerLink="manage-application" *ngIf="authService.isAdmin">Manage Application</button>
-  <button mat-button routerLink="users-management" *ngIf="authService.isAdmin">Users management</button>
-    <div class="wrapper">
+<mat-toolbar class="nav-bar">
+<div *ngIf="authService.isLoggedIn" fxLayoutAlign=" center"  >
+  <button mat-button class="button-white" routerLink="bank-account"  *ngIf="!authService.isAdmin" >Fiat wallet</button> 
+  <button mat-button class="button-white" routerLink="crypto-account" *ngIf="!authService.isAdmin"  >Crypto wallet</button>
+  <button mat-button class="button-white"  routerLink="available-currencies" >Available Currencies</button>
+  <button mat-button class="button-white"  routerLink="bank" *ngIf="!authService.isAdmin">Bank</button>
+  <button mat-button class="button-white"  routerLink="manage-application" *ngIf="authService.isAdmin">Manage Application</button>
+  <button mat-button class="button-white"  routerLink="users-management" *ngIf="authService.isAdmin">Users management</button>
+    <div class="wrapper"  fxFlexAlign="end">
       <button mat-mini-fab [matMenuTriggerFor]="menu"><img src="https://i2.cdn.turner.com/cnnnext/dam/assets/140926165711-john-sutter-profile-image-large-169.jpg" class="image--cover"></button>
       <mat-menu #menu="matMenu">
         <p style="text-align: center" >Hi, {{authService.getRole}}</p>
@@ -16,6 +16,7 @@
     </div>  
   
   </div>
+</mat-toolbar>
   <h3>Portal</h3>
 
 <router-outlet></router-outlet>

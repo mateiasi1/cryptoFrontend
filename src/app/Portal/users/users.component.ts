@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { MatTableDataSource } from '@angular/material';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatTableDataSource, MatPaginator } from '@angular/material';
 import { Users } from 'src/app/components/users';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-users',
@@ -11,13 +12,18 @@ import { environment } from 'src/environments/environment';
 })
 export class UsersComponent implements OnInit {
 
+
+  @ViewChild('paginator', {static:true}) paginator: MatPaginator;
+  @ViewChild('paginator2', {static: false}) paginator2: MatPaginator;
+
   environmentURL = environment.apiUrl;
   public users: Users[] = [];
   public userId;
+  
   displayedColumns: string[] = ['name', 'role', 'state', 'actions'];
   dataSource: MatTableDataSource<Users>;
   unconfirmedUsers: MatTableDataSource<Users>;
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient) {   }
 
     ngOnInit() {
       this.getConfirmedUsers();
@@ -29,6 +35,7 @@ export class UsersComponent implements OnInit {
         this.users = respondeData;
         this.dataSource = new MatTableDataSource(this.users);
         console.log(this.users);
+        this.unconfirmedUsers.paginator = this.paginator;
       });
     }
 
@@ -37,6 +44,7 @@ export class UsersComponent implements OnInit {
         this.users = respondeData;
         this.unconfirmedUsers = new MatTableDataSource(this.users);
         console.log(this.users);
+        this.dataSource.paginator = this.paginator2;
       });
     }
 

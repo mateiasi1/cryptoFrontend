@@ -10,3 +10,10 @@
     object-fit: cover;
     object-position: center right;
   }
+  .nav-bar {
+    background-color: #3f51b5;
+  }
+
+  .button-white {
+    color: white;
+  }
