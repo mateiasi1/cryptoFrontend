@@ -30,6 +30,15 @@
           <button
             mat-icon-button
             color="primary"
+            routerLink="/portal/transactions"
+          >
+            <i class="material-icons" matTooltip="timeline">
+              timeline
+            </i>
+          </button>
+          <button
+            mat-icon-button
+            color="primary"
             (click)="deposit(); bankAccountService.setID(element.id)"
           >
             <i class="material-icons" matTooltip="Deposit">

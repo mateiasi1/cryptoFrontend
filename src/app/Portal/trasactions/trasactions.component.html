@@ -1,0 +1,51 @@
+<mat-tab-group>
+  <mat-tab label="Fiat Transactions">
+<div class="mat-elevation-z8 tablelong">
+    <mat-table [dataSource]="dataSource">
+  
+      <!-- Name Column --> 
+      <ng-container matColumnDef="Ammount" >
+        <th fxLayoutAlign=" center" fxFlex="70" mat-header-cell *matHeaderCellDef> Ammount </th>
+        <td fxLayoutAlign=" center" fxFlex="70" mat-cell *matCellDef="let element"> {{element.ammount}} </td>
+      </ng-container>
+  
+      <!-- Weight Column -->
+      <ng-container matColumnDef="Status" >
+        <th fxLayoutAlign=" center" fxFlex="30" mat-header-cell *matHeaderCellDef> Status </th>
+        <td fxLayoutAlign=" center" fxFlex="30" mat-cell *matCellDef="let element"> {{element.status}} </td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </mat-table>
+    <mat-paginator  #paginator  [pageSize]="10"  [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+  </div>
+</mat-tab>
+  
+  <mat-tab label="Crypto Transactions">
+  <div class="mat-elevation-z8 tablelong">
+    <mat-table [dataSource]="dataSourceCrypto">
+  
+      <!-- Name Column -->
+      <ng-container matColumnDef="Ammount">
+        <th fxLayoutAlign=" center" fxFlex="70"  mat-header-cell *matHeaderCellDef> Ammount </th>
+        <td fxLayoutAlign=" center" fxFlex="70"  mat-cell *matCellDef="let element"> {{element.ammount}} </td>
+      </ng-container>
+  
+    <!-- Weight Column -->
+    <ng-container matColumnDef="Status" >
+      <th fxLayoutAlign=" center" fxFlex="30" mat-header-cell *matHeaderCellDef> Status </th>
+      <td fxLayoutAlign=" center" fxFlex="30" mat-cell *matCellDef="let element"> {{element.status}} </td>
+    </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumnsCrypto"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumnsCrypto;"></tr>
+      
+    </mat-table>
+  
+    <mat-paginator  #paginator2  [pageSize]="10"  [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+  </div>
+</mat-tab>
+</mat-tab-group>
+  
+  
+  

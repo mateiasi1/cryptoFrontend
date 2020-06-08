@@ -33,6 +33,7 @@ import { CryptoAccountService } from '../services/cryptoAccount.service';
 import { LoginComponent } from '../login/LoginComponent';
 import { AlertModule } from '../_alert';
 import { FlexLayoutModule } from "@angular/flex-layout";
+import { TrasactionsComponent } from './trasactions/trasactions.component';
 
 @NgModule({
 
@@ -54,7 +55,8 @@ exports: [
     WithdrawFiatComponent,
     TradeFiatComponent,
     TradeCryptoComponent,
-    DepositCryptoComponent
+    DepositCryptoComponent,
+    TrasactionsComponent
   ],
   imports: [
     CommonModule,

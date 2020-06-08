@@ -31,7 +31,7 @@ export class BankComponent implements OnInit {
   displayedColumns: string[] = ['BankName', 'IBAN', 'Currency', 'Actions'];
   displayedColumnsCrypto: string[] = ['CryptoName', 'Actions'];
 
-  @ViewChild('paginator', {static:true}) paginator: MatPaginator;
+  @ViewChild('paginator', {static: true}) paginator: MatPaginator;
   @ViewChild('paginator2', {static: false}) paginator2: MatPaginator;
 
   dataSource: MatTableDataSource<Bank>;

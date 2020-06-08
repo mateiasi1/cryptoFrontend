@@ -18,7 +18,7 @@ export class AvailableCurrenciesComponent implements OnInit {
   role: string;
   isCurrentUserAdmin: boolean;
 
-  @ViewChild('paginator', {static:true}) paginator: MatPaginator;
+  @ViewChild('paginator', {static: true}) paginator: MatPaginator;
   @ViewChild('paginator2', {static: false}) paginator2: MatPaginator;
 
 

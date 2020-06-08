@@ -10,12 +10,14 @@ import { Page404portalComponent } from './page404portal/page404portal.component'
 import { PortalComponent } from './portal.component';
 import {AuthGuardService as AuthGuard} from '../services/auth-guard.service';
 import {RoleGuardService as RoleGuard} from '../services/role-guad.service';
+import { TrasactionsComponent } from './trasactions/trasactions.component';
 
 const routes: Routes = [
   {
     path: '', component: PortalComponent, children: [
   { path: 'available-currencies', canActivate: [AuthGuard], component: AvailableCurrenciesComponent },
   { path: 'bank', canActivate: [AuthGuard], component: BankComponent },
+  { path: 'transactions', canActivate: [RoleGuard], data: { expectedRole: 'user'},  component: TrasactionsComponent },
   { path: 'bank-account', canActivate: [AuthGuard], component: BankAccountComponent },
   { path: 'crypto-account', canActivate: [RoleGuard], data: { expectedRole: 'user'}, component: CryptoAccountComponent },
   { path: 'manage-application', canActivate: [RoleGuard], data: { expectedRole: 'admin'}, component: ManageApplicationComponent },

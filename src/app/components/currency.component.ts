@@ -17,3 +17,9 @@ export class Currency {
     Name: string;
     Symbol: string;
 }
+
+export class CurrencyListTransactions {
+    id: number;
+    Ammount: number;
+    Status: string;
+}
