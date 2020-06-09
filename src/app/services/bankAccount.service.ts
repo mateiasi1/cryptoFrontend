@@ -115,10 +115,12 @@ export class BankAccountService {
   }
 
   getCryptoCurrencies() {
-    this.http.get(this.environmentURL + 'CryptoCurrencies').subscribe((responseData: any) => {
-      this.cryptoList = responseData.data.items;
-      console.log('Crypto currencies', responseData.data.items);
-    });
+      this.http.get(this.environmentURL + 'Crypto').subscribe((responseData: any) => {
+
+        this.cryptoList = responseData.data.items;
+        console.log(responseData.data.items);
+        this.sub.next(true);
+      });
   }
   // #endregion
 }
