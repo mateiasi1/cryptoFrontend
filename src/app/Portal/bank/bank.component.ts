@@ -151,7 +151,6 @@ export class BankComponent implements OnInit {
   // #region Crypto
   getCrypto() {
     this.http.get(this.environmentURL + 'Crypto').subscribe((responseData: any) => {
-      this.cryptoList = responseData.data.items;
 
       this.dataSourceCrypto = new MatTableDataSource(responseData.data.items);
       console.log(responseData.data.items);

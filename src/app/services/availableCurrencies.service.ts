@@ -70,13 +70,13 @@ addCurrencyToList(currencyAbbreviation: string) {
     this.http.get(this.environmentURL + 'Currencies').subscribe((responseData: any) => {
       // this.currencyFromBackend = responseData;
       this.dataSource = new MatTableDataSource(responseData.data.items);
-      console.log('2222' + responseData.data.items);
+      console.log(responseData.data.items);
     });
     // get saved crypto
     this.http.get(this.environmentURL + 'CryptoCurrencies').subscribe((responseData: any) => {
       // this.cryptoCurrencyFromBackend = responseData;
        this.dataSourceCrypto = new MatTableDataSource(responseData.data.items);
-       console.log('1111' + responseData.data.items);
+       console.log(responseData.data.items);
        this.sub.next(true);
     });
 
