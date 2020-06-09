@@ -34,7 +34,7 @@ constructor(public serversService: BankAccountService,
             public authService: AuthService,
             public dialog: MatDialog) { }
 
-addCurrencyToList(currencyName: string) {
+addCurrencyToList(currencyAbbreviation: string) {
     // this.selectedValue = currencyName;
     const currencyToAdd = this.allCurrency.find(item => item.currencyAbbreviation === this.selectedValue);
     this.http.post(this.environmentURL +  'Currencies', currencyToAdd).subscribe((responseData: CurrencyList[]) => {
@@ -47,7 +47,7 @@ addCurrencyToList(currencyName: string) {
   }
   addCryptoCurrencyToList(cryptoCurrencyName: string) {
     // tslint:disable-next-line:max-line-length
-    const cryptoCurrencyToAdd = this.allCryptoCurrency.find(item => item.cryptoCurrencyName === cryptoCurrencyName);
+    const cryptoCurrencyToAdd = this.allCryptoCurrency.find(item => item.cryptoCurrencyName === this.selectedValueCrypto);
 
     this.http.post(this.environmentURL + 'CryptoCurrencies', cryptoCurrencyToAdd).subscribe((responseData: CurrencyListCrypto[]) => {
      // this.cryptoCurrencyFromBackend = responseData;
