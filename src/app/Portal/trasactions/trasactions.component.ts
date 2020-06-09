@@ -29,7 +29,7 @@ export class TrasactionsComponent implements OnInit {
       });
     }
 
-  displayedColumns: string[] = ['From','To','Ammount', 'Status','Date'];
+  displayedColumns: string[] = ['From','To','Ammount', 'transactionType','Date'];
   displayedColumnsCrypto: string[] = ['Ammount', 'Status'];
   role: string;
   isCurrentUserAdmin: boolean;
