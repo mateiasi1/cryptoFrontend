@@ -30,7 +30,7 @@ export class TrasactionsComponent implements OnInit {
     }
 
   displayedColumns: string[] = ['From','To','Ammount', 'transactionType','Date'];
-  displayedColumnsCrypto: string[] = ['Ammount', 'Status'];
+  displayedColumnsCrypto: string[] = ['From','To','Ammount', 'transactionType','Date'];
   role: string;
   isCurrentUserAdmin: boolean;
 
@@ -46,6 +46,7 @@ export class TrasactionsComponent implements OnInit {
   
   ngOnInit() {
     this.getFiatTransactions();
+    this.getCryptoTransactions();
   }
   getFiatTransactions() {
     this.http.get(this.environmentURL + 'BankAccountTransactions').subscribe((responseData: any) => {
@@ -56,9 +57,9 @@ export class TrasactionsComponent implements OnInit {
 }
 // TODO: de facut in backend crypto transactions
 getCryptoTransactions() {
-  this.http.get(this.environmentURL + 'BankAccountTransactions').subscribe((responseData: any) => {
-    this.dataSource = responseData.data.items;
-    this.dataSource.paginator = this.paginator;
+  this.http.get(this.environmentURL + 'ConversionTransactions').subscribe((responseData: any) => {
+    this.dataSourceCrypto = responseData.data.items;
+    this.dataSourceCrypto.paginator = this.paginator2;
   });
 }
 
