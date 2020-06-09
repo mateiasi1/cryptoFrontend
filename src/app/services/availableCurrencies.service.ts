@@ -33,6 +33,7 @@ constructor(public serversService: BankAccountService,
             private http: HttpClient,
             public authService: AuthService,
             public dialog: MatDialog) { }
+
 addCurrencyToList(currencyName: string) {
     // this.selectedValue = currencyName;
     const currencyToAdd = this.allCurrency.find(item => item.currencyAbbreviation === this.selectedValue);
@@ -44,9 +45,9 @@ addCurrencyToList(currencyName: string) {
     const itemIndex = this.allCurrency.indexOf(currencyToAdd);
     this.allCurrency.splice(itemIndex, 1);
   }
-  addCryptoCurrencyToList() {
+  addCryptoCurrencyToList(cryptoCurrencyName: string) {
     // tslint:disable-next-line:max-line-length
-    const cryptoCurrencyToAdd = this.allCryptoCurrency.find(item => item.cryptoCurrencyName === this.selectedValueCrypto);
+    const cryptoCurrencyToAdd = this.allCryptoCurrency.find(item => item.cryptoCurrencyName === cryptoCurrencyName);
 
     this.http.post(this.environmentURL + 'CryptoCurrencies', cryptoCurrencyToAdd).subscribe((responseData: CurrencyListCrypto[]) => {
      // this.cryptoCurrencyFromBackend = responseData;
@@ -69,11 +70,13 @@ addCurrencyToList(currencyName: string) {
     this.http.get(this.environmentURL + 'Currencies').subscribe((responseData: any) => {
       // this.currencyFromBackend = responseData;
       this.dataSource = new MatTableDataSource(responseData.data.items);
+      console.log('2222' + responseData.data.items);
     });
     // get saved crypto
     this.http.get(this.environmentURL + 'CryptoCurrencies').subscribe((responseData: any) => {
       // this.cryptoCurrencyFromBackend = responseData;
        this.dataSourceCrypto = new MatTableDataSource(responseData.data.items);
+       console.log('1111' + responseData.data.items);
        this.sub.next(true);
     });
 

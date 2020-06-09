@@ -81,7 +81,7 @@
               </button>
               </div>
               <div *ngIf="!authService.isAdmin">
-                <button mat-icon-button (click)="availableSevice.addCryptoCurrencyToList()" >
+                <button mat-icon-button (click)="availableSevice.addCryptoCurrencyToList(element.cryptoCurrencyName)" >
                   <i class="material-icons" color="primary">
                     add
                     </i>

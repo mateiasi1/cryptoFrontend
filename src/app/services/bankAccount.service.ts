@@ -26,7 +26,7 @@ export class BankAccountService {
   public cryptoList: CurrencyListCrypto[] = [];
 
   public sub: Subject<boolean> = new Subject<boolean>();
-
+  public deposit: Subject<boolean> = new Subject<boolean>();
 
   public bankAccounts: BankAccount[] = [];
   errorMessage = 'ERROR';
@@ -54,30 +54,34 @@ export class BankAccountService {
     console.log(this.id);
     // tslint:disable-next-line:object-literal-key-quotes
     // tslint:disable-next-line:max-line-length tslint:disable-next-line:object-literal-key-quotes
-    this.http.put(this.environmentURL + `BankAccounts/add`, JSON.stringify({ 'amount': this.amount, 'id': this.id })).subscribe((responseData: any) => {
+    this.http.put(this.environmentURL + `BankAccounts/add`, ({ 'amount': this.amount, 'id': this.id })).subscribe((responseData: any) => {
       if ( responseData.data === null) {
         this.alertService.error(responseData.message, this.options);
         // TODO: de adaugat in mesajul de eroare responseData.message
         this.amount = null;
+        this.deposit.next(true);
       }
       this.alertService.success(responseData.message, this.options);
       console.log(responseData);
       this.amount = null;
+      this.deposit.next(true);
     });
   }
 
   withdrawAmount() {
     // tslint:disable-next-line:max-line-length
-    this.http.put(this.environmentURL + `BankAccounts/withdraw`, JSON.stringify({ 'amount': this.amount, 'id': this.id })).subscribe((responseData: any) => {
+    this.http.put(this.environmentURL + `BankAccounts/withdraw`, ({ 'amount': this.amount, 'id': this.id })).subscribe((responseData: any) => {
       // tslint:disable-next-line: no-debugger
       if ( responseData.data === null) {
         this.alertService.error(responseData.message, this.options);
         // TODO: de adaugat in mesajul de eroare responseData.message
         this.amount = null;
+        this.deposit.next(true);
       } else {
       this.alertService.success(responseData.message, this.options);
       console.log(responseData);
       this.amount = null;
+      this.deposit.next(true);
       }
     });
   }
@@ -88,6 +92,7 @@ export class BankAccountService {
     this.http.put(this.environmentURL + `conversions/exchangeFiat`, JSON.stringify({'selectedValueFrom': this.selectedValueFrom, 'selectedValueTo': this.selectedValueTo, 'amountFrom': this.amountFrom, 'id': this.id })).subscribe((responseData: any) => {
       // tslint:disable-next-line: no-debugger
       console.log(responseData);
+      this.deposit.next(true);
     });
     console.log(this.selectedValueFrom, this.selectedValueTo, this.amountFrom, this.id);
   }

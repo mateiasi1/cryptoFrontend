@@ -29,7 +29,7 @@ export class TrasactionsComponent implements OnInit {
       });
     }
 
-  displayedColumns: string[] = ['Ammount', 'Status'];
+  displayedColumns: string[] = ['From','To','Ammount', 'Status','Date'];
   displayedColumnsCrypto: string[] = ['Ammount', 'Status'];
   role: string;
   isCurrentUserAdmin: boolean;
@@ -51,6 +51,7 @@ export class TrasactionsComponent implements OnInit {
     this.http.get(this.environmentURL + 'BankAccountTransactions').subscribe((responseData: any) => {
       this.dataSource = responseData.data.items;
       this.dataSource.paginator = this.paginator;
+      console.log(responseData.data.items);
     });
 }
 // TODO: de facut in backend crypto transactions

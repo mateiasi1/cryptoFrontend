@@ -32,6 +32,9 @@ export class BankAccountComponent implements OnInit {
       this.bankAccountService.sub.subscribe(e => {
       this.dataSource.paginator = this.paginator;
     });
+    this.bankAccountService.deposit.subscribe(e => {
+      this.ngOnInit();
+    })
   }
 
    ngOnInit() {

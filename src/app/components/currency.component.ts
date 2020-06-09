@@ -20,6 +20,9 @@ export class Currency {
 
 export class CurrencyListTransactions {
     id: number;
+    From: string;
+    To: string;
     Ammount: number;
     Status: string;
+    Date: Date;
 }
