@@ -1,0 +1,40 @@
+.mat-card {
+    margin-top: 50px;
+    width: 30%;
+    align-items: center;
+}
+.inputNew {
+    width: 40%;
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.inputOld {
+    width: 300px;
+    display: inline-block;
+    margin-left: 16px;
+}
+
+
+.buttons {
+    margin-left: 10px;
+}
+
+.accordion {
+    width: 40%;
+}
+
+.flex-container {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    margin-top: 20px;;
+  }
+  
+  .flex-container > div {
+    width: 300px;
+    margin: 10px;
+    text-align: center;
+    line-height: 75px;
+    font-size: 30px;
+  }
