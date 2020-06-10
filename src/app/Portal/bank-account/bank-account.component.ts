@@ -102,6 +102,10 @@ export class BankAccountComponent implements OnInit {
      console.log(`Dialog result: ${result}`);
    });
  }
+
+ changeTab(index:number) {
+  this.bankAccountService.changeTab(index);
+ }
 }
 
 

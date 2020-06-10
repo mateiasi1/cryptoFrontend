@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatDialog, MatTableDataSource } from '@angular/material';
+import { MatDialog, MatTableDataSource, MatTabGroup } from '@angular/material';
 import { BankAccountService } from 'src/app/services/bankAccount.service';
 import { HttpClient } from '@angular/common/http';
 import { Currency, CurrencyListTransactions } from 'src/app/components/currency.component';
@@ -20,7 +20,7 @@ export class TrasactionsComponent implements OnInit {
   constructor(public serversService: BankAccountService,
               private http: HttpClient,
               public authService: AuthService,
-              public dialog: MatDialog,
+              public dialog: MatDialog
     ) {
      this.sub.subscribe(e => {
 
@@ -38,7 +38,9 @@ export class TrasactionsComponent implements OnInit {
 
   @ViewChild('paginator', {static: true}) paginator: MatPaginator;
   @ViewChild('paginator2', {static: false}) paginator2: MatPaginator;
-
+  @ViewChild('tabs', {static: true}) tabGroup: MatTabGroup;
+  
+  
   dataSource: MatTableDataSource<CurrencyListTransactions>;
   dataSourceCrypto: MatTableDataSource<CryptoCurrencyTransactions>;
   environmentURL = environment.apiUrl;
@@ -47,6 +49,7 @@ export class TrasactionsComponent implements OnInit {
   ngOnInit() {
     this.getFiatTransactions();
     this.getCryptoTransactions();
+    this.changeTab();
   }
   getFiatTransactions() {
     this.http.get(this.environmentURL + 'BankAccountTransactions').subscribe((responseData: any) => {
@@ -63,5 +66,8 @@ getCryptoTransactions() {
   });
 }
 
+changeTab() {
+  this.tabGroup.selectedIndex = this.serversService.newIndex;
+}
 }
 

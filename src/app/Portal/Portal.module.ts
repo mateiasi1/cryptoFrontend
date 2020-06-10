@@ -6,7 +6,7 @@ import { PortalComponent } from './portal.component';
 import { BankComponent } from './bank/bank.component';
 // tslint:disable-next-line:max-line-length
 import { BankAccountComponent, DepositFiatComponent, WithdrawFiatComponent, TradeFiatComponent } from './bank-account/bank-account.component';
-import { CryptoAccountComponent } from './crypto-account/crypto-account.component';
+import { CryptoAccountComponent, TradeCryptoComponent } from './crypto-account/crypto-account.component';
 import { ManageApplicationComponent } from './manage-application/manage-application.component';
 import { Page404portalComponent } from './page404portal/page404portal.component';
 // tslint:disable-next-line:max-line-length
@@ -19,8 +19,6 @@ import { FormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 // tslint:disable-next-line:max-line-length
 import { MatPaginatorModule, MatInputModule, MatMenuModule, MatSnackBar, MatButtonModule, MatDialogModule, MatTabsModule, MatToolbarModule } from '@angular/material';
-import { TradeCryptoComponent } from './crypto-account/TradeCryptoComponent';
-import { DepositCryptoComponent } from './crypto-account/DepositCryptoComponent';
 import { AuthService } from '../services/auth-service';
 import { AuthGuardService } from '../services/auth-guard.service';
 import { LoginService } from '../services/login.service';
@@ -54,9 +52,8 @@ exports: [
     DepositFiatComponent,
     WithdrawFiatComponent,
     TradeFiatComponent,
-    TradeCryptoComponent,
-    DepositCryptoComponent,
-    TrasactionsComponent
+    TrasactionsComponent,
+    TradeCryptoComponent
   ],
   imports: [
     CommonModule,
@@ -87,6 +84,7 @@ exports: [
     CryptoAccountService,
     MatSnackBar,
     BankAccountComponent,
+    CryptoAccountComponent,
     { provide: HTTP_INTERCEPTORS,
        useClass: TokenInterceptor,
        multi: true
@@ -95,6 +93,6 @@ exports: [
     JwtHelperService
   ],
   entryComponents: [AddCurrencyComponent, AddCryptoComponent, DepositFiatComponent, WithdrawFiatComponent, TradeFiatComponent,
-    TradeCryptoComponent, DepositCryptoComponent ]
+    TradeCryptoComponent ]
 })
 export class PortalModule { }

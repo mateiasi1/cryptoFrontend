@@ -24,15 +24,15 @@
       <ng-container matColumnDef="actions">
         <th fxLayoutAlign="center center" fxFlex="25" mat-header-cell *matHeaderCellDef>Actions</th>
         <td fxLayoutAlign="center center" fxFlex="25" mat-cell *matCellDef="let element">
-          <button
-            mat-icon-button
-            color="primary"
-            (click)="deposit(); cryptoAccountService.setID(element.id)"
-          >
-            <i class="material-icons" matTooltip="Deposit">
-              library_add
-            </i>
-          </button>
+          <button (click)="changeTab(1)"
+          mat-icon-button
+          color="primary"
+          routerLink="/portal/transactions"
+        >
+          <i class="material-icons" matTooltip="timeline">
+            timeline
+          </i>
+        </button>
           <button
             mat-icon-button
             color="primary"

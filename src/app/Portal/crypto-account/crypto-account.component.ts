@@ -1,10 +1,9 @@
+import { BankAccountService } from 'src/app/services/bankAccount.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { CryptoAccountService } from 'src/app/services/cryptoAccount.service';
 import { CryptoAccount } from 'src/app/components/cryptoCurrency.component';
 import { MatTableDataSource, MatDialog, MatPaginator } from '@angular/material';
 import { HttpClient } from '@angular/common/http';
-import { DepositCryptoComponent } from './DepositCryptoComponent';
-import { TradeCryptoComponent } from './TradeCryptoComponent';
 import { environment } from 'src/environments/environment';
 import { Subject } from 'rxjs';
 
@@ -32,7 +31,8 @@ export class CryptoAccountComponent implements OnInit {
 
    constructor(private http: HttpClient,
                public cryptoAccountService: CryptoAccountService,
-               public dialog: MatDialog
+               public dialog: MatDialog,
+               public bankAccountService: BankAccountService
      ) {
         this.sub.subscribe(e => {
       this.dataSource.paginator = this.paginator });
@@ -67,31 +67,34 @@ export class CryptoAccountComponent implements OnInit {
       this.dataSource = new MatTableDataSource(responseData.data.items);
       console.log(responseData.data.items);
    });
-   this.ngOnInit();
    }
 
- //#endregion
-
- //#region Operations
-
- //#endregion
-
- deposit() {
-   console.log(this.id);
-   const dialogRef = this.dialog.open(DepositCryptoComponent);
-
-   dialogRef.afterClosed().subscribe(result => {
-     this.ngOnInit();
-     console.log(`Dialog result: ${result}`);
-   });
- }
  trade(id: number) {
-   console.log(id);
-   const dialogRef = this.dialog.open(TradeCryptoComponent);
+  console.log(this.id);
+  const dialogRef = this.dialog.open(TradeCryptoComponent);
 
-   dialogRef.afterClosed().subscribe(result => {
-     this.ngOnInit();
-     console.log(`Dialog result: ${result}`);
-   });
+  dialogRef.afterClosed().subscribe(result => {
+    this.ngOnInit();
+    console.log(`Dialog result: ${result}`);
+  });
  }
+ changeTab(index:number) {
+  this.bankAccountService.changeTab(index);
+ }
+}
+
+@Component({
+  // tslint:disable-next-line:component-selector
+  selector: 'dialog-content-example-dialog',
+  templateUrl: 'trade.html',
+})
+export class TradeCryptoComponent {
+  constructor(public cryptoAccountService: CryptoAccountService,
+              public cryptoAccountComponent: CryptoAccountComponent
+              ) { }
+
+  // tslint:disable-next-line:use-lifecycle-interface
+  ngOnInit() {
+    this.cryptoAccountService.getCryptoCurrencies();
+  }
 }

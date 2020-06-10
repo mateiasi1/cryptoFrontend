@@ -27,7 +27,7 @@
       <ng-container matColumnDef="actions">
         <th fxLayoutAlign="center center" fxFlex="25" mat-header-cell *matHeaderCellDef>Actions</th>
         <td fxLayoutAlign="center center" fxFlex="25" mat-cell *matCellDef="let element">
-          <button
+          <button (click)="changeTab(0)"
             mat-icon-button
             color="primary"
             routerLink="/portal/transactions"

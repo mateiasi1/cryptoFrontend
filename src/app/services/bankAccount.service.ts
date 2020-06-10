@@ -11,6 +11,13 @@ import { Subject } from 'rxjs';
 
 
 export class BankAccountService {
+  constructor(private http: HttpClient,
+              public dialog: MatDialog,
+              public managerService: ManagerService,
+              protected alertService: AlertService
+  ) {
+    this.managerService.getFlatRate();
+  }
 
   environmentURL = environment.apiUrl;
   id: number;
@@ -30,19 +37,13 @@ export class BankAccountService {
 
   public bankAccounts: BankAccount[] = [];
   errorMessage = 'ERROR';
-  constructor(private http: HttpClient,
-              public dialog: MatDialog,
-              public managerService: ManagerService,
-              protected alertService: AlertService
-  ) {
-    this.managerService.getFlatRate();
-  }
   options = {
     autoClose: true,
     keepAfterRouteChange: false
 };
 
   public lastId: number;
+  newIndex: number;
 
   //#region Operations
   setID(idFromHTML: number) {
@@ -122,5 +123,8 @@ export class BankAccountService {
         this.sub.next(true);
       });
   }
+changeTab(index: number) {
+this.newIndex = index;
+}
   // #endregion
 }
