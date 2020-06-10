@@ -41,8 +41,6 @@ export class CryptoAccountComponent implements OnInit {
    ngOnInit() {
      this.getCryptoAccounts();
      this.cryptoAccountService.getCryptoCurrencies();
-     this.cryptoAccountService.getCurrencies();
-     this.cryptoAccountService.getCryptoCurrencies();
    }
 
    setID(idFromHTML: number) {
@@ -66,6 +64,13 @@ export class CryptoAccountComponent implements OnInit {
 
       this.dataSource = new MatTableDataSource(responseData.data.items);
       console.log(responseData.data.items);
+   });
+   }
+
+   deleteCryptoAccount(id: number) {
+    this.http.delete(this.environmentURL + 'CryptoAccount/' + id).subscribe((responseData: any) => {
+     
+      this.cryptoAccountService.cryptoList = responseData.data.items;
    });
    }
 

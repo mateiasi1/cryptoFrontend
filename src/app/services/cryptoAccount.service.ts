@@ -74,8 +74,8 @@ getCurrencies() {
 }
 
 getCryptoCurrencies() {
-  this.http.get(this.environmentURL + 'CryptoCurrencies').subscribe((responseData: CurrencyListCrypto[]) => {
-    this.cryptoList = responseData;
+  this.http.get(this.environmentURL + 'CryptoCurrencies').subscribe((responseData: any) => {
+    this.cryptoList = responseData.data.items;
     console.log(responseData);
   });
 }

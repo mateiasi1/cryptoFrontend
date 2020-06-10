@@ -1,1 +1,13 @@
-<p>validate-account works!</p>
+<div fxFlex="60" class="flex-container">
+    <mat-card class="loginCard" novalidate [formGroup]="setPasswordForm" (ngSubmit)="onSubmit()" >
+      <mat-card-title style="text-align: center">Reset password</mat-card-title>
+          <mat-form-field class="inputFields">
+                    <mat-label>Email</mat-label>
+                    <input class="form-control" formControlName="password" placeholder="Enter email" matInput [(ngModel)]="passwordSet.Password">
+          </mat-form-field> 
+        
+        <mat-card-actions>
+          <button class="loginButton" mat-raised-button color="primary" [disabled]="!setPasswordForm.valid" [routerLink]="['login']" (click)="onSubmit()">Send</button>
+          </mat-card-actions>
+    </mat-card>
+    </div>

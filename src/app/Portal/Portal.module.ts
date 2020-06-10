@@ -1,3 +1,5 @@
+import { MatCardModule } from '@angular/material/card';
+import { ProfileComponent } from './profile/profile.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -53,7 +55,8 @@ exports: [
     WithdrawFiatComponent,
     TradeFiatComponent,
     TrasactionsComponent,
-    TradeCryptoComponent
+    TradeCryptoComponent,
+    ProfileComponent
   ],
   imports: [
     CommonModule,
@@ -71,7 +74,8 @@ exports: [
     AlertModule,
     MatTabsModule,
     FlexLayoutModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatCardModule
   ],
   providers: [
     AuthService,

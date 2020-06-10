@@ -1,3 +1,4 @@
+import { ProfileComponent } from './profile/profile.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AvailableCurrenciesComponent } from './available-currencies/available-currencies.component';
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path: 'crypto-account', canActivate: [RoleGuard], data: { expectedRole: 'user'}, component: CryptoAccountComponent },
   { path: 'manage-application', canActivate: [RoleGuard], data: { expectedRole: 'admin'}, component: ManageApplicationComponent },
   { path: 'users-management', canActivate: [AuthGuard], component: UsersComponent },
+  { path: 'profile', canActivate: [AuthGuard], component: ProfileComponent},
   { path: '', redirectTo: 'bank-account', pathMatch: 'full'},
   { path: '**', component: Page404portalComponent }
     ]
