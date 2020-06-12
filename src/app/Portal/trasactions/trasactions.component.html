@@ -5,29 +5,29 @@
 
       <ng-container matColumnDef="From" >
         <th fxLayoutAlign=" center" fxFlex="30" mat-header-cell *matHeaderCellDef> From </th>
-        <td fxLayoutAlign=" center" fxFlex="30" mat-cell *matCellDef="let element"> {{element.from}} </td>
+        <td fxLayoutAlign=" center" fxFlex="30" mat-cell *matCellDef="let element" matTooltip="{{element.from}}"> <span class="ellipsis">{{element.from}}</span> </td>
       </ng-container>
 
       <ng-container matColumnDef="To" >
         <th fxLayoutAlign=" center" fxFlex="30" mat-header-cell *matHeaderCellDef> To </th>
-        <td fxLayoutAlign=" center" fxFlex="30" mat-cell *matCellDef="let element"> {{element.to}} </td>
+        <td fxLayoutAlign=" center" fxFlex="30" mat-cell *matCellDef="let element" matTooltip="{{element.to}}"><span class="ellipsis">{{element.to}}</span> </td>
       </ng-container>
 
       <!-- Name Column --> 
       <ng-container matColumnDef="Ammount" >
         <th fxLayoutAlign=" center" fxFlex="15" mat-header-cell *matHeaderCellDef> Amount </th>
-        <td fxLayoutAlign=" center" fxFlex="15" mat-cell *matCellDef="let element"> {{element.ammount}} </td>
+        <td fxLayoutAlign=" center" fxFlex="15" mat-cell *matCellDef="let element" matTooltip="{{element.ammount}}"><span class="ellipsis">{{element.ammount}}</span> </td>
       </ng-container>
   
       <!-- Weight Column -->
       <ng-container matColumnDef="transactionType" >
         <th fxLayoutAlign=" center" fxFlex="15" mat-header-cell *matHeaderCellDef> Transaction type </th>
-        <td fxLayoutAlign=" center" fxFlex="15" mat-cell *matCellDef="let element"> {{element.transactionType}} </td>
+        <td fxLayoutAlign=" center" fxFlex="15" mat-cell *matCellDef="let element" matTooltip="{{element.transactionType}}"> {{element.transactionType}} </td>
       </ng-container>
 
       <ng-container matColumnDef="Date" >
         <th fxLayoutAlign=" center" fxFlex="15" mat-header-cell *matHeaderCellDef> Date </th>
-        <td fxLayoutAlign=" center" fxFlex="15" mat-cell *matCellDef="let element"> {{element.date | date: 'dd/MM/yyyy'}} </td>
+        <td fxLayoutAlign=" center" fxFlex="15" mat-cell *matCellDef="let element" matTooltip="{{element.date}}"> {{element.date | date: 'dd/MM/yyyy'}} </td>
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -43,29 +43,29 @@
   
       <ng-container matColumnDef="From" >
         <th fxLayoutAlign=" center" fxFlex="30" mat-header-cell *matHeaderCellDef> From </th>
-        <td fxLayoutAlign=" center" fxFlex="30" mat-cell *matCellDef="let element"> {{element.from}} </td>
+        <td fxLayoutAlign=" center" fxFlex="30" mat-cell *matCellDef="let element" matTooltip="{{element.from}}"> {{element.from}} </td>
       </ng-container>
 
       <ng-container matColumnDef="To" >
         <th fxLayoutAlign=" center" fxFlex="30" mat-header-cell *matHeaderCellDef> To </th>
-        <td fxLayoutAlign=" center" fxFlex="30" mat-cell *matCellDef="let element"> {{element.to}} </td>
+        <td fxLayoutAlign=" center" fxFlex="30" mat-cell *matCellDef="let element" matTooltip="{{element.to}}"> {{element.to}} </td>
       </ng-container>
 
       <!-- Name Column --> 
       <ng-container matColumnDef="Ammount" >
         <th fxLayoutAlign=" center" fxFlex="15" mat-header-cell *matHeaderCellDef> Amount </th>
-        <td fxLayoutAlign=" center" fxFlex="15" mat-cell *matCellDef="let element"> {{element.ammount}} </td>
+        <td fxLayoutAlign=" center" fxFlex="15" mat-cell *matCellDef="let element" matTooltip="{{element.ammount}}"> {{element.ammount}} </td>
       </ng-container>
   
       <!-- Weight Column -->
       <ng-container matColumnDef="transactionType" >
         <th fxLayoutAlign=" center" fxFlex="15" mat-header-cell *matHeaderCellDef> Transaction type </th>
-        <td fxLayoutAlign=" center" fxFlex="15" mat-cell *matCellDef="let element"> {{element.transactionType}} </td>
+        <td fxLayoutAlign=" center" fxFlex="15" mat-cell *matCellDef="let element" matTooltip="{{element.transactionType}}"> {{element.transactionType}} </td>
       </ng-container>
 
       <ng-container matColumnDef="Date" >
         <th fxLayoutAlign=" center" fxFlex="15" mat-header-cell *matHeaderCellDef> Date </th>
-        <td fxLayoutAlign=" center" fxFlex="15" mat-cell *matCellDef="let element"> {{element.date | date: 'dd/MM/yyyy'}} </td>
+        <td fxLayoutAlign=" center" fxFlex="15" mat-cell *matCellDef="let element" matTooltip="{{element.date}}"> {{element.date | date: 'dd/MM/yyyy'}} </td>
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumnsCrypto"></tr>

@@ -4,24 +4,24 @@
       <!-- Name Column -->
       <ng-container matColumnDef="currencyName">
         <th fxLayoutAlign=" center" fxFlex="25" mat-header-cell *matHeaderCellDef>Currency</th>
-        <td fxLayoutAlign=" center" fxFlex="25" mat-cell *matCellDef="let element">{{ element.currencyName }}</td>
+        <td fxLayoutAlign=" center" fxFlex="25" mat-cell *matCellDef="let element" matTooltip="{{element.currencyName}}">{{ element.currencyName }}</td>
       </ng-container>
   
       <!-- Weight Column -->
       <ng-container matColumnDef="bankName">
         <th fxLayoutAlign=" center" fxFlex="10"  mat-header-cell *matHeaderCellDef>Bank</th>
-        <td fxLayoutAlign=" center" fxFlex="10" mat-cell *matCellDef="let element">{{ element.bankName }}</td>
+        <td fxLayoutAlign=" center" fxFlex="10" mat-cell *matCellDef="let element" matTooltip="{{element.bankName}}">{{ element.bankName }}</td>
       </ng-container>
   
       <!-- Symbol Column -->
       <ng-container matColumnDef="iban">
         <th fxLayoutAlign=" center" fxFlex="30" mat-header-cell *matHeaderCellDef>IBAN</th>
-        <td fxLayoutAlign=" center" fxFlex="30" mat-cell *matCellDef="let element">{{ element.iban }}</td>
+        <td fxLayoutAlign=" center" fxFlex="30" mat-cell *matCellDef="let element" matTooltip="{{element.iban}}">{{ element.iban }}</td>
       </ng-container>
       <!-- Amount Column -->
       <ng-container matColumnDef="sold">
         <th fxLayoutAlign=" center" fxFlex="10" mat-header-cell *matHeaderCellDef>Sold</th>
-        <td fxLayoutAlign=" center" fxFlex="10" mat-cell *matCellDef="let element">{{ element.sold }}</td>
+        <td fxLayoutAlign=" center" fxFlex="10" mat-cell *matCellDef="let element" matTooltip="{{element.sold}}"><span class="ellipsis">{{ element.sold }}</span></td>
       </ng-container>
       <!-- Actions Column -->
       <ng-container matColumnDef="actions">

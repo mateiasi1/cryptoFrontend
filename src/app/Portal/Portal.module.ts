@@ -20,7 +20,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 // tslint:disable-next-line:max-line-length
-import { MatPaginatorModule, MatInputModule, MatMenuModule, MatSnackBar, MatButtonModule, MatDialogModule, MatTabsModule, MatToolbarModule } from '@angular/material';
+import { MatPaginatorModule, MatInputModule, MatMenuModule, MatSnackBar, MatButtonModule, MatDialogModule, MatTabsModule, MatToolbarModule, MatTooltipModule } from '@angular/material';
 import { AuthService } from '../services/auth-service';
 import { AuthGuardService } from '../services/auth-guard.service';
 import { LoginService } from '../services/login.service';
@@ -75,7 +75,8 @@ exports: [
     MatTabsModule,
     FlexLayoutModule,
     MatToolbarModule,
-    MatCardModule
+    MatCardModule,
+    MatTooltipModule
   ],
   providers: [
     AuthService,

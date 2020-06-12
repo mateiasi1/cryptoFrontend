@@ -18,3 +18,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     background: #F44336;
     height: 70px !important;
 }
+.ellipsis {
+    text-overflow: ellipsis; 
+    overflow: hidden; 
+    white-space: nowrap;
+    padding-right:15px;
+  }
