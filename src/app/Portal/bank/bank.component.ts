@@ -159,8 +159,10 @@ export class BankComponent implements OnInit {
   }
 
   addCrypto() {
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    const currentId = currentUser.token.id;
     // tslint:disable-next-line: max-line-length
-    const cryptoToAdd: Crypto = {id: 0, refference: this.Refference, cryptoCurrencyName: this.CryptoName, cryptoCurrencyAbbreviation: '' };
+    const cryptoToAdd: Crypto = {id: currentId, refference: this.Refference, cryptoCurrencyName: this.CryptoName, cryptoCurrencyAbbreviation: '' };
 
     this.http.post(this.environmentURL + 'Crypto', cryptoToAdd).subscribe((responseData: any) => {
       // de adaugat aici si de retrivuit din backend in lista ca in available

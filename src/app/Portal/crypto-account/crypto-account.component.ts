@@ -23,7 +23,7 @@ export class CryptoAccountComponent implements OnInit {
   dataSource: MatTableDataSource<CryptoAccount>;
 
   public sub: Subject<boolean> = new Subject<boolean>();
-
+  userId: number;
   cryptoName: string;
   cryptoAbbreviation: string;
   amount: number;
@@ -41,6 +41,7 @@ export class CryptoAccountComponent implements OnInit {
         }
 
    ngOnInit() {
+     this.getUserId();
      this.getCryptoAccounts();
      this.cryptoAccountService.getCryptoCurrencies();
    }
@@ -50,10 +51,13 @@ export class CryptoAccountComponent implements OnInit {
      }
 
  //#region BankAccount
-
+getUserId() {
+  const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+  this.userId = currentUser.token.id;
+}
  getCryptoAccounts() {
 
-   this.http.get(this.environmentURL + 'CryptoAccount').subscribe((responseData: any) => {
+   this.http.get(this.environmentURL + 'CryptoAccount/' + this.userId).subscribe((responseData: any) => {
       this.cryptoAccounts = responseData.data.items;
       this.dataSource = new MatTableDataSource(responseData.data.items);
       console.log(responseData.data.items);
