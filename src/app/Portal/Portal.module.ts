@@ -8,7 +8,7 @@ import { PortalComponent } from './portal.component';
 import { BankComponent } from './bank/bank.component';
 // tslint:disable-next-line:max-line-length
 import { BankAccountComponent, DepositFiatComponent, WithdrawFiatComponent, TradeFiatComponent } from './bank-account/bank-account.component';
-import { CryptoAccountComponent, TradeCryptoComponent } from './crypto-account/crypto-account.component';
+import { CryptoAccountComponent, TradeCryptoComponent, TransferCryptoComponent } from './crypto-account/crypto-account.component';
 import { ManageApplicationComponent } from './manage-application/manage-application.component';
 import { Page404portalComponent } from './page404portal/page404portal.component';
 // tslint:disable-next-line:max-line-length
@@ -56,7 +56,8 @@ exports: [
     TradeFiatComponent,
     TrasactionsComponent,
     TradeCryptoComponent,
-    ProfileComponent
+    ProfileComponent,
+    TransferCryptoComponent
   ],
   imports: [
     CommonModule,
@@ -98,6 +99,6 @@ exports: [
     JwtHelperService
   ],
   entryComponents: [AddCurrencyComponent, AddCryptoComponent, DepositFiatComponent, WithdrawFiatComponent, TradeFiatComponent,
-    TradeCryptoComponent ]
+    TradeCryptoComponent, TransferCryptoComponent ]
 })
 export class PortalModule { }

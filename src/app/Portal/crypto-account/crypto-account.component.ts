@@ -1,3 +1,4 @@
+import { Transfer } from './../../components/users';
 import { BankAccountService } from 'src/app/services/bankAccount.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { CryptoAccountService } from 'src/app/services/cryptoAccount.service';
@@ -28,6 +29,7 @@ export class CryptoAccountComponent implements OnInit {
   amount: number;
   currentPrice: number;
   id: number;
+  transfer = new Transfer;
 
    constructor(private http: HttpClient,
                public cryptoAccountService: CryptoAccountService,
@@ -86,6 +88,25 @@ export class CryptoAccountComponent implements OnInit {
  changeTab(index:number) {
   this.bankAccountService.changeTab(index);
  }
+
+ transferOpenDialog() {
+  const dialogRef = this.dialog.open(TransferCryptoComponent);
+
+  dialogRef.afterClosed().subscribe(result => {
+    this.ngOnInit();
+    console.log(`Dialog result: ${result}`);
+  });
+ }
+
+ transferCrypto() {
+  const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+  const currentId = currentUser.token.id;
+   this.transfer.IdUserFrom = currentId;
+  this.http.post(this.environmentURL + 'Users/transfer', this.transfer ).subscribe(respondeData => {
+    
+  });
+  this.ngOnInit();
+ }
 }
 
 @Component({
@@ -101,5 +122,21 @@ export class TradeCryptoComponent {
   // tslint:disable-next-line:use-lifecycle-interface
   ngOnInit() {
     this.cryptoAccountService.getCryptoCurrencies();
+  }
+}
+
+@Component({
+  // tslint:disable-next-line:component-selector
+  selector: 'dialog-content-example-dialog',
+  templateUrl: 'transferCrypto.html',
+})
+export class TransferCryptoComponent {
+  constructor(public cryptoAccountService: CryptoAccountService,
+              public cryptoAccountComponent: CryptoAccountComponent
+              ) { }
+
+  // tslint:disable-next-line:use-lifecycle-interface
+  ngOnInit() {
+    
   }
 }

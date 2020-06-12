@@ -19,3 +19,12 @@ export class ChangePassword {
     NewPassword: string;
     ConfirmPassword: string;
 }
+
+export class Transfer {
+    id: number;
+    IdUserFrom: number;
+    RefferalUserTo: string;
+    CoinName: string;
+    Amount: number;
+    Date: Date;
+}
