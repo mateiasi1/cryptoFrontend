@@ -13,7 +13,7 @@
       <button mat-button [matMenuTriggerFor]="menu"><img src="https://i2.cdn.turner.com/cnnnext/dam/assets/140926165711-john-sutter-profile-image-large-169.jpg" class="image--cover"></button>
       <mat-menu #menu="matMenu">
         <p style="text-align: center" >Hi, {{authService.getRole}}</p>
-        <button mat-menu-item>Profile</button>
+        <button mat-menu-item routerLink="profile">Profile</button>
         <button mat-menu-item routerLink="transactions" *ngIf="!authService.isAdmin">Transactions</button>
         <button mat-menu-item (click)="loginComponent.logoutUser()" [routerLink]="['/login']" routerLinkActive="router-link-active" >Logout</button>
       </mat-menu>

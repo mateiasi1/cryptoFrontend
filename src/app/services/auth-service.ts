@@ -42,4 +42,9 @@ public get getName(): string {
     const currentToken = currentUser.token.token;
     return currentToken;
   }
+  public getUserId() {
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    const currentId = currentUser.token.id;
+    return currentId;
+  }
 }

@@ -1,53 +1,82 @@
-<div class="flex-container">
-  <mat-accordion>
-    <mat-expansion-panel (opened)="panelOpenState = true"
-    (closed)="panelOpenState = false">
-  <mat-expansion-panel-header>
-  <mat-panel-title>
-  <h4>Manage transaction fee</h4>
-  </mat-panel-title>
-  
-  </mat-expansion-panel-header>
-  
-  
-      <mat-form-field class="inputFields">
-                <mat-label>New value </mat-label>
-                <input type="number" matInput >
-      </mat-form-field>
-      <button mat-raised-button color="primary" class="buttons" [routerLink]="['manage-application']">Add fee</button>
-  <br>
-  <mat-form-field class="inputFields">
-            <mat-label>Old value </mat-label>
-            <input type="number" matInput disabled>
-  </mat-form-field>
-  
-  </mat-expansion-panel>
-  </mat-accordion>
-  </div>
-  <br>
-  <br>
-  <div class="flex-container">
-  <mat-accordion>
-      <mat-expansion-panel (opened)="panelOpenState = true"
-      (closed)="panelOpenState = false">
-    <mat-expansion-panel-header>
-    <mat-panel-title>
-    <h4>Withdrawal flat rate </h4>
-    </mat-panel-title>
-    
-    </mat-expansion-panel-header>
-  
-        <mat-form-field class="inputFields">
-                  <mat-label>New value </mat-label>
-                  <input type="number" matInput >
+<div  fxLayout="column" fxLayoutAlign="space-around center">
+<mat-card  *ngIf="users[0]">
+    <h4>Personal data</h4>
+      <div fxLayout="row">
+        <div   fxFlex="50">
+        <mat-form-field class="example-full-width">
+          <mat-label>Username</mat-label>
+          <input matInput disabled [(ngModel)]="users[0].username">
         </mat-form-field>
-        <button mat-raised-button color="primary" class=" buttons"  [routerLink]="['manage-application']">Add flat</button>
-        <br>
-    <mat-form-field class="inputFields">
-              <mat-label>New value </mat-label>
-              <input type="number" matInput disabled>
-    </mat-form-field>
-    
-    </mat-expansion-panel>
-    </mat-accordion>
+        </div>
+
+        <div class="margin-left"  fxFlex="50">
+        <mat-form-field class="example-full-width">
+            <mat-label>Email</mat-label>
+            <input matInput placeholder="Email"  [(ngModel)]="users[0].email">
+          </mat-form-field>
+        </div>
     </div>
+    <div fxLayout="row">
+        <div   fxFlex="50">
+        <mat-form-field class="example-full-width">
+          <mat-label>First name</mat-label>
+          <input matInput placeholder="First name"  [(ngModel)]="users[0].firstName">
+        </mat-form-field>
+        </div>
+
+        <div class="margin-left"  fxFlex="50">
+        <mat-form-field class="example-full-width">
+            <mat-label>Last name</mat-label>
+            <input matInput placeholder="Last name"  [(ngModel)]="users[0].lastName">
+          </mat-form-field>
+        </div>
+    </div>
+    <div fxLayout="row">
+        <mat-form-field class="example-full-width">
+          <mat-label>Role</mat-label>
+          <input matInput placeholder="Role" disabled  [(ngModel)]="users[0].role">
+        </mat-form-field>
+    </div>
+    
+    <div fxLayout="row" fxLayoutAlign="end end"  class="margin-left">
+        <button mat-raised-button color="primary" (click)="changeUser()">Save</button>
+        </div>
+</mat-card>
+<br>
+<mat-accordion class="accordion">
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Change password
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+  
+      <div fxLayout="column" fxLayoutAlign="center center" >
+        <div   fxFlex="100">
+        <mat-form-field class="example-full-width">
+          <mat-label>Old password</mat-label>
+          <input matInput [(ngModel)]="password[0].Password">
+        </mat-form-field>
+        </div>
+
+        <div fxLayout="column" fxLayoutAlign="center center" >
+        <mat-form-field class="example-full-width">
+            <mat-label>New password</mat-label>
+            <input matInput placeholder="New password" [(ngModel)]="password[0].NewPassword">
+          </mat-form-field>
+        </div>
+
+        <div fxLayout="column" fxLayoutAlign="center center" >
+            <mat-form-field class="example-full-width">
+                <mat-label>New password confirmation</mat-label>
+                <input matInput placeholder="New password confirmation" [(ngModel)]="password[0].ConfirmPassword">
+              </mat-form-field>
+            </div>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="end end"  class="margin-left">
+        <button mat-raised-button color="primary" (click)="changePassword()">Save</button>
+        </div>
+    </mat-expansion-panel>
+    
+  </mat-accordion>
+</div>
