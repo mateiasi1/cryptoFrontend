@@ -1,7 +1,7 @@
 import { AuthService } from './auth-service';
-import { UserLogin } from '../components/userLogin.component';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { UserLogin } from '../login/userLogin.component';
 
 export class LoginService {
 
