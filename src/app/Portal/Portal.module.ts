@@ -17,7 +17,7 @@ import { UsersComponent } from './users/users.component';
 import {MatTableModule} from '@angular/material/table';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 // tslint:disable-next-line:max-line-length
 import { MatPaginatorModule, MatInputModule, MatMenuModule, MatSnackBar, MatButtonModule, MatDialogModule, MatTabsModule, MatToolbarModule, MatTooltipModule } from '@angular/material';
@@ -77,7 +77,8 @@ exports: [
     FlexLayoutModule,
     MatToolbarModule,
     MatCardModule,
-    MatTooltipModule
+    MatTooltipModule,
+    ReactiveFormsModule 
   ],
   providers: [
     AuthService,

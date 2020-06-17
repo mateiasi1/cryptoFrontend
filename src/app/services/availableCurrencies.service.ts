@@ -16,8 +16,6 @@ import { environment } from 'src/environments/environment';
 export class AvailableService {
 
   environmentURL = environment.apiUrl;
-    selectedValue = '';
-    selectedValueCrypto = '';
     public  allCurrency: CurrencyList[];
     public  allCryptoCurrency: CurrencyListCrypto[] = [];
     public cryptoCurrencyFromBackend: CryptoCurrency[] = [];
@@ -36,7 +34,7 @@ constructor(public serversService: BankAccountService,
 
 addCurrencyToList(currencyAbbreviation: string) {
     // this.selectedValue = currencyName;
-    const currencyToAdd = this.allCurrency.find(item => item.currencyAbbreviation === this.selectedValue);
+    const currencyToAdd = this.allCurrency.find(item => item.currencyAbbreviation === currencyAbbreviation);
     this.http.post(this.environmentURL +  'Currencies', currencyToAdd).subscribe((responseData: CurrencyList[]) => {
       // this.currencyFromBackend = responseData;
        this.dataSource = new MatTableDataSource(responseData);
@@ -47,7 +45,7 @@ addCurrencyToList(currencyAbbreviation: string) {
   }
   addCryptoCurrencyToList(cryptoCurrencyName: string) {
     // tslint:disable-next-line:max-line-length
-    const cryptoCurrencyToAdd = this.allCryptoCurrency.find(item => item.cryptoCurrencyName === this.selectedValueCrypto);
+    const cryptoCurrencyToAdd = this.allCryptoCurrency.find(item => item.cryptoCurrencyName === cryptoCurrencyName);
 
     this.http.post(this.environmentURL + 'CryptoCurrencies', cryptoCurrencyToAdd).subscribe((responseData: CurrencyListCrypto[]) => {
      // this.cryptoCurrencyFromBackend = responseData;

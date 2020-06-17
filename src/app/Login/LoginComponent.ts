@@ -14,12 +14,12 @@ import { UserLogin } from './userLogin.component';
 
 
 export class LoginComponent implements OnInit {
- 
+
   token: string;
   loginForm: FormGroup;
   environmentURL = environment.apiUrl;
-  // tslint:disable-next-line: max-line-length
 
+  // tslint:disable-next-line: max-line-length
   constructor(private formBuilder: FormBuilder, private http: HttpClient, public authService: AuthService, public router: Router, public loginService: LoginService) {
    this.createLoginForm();
   }

@@ -5,6 +5,7 @@ import { BankAccountService } from 'src/app/services/bankAccount.service';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from 'src/app/services/auth-service';
 import { MatDialog, MatPaginator } from '@angular/material';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-available-currencies',
@@ -21,10 +22,10 @@ export class AvailableCurrenciesComponent implements OnInit {
   @ViewChild('paginator', {static: true}) paginator: MatPaginator;
   @ViewChild('paginator2', {static: false}) paginator2: MatPaginator;
 
-
   currency: Currency;
   crypto: Crypto;
-  constructor(public serversService: BankAccountService,
+  constructor(private formBuilder: FormBuilder,
+    public serversService: BankAccountService,
               private http: HttpClient,
               public authService: AuthService,
               public dialog: MatDialog,
@@ -33,6 +34,7 @@ export class AvailableCurrenciesComponent implements OnInit {
 
                   this.availableSevice.dataSource.paginator = this.paginator;
                   this.availableSevice.dataSourceCrypto.paginator = this.paginator2;
+                  
                 });
               }
 
@@ -48,7 +50,7 @@ export class AvailableCurrenciesComponent implements OnInit {
   //   debugger;
   //   this.currencyFromBackend.splice(itemIndex, 1);
   // }
-
+  
 
   getCurrencies() {
     this.availableSevice.getCurrencies();
@@ -70,7 +72,6 @@ export class AvailableCurrenciesComponent implements OnInit {
       this.ngOnInit();
     });
   }
-
 }
 
 @Component({
@@ -80,7 +81,20 @@ export class AvailableCurrenciesComponent implements OnInit {
 })
 export class AddCurrencyComponent {
   constructor(
-    public availableSevice: AvailableService) { }
+    public availableSevice: AvailableService,private formBuilder: FormBuilder) { 
+      this.createAddCurrencyForm();
+    }
+    
+    addCurrencyForm: FormGroup;
+    createAddCurrencyForm() {
+      this.addCurrencyForm = this.formBuilder.group({
+        currencyname: ['', Validators.required]
+      });
+    }
+
+    onSubmit() {
+      this.availableSevice.addCurrencyToList(this.addCurrencyForm.value.currencyname);
+    }
 }
 
 @Component({
@@ -90,6 +104,19 @@ export class AddCurrencyComponent {
 })
 export class AddCryptoComponent {
   constructor(
-    public availableSevice: AvailableService) { }
+    public availableSevice: AvailableService,private formBuilder: FormBuilder) {
+      this.createAddCryptoForm();
+     }
+    
+    addCryptoForm: FormGroup;
+    createAddCryptoForm() {
+      this.addCryptoForm = this.formBuilder.group({
+        cryptoname: ['', Validators.required]
+      });
+    }
+
+    onSubmit() {
+      this.availableSevice.addCryptoCurrencyToList(this.addCryptoForm.value.cryptoname);
+    }
 }
 
