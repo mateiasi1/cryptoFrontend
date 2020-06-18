@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ManagerService } from 'src/app/services/manager.service';
+import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-manage-application',
@@ -9,9 +10,15 @@ import { ManagerService } from 'src/app/services/manager.service';
 })
 export class ManageApplicationComponent implements OnInit {
   public role: string;
+  feeForm: FormGroup;
+  flatForm: FormGroup;
 
   constructor(private http: HttpClient,
-              public managerService: ManagerService) { }
+              public managerService: ManagerService,
+              private formBuilder: FormBuilder) { 
+                this.createFeeForm();
+                this.createFlatForm();
+              }
 
   ngOnInit() {
     this.managerService.getFee();
@@ -19,12 +26,24 @@ export class ManageApplicationComponent implements OnInit {
     const currentUser = JSON.parse(localStorage.getItem('currentUser'));
     this.role = currentUser.token.role;
   }
-  addFee() {
-    this.managerService.addFee(this.role);
-    this.ngOnInit();
-}
-  addFlatRate() {
-    this.managerService.addFlatRate(this.role);
-    this.ngOnInit();
+  
+  createFeeForm() {
+    this.feeForm = this.formBuilder.group({
+      feeAmount: ['', Validators.required]
+    });
+  }
+
+  onSubmitFee() {
+    this.managerService.addFee(this.role, this.feeForm.value.feeAmmount);
+  }
+
+  createFlatForm() {
+    this.feeForm = this.formBuilder.group({
+      flatAmount: ['', Validators.required]
+    });
+  }
+
+  onSubmitFlat() {
+    this.managerService.addFlatRate(this.role, this.flatForm.value.flatAmount);
   }
 }

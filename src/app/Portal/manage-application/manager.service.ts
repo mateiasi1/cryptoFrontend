@@ -30,7 +30,7 @@ getFlatRate() {
     });
   }
 
-  addFee(role: string) {
+  addFee(role: string, amount: number) {
     const newFee: Fee = {Id: 0, Percentage: this.newValueFee, UserRole: role, Obsolete: false};
     this.http.post('https://localhost:44384/api/Fees', newFee).subscribe(respondeData => {
         console.log(respondeData);

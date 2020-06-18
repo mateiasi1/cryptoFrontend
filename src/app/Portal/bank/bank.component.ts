@@ -9,6 +9,7 @@ import { CryptoAccount, Crypto } from 'src/app/components/crypto.component';
 import { environment } from 'src/environments/environment';
 import { MatPaginator } from '@angular/material/paginator';
 import { Subject } from 'rxjs';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-bank',
@@ -17,15 +18,20 @@ import { Subject } from 'rxjs';
 })
 export class BankComponent implements OnInit {
   constructor(private http: HttpClient,
-              public authService: AuthService) {
+              public authService: AuthService,
+              private formBuilder: FormBuilder) {
                 this.sub.subscribe(e => {
-
                   this.dataSource.paginator = this.paginator;
                   this.dataSourceCrypto.paginator = this.paginator2;
                 });
+                
+                this.createAddBankForm();
+                this.createAddCryptoForm();
                }
 
   public sub: Subject<boolean> = new Subject<boolean>();
+  addBankForm: FormGroup;
+  addCryptoForm: FormGroup;
 
   environmentURL = environment.apiUrl;
   displayedColumns: string[] = ['BankName', 'IBAN', 'Currency', 'Actions'];
@@ -82,9 +88,9 @@ export class BankComponent implements OnInit {
     });
   }
 
-  addBank() {
+  addBank(bankName: string, iban: string, currency: string) {
     // tslint:disable-next-line:max-line-length
-    const bankToAdd: Bank = {id: 0, bankName: this.BankName, iban: this.IBAN, currencyName: '', currencyAbbreviation: this.CurrencyAbbreviation };
+    const bankToAdd: Bank = {id: 0, bankName: bankName, iban: iban, currencyName: '', currencyAbbreviation: currency };
 
     this.http.post(this.environmentURL + 'Banks', bankToAdd).subscribe((responseData: any) => {
       // de adaugat aici si de retrivuit din backend in lista ca in available
@@ -162,7 +168,7 @@ export class BankComponent implements OnInit {
     const currentUser = JSON.parse(localStorage.getItem('currentUser'));
     const currentId = currentUser.token.id;
     // tslint:disable-next-line: max-line-length
-    const cryptoToAdd: Crypto = {id: currentId, refference: this.Refference, cryptoCurrencyName: this.CryptoName, cryptoCurrencyAbbreviation: '' };
+    const cryptoToAdd: Crypto = {id: 0, refference: this.Refference, cryptoCurrencyName: this.addCryptoForm.value.currency, cryptoCurrencyAbbreviation: '' };
 
     this.http.post(this.environmentURL + 'Crypto', cryptoToAdd).subscribe((responseData: any) => {
       // de adaugat aici si de retrivuit din backend in lista ca in available
@@ -170,7 +176,6 @@ export class BankComponent implements OnInit {
       this.dataSourceCrypto = new MatTableDataSource(responseData.data.items);
       console.log(responseData.data.items);
     });
-    this.ngOnInit();
   }
 
   deleteCrypto(id: number) {
@@ -182,5 +187,26 @@ export class BankComponent implements OnInit {
     this.ngOnInit();
   }
 
+  createAddBankForm() {
+    this.addBankForm = this.formBuilder.group({
+      bankName: new FormControl ('', Validators.required),
+      iban: new FormControl ('', Validators.required),
+      currency: new FormControl ('', Validators.required)
+    });
+  }
+
+  onSubmitAddBank() {
+   this.addBank(this.addBankForm.value.bankName, this.addBankForm.value.iban, this.addBankForm.value.currency);
+  }
+
+  createAddCryptoForm() {
+    this.addCryptoForm = this.formBuilder.group({
+      currency: new FormControl ('', Validators.required)
+    });
+  }
+
+  onSubmitAddCrypto() {
+   this.addCrypto();
+  }
   // #endregion
 }

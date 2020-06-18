@@ -47,27 +47,28 @@
     <mat-accordion>
         <mat-expansion-panel (opened)="panelOpenState = true"
         (closed)="panelOpenState = false">
+       
     <mat-expansion-panel-header>
     <mat-panel-title>
       Add Bank
     </mat-panel-title>
     
     </mat-expansion-panel-header>
-    
+    <form [formGroup]="addBankForm" (ngSubmit)="onSubmitAddBank()">
     <mat-form-field class="inputFields">
                 <mat-label>Bank Name</mat-label>
-                <input type="text" matInput [(ngModel)]="BankName">
+                <input type="text" matInput formControlName="bankName">
     </mat-form-field>  
     <span class="fields">
     <mat-form-field class="inputFields">
             <mat-label>IBAN</mat-label>
-            <input type="text" matInput [(ngModel)]="IBAN">
+            <input type="text" matInput formControlName="iban">
     </mat-form-field> 
     </span>
     <span class="fields">
       <mat-form-field>
         <mat-label>Select currency</mat-label>
-        <mat-select  [(ngModel)]="CurrencyAbbreviation">
+        <mat-select  formControlName="currency">
           <mat-option *ngFor="let currency of currencyList" [value]="currency.currencyAbbreviation">
             {{currency.currencyName}}
           </mat-option>
@@ -75,7 +76,8 @@
       </mat-form-field>
     </span>
     <br>
-        <button mat-raised-button color="primary" class="button" (click)="addBank()">Add Bank</button>
+        <button mat-raised-button type="submit" color="primary" class="button">Add Bank</button>
+      </form>
     </mat-expansion-panel>
     </mat-accordion>
     </div>
@@ -119,17 +121,18 @@
     <mat-accordion>
         <mat-expansion-panel (opened)="panelOpenState = true"
         (closed)="panelOpenState = false">
+     
     <mat-expansion-panel-header>
     <mat-panel-title>
       Add Crypto
     </mat-panel-title>
     
     </mat-expansion-panel-header>
-    
+    <form [formGroup]="addCryptoForm" (ngSubmit)="onSubmitAddCrypto()">
     <span class="fields">
       <mat-form-field>
         <mat-label>Select crypto</mat-label>
-        <mat-select  [(ngModel)]="CryptoName">
+        <mat-select  formControlName="currency">
           <mat-option *ngFor="let crypto of cryptoList" [value]="crypto.cryptoCurrencyName">
             {{crypto.cryptoCurrencyName}}
           </mat-option>
@@ -137,7 +140,8 @@
       </mat-form-field>
     </span>
     <br>
-        <button mat-raised-button color="primary" class="button" (click)="addCrypto()">Add Crypto</button>
+        <button mat-raised-button color="primary" type="submit" class="button">Add Crypto</button>
+      </form>
     </mat-expansion-panel>
     </mat-accordion>
     </div>

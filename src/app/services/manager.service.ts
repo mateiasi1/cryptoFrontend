@@ -31,8 +31,8 @@ getFlatRate() {
     });
   }
 
-  addFee(role: string) {
-    const newFee: Fee = {Id: 0, Percentage: this.newValueFee, UserRole: role, Obsolete: false};
+  addFee(role: string, percentage: number) {
+    const newFee: Fee = {Id: 0, Percentage: percentage, UserRole: role, Obsolete: false};
     this.http.post(this.environmentURL + 'Fees', newFee).subscribe(respondeData => {
         console.log(respondeData);
         this.getFee();
@@ -40,8 +40,8 @@ getFlatRate() {
       });
   }
 
-  addFlatRate(role: string) {
-    const newFlatRate: FlatRate = {Id: 0, Ammount: this.newValueFlat, Obsolete: false, UserRole: role};
+  addFlatRate(role: string, amount: number) {
+    const newFlatRate: FlatRate = {Id: 0, Ammount: amount, Obsolete: false, UserRole: role};
     this.http.post(this.environmentURL + 'FlatRateFees', newFlatRate).subscribe(respondeData => {
         console.log(respondeData);
         this.getFlatRate();
