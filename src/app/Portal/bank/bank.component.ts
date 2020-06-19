@@ -76,11 +76,12 @@ export class BankComponent implements OnInit {
     this.getCrypto();
     const currentUser = JSON.parse(localStorage.getItem('currentUser'));
     this.token = currentUser.token.token;
+    this.UserId = currentUser.token.id;
     this.dataSource.paginator = this.paginator;
   }
   // #region Bank
   getBanks() {
-    this.http.get(this.environmentURL + 'Banks', this.httpOptions).subscribe((responseData: any) => {
+    this.http.get(this.environmentURL + 'Banks/' + this.UserId).subscribe((responseData: any) => {
       this.bankAccounts = responseData.data.items;
       this.dataSource = new MatTableDataSource(responseData.data.items);
       console.log(responseData.data.items);
@@ -168,7 +169,7 @@ export class BankComponent implements OnInit {
     const currentUser = JSON.parse(localStorage.getItem('currentUser'));
     const currentId = currentUser.token.id;
     // tslint:disable-next-line: max-line-length
-    const cryptoToAdd: Crypto = {id: 0, refference: this.Refference, cryptoCurrencyName: this.addCryptoForm.value.currency, cryptoCurrencyAbbreviation: '' };
+    const cryptoToAdd: Crypto = {id: 0, UserId: currentId, refference: this.Refference, cryptoCurrencyName: this.addCryptoForm.value.currency, cryptoCurrencyAbbreviation: '' };
 
     this.http.post(this.environmentURL + 'Crypto', cryptoToAdd).subscribe((responseData: any) => {
       // de adaugat aici si de retrivuit din backend in lista ca in available

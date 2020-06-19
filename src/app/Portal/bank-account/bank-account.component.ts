@@ -24,6 +24,8 @@ export class BankAccountComponent implements OnInit {
   amount: number;
   currentPrice: number;
   id: number;
+  UserId: string;
+  token: string;
 
    constructor(public bankAccountService: BankAccountService,
                private http: HttpClient,
@@ -38,10 +40,14 @@ export class BankAccountComponent implements OnInit {
   }
 
    ngOnInit() {
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    this.token = currentUser.token.token;
+    this.UserId = currentUser.token.id;
      this.getBankAccounts();
      this.bankAccountService.getBankAccounts();
      this.bankAccountService.getCurrencies();
      this.bankAccountService.getCryptoCurrencies();
+
    }
 
    setID(idFromHTML: number) {
@@ -53,10 +59,10 @@ export class BankAccountComponent implements OnInit {
 
   getBankAccounts() {
 
-   this.http.get(this.environmentURL + 'BankAccounts').subscribe((responseData: any) => {
-      this.bankAccounts = responseData;
+   this.http.get(this.environmentURL + 'BankAccounts/' + this.UserId).subscribe((responseData: any) => {
+      this.bankAccounts = responseData.data.items;
       this.dataSource = new MatTableDataSource(responseData.data.items);
-      console.log(responseData.data.items);
+      console.log('Bank-account' + responseData.data.items);
     });
   }
 

@@ -11,6 +11,7 @@ export class CryptoAccount {
 
 export interface Crypto {
     id: number;
+    UserId: number;
     refference: string;
     cryptoCurrencyName: string;
     cryptoCurrencyAbbreviation: string;

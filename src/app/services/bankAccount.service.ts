@@ -21,6 +21,7 @@ export class BankAccountService {
 
   environmentURL = environment.apiUrl;
   id: number;
+  UserId: number;
   tradeFee = 0; // vine din backend
   exchangeRate = 2; // vine din callul catre API cu parametrii selectedValueFrom si selectedValueTo
   amount: number;
@@ -99,8 +100,9 @@ export class BankAccountService {
   }
 
   getBankAccounts() {
-
-    this.http.get(this.environmentURL + 'BankAccounts').subscribe((responseData: any) => {
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    this.UserId = currentUser.token.id;
+    this.http.get(this.environmentURL + 'BankAccounts/' + this.UserId).subscribe((responseData: any) => {
        this.bankAccounts = responseData.data.items;
        this.dataSource = new MatTableDataSource(responseData.data.items);
        console.log('BANK ACCOUNTS', responseData.data.items);
