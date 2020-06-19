@@ -4,7 +4,7 @@
     <mat-form-field>
       <mat-label>Select currency</mat-label>
       <mat-select  [(ngModel)]="cryptoAccountComponent.transfer.CoinName">
-        <mat-option *ngFor="let crypto of cryptoAccountService.cryptoList" [value]="crypto.cryptoCurrencyAbbreviation">
+        <mat-option *ngFor="let crypto of cryptoAccountService.cryptoList" [value]="crypto.cryptoCurrencyName">
           {{crypto.cryptoCurrencyName}}
         </mat-option>
       </mat-select>

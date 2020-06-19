@@ -81,6 +81,9 @@ export class BankComponent implements OnInit {
   }
   // #region Bank
   getBanks() {
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    this.UserId = currentUser.token.id;
+    
     this.http.get(this.environmentURL + 'Banks/' + this.UserId).subscribe((responseData: any) => {
       this.bankAccounts = responseData.data.items;
       this.dataSource = new MatTableDataSource(responseData.data.items);

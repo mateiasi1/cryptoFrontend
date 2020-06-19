@@ -106,8 +106,8 @@ getUserId() {
   const currentUser = JSON.parse(localStorage.getItem('currentUser'));
   const currentId = currentUser.token.id;
    this.transfer.IdUserFrom = currentId;
-  this.http.post(this.environmentURL + 'Users/transfer', this.transfer ).subscribe(respondeData => {
-    
+  this.http.post(this.environmentURL + 'Users/transfer', this.transfer ).subscribe((respondeData: any) => {
+    this.dataSource = respondeData.data.items;
   });
   this.ngOnInit();
  }
