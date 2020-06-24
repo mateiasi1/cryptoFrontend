@@ -1,21 +1,19 @@
-import { SharedModule } from './../Shared/Shared.module';
-import { AdminRoutingModule } from './Admin-routing.module.ts';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AdminComponent } from './Admin.component';
-// tslint:disable-next-line: max-line-length
+import { SharedComponent } from './Shared.component';
+import { SharedRoutingModule } from './Shared-routing.module';
 import { MatTableModule, MatExpansionModule, MatFormFieldModule, MatSelectModule, MatPaginatorModule, MatInputModule, MatMenuModule, MatButtonModule, MatDialogModule, MatTabsModule, MatToolbarModule, MatCardModule, MatTooltipModule } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AlertModule } from 'src/app/_alert';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { ManageApplicationComponent } from './manage-application/manage-application.component';
-import { UsersComponent } from './users/users.component';
-import { AvailableCurrenciesComponent } from '../Shared/available-currencies/available-currencies.component';
+import { AvailableCurrenciesComponent } from './available-currencies/available-currencies.component';
+import { ProfileComponent } from './profile/profile.component';
+import { TrasactionsComponent } from './trasactions/trasactions.component';
 
 @NgModule({
   imports: [
     CommonModule,
-    AdminRoutingModule,
+    SharedRoutingModule,
     MatTableModule,
     MatExpansionModule,
     MatFormFieldModule,
@@ -32,13 +30,13 @@ import { AvailableCurrenciesComponent } from '../Shared/available-currencies/ava
     MatToolbarModule,
     MatCardModule,
     MatTooltipModule,
-    ReactiveFormsModule,
-    SharedModule
+    ReactiveFormsModule
   ],
   declarations: [
-    AdminComponent,
-    ManageApplicationComponent,
-    UsersComponent
+    SharedComponent,
+    AvailableCurrenciesComponent,
+    ProfileComponent,
+    TrasactionsComponent
   ]
 })
-export class AdminModule { }
+export class SharedModule { }

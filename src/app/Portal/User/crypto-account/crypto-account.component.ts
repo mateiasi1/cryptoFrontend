@@ -1,4 +1,3 @@
-import { Transfer } from './../../components/users';
 import { BankAccountService } from 'src/app/services/bankAccount.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { CryptoAccountService } from 'src/app/services/cryptoAccount.service';
@@ -7,6 +6,7 @@ import { MatTableDataSource, MatDialog, MatPaginator } from '@angular/material';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Subject } from 'rxjs';
+import { Transfer } from 'src/app/components/users';
 
 @Component({
   selector: 'app-crypto-account',

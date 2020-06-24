@@ -1,4 +1,4 @@
-import { BankComponent } from './../bank/bank.component';
+import { SharedModule } from './../Shared/Shared.module';
 import { UserRoutingModule } from './User-routing.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -7,9 +7,9 @@ import { MatTableModule, MatExpansionModule, MatFormFieldModule, MatSelectModule
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AlertModule } from 'src/app/_alert';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { TrasactionsComponent } from '../trasactions/trasactions.component';
-import { BankAccountComponent } from '../bank-account/bank-account.component';
-import { CryptoAccountComponent } from '../crypto-account/crypto-account.component';
+import { CryptoAccountComponent, TransferCryptoComponent, TradeCryptoComponent } from './crypto-account/crypto-account.component';
+import { BankComponent } from './bank/bank.component';
+import { DepositFiatComponent, WithdrawFiatComponent, TradeFiatComponent, BankAccountComponent } from './bank-account/bank-account.component';
 
 @NgModule({
   imports: [
@@ -31,14 +31,26 @@ import { CryptoAccountComponent } from '../crypto-account/crypto-account.compone
     MatToolbarModule,
     MatCardModule,
     MatTooltipModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModule
   ],
   declarations: [
     UserComponent,
-    TrasactionsComponent,
     BankAccountComponent,
     CryptoAccountComponent,
-    BankComponent
+    BankComponent,
+    DepositFiatComponent,
+    WithdrawFiatComponent,
+    TradeFiatComponent,
+    TransferCryptoComponent,
+    TradeCryptoComponent
+  ],
+  entryComponents: [
+    DepositFiatComponent,
+    WithdrawFiatComponent,
+    TradeFiatComponent,
+    TradeCryptoComponent,
+    TransferCryptoComponent
   ]
 })
 export class UserModule { }

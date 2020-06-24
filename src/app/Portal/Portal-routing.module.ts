@@ -1,3 +1,4 @@
+import { SharedModule } from './Shared/Shared.module';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { Page404portalComponent } from './page404portal/page404portal.component';

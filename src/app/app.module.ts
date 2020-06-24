@@ -16,7 +16,6 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { LoginComponent } from './login/LoginComponent';
-import { ManageApplicationComponent } from './portal/manage-application/manage-application.component';
 import { AuthService } from './services/auth-service';
 import { AuthGuardService } from './services/auth-guard.service';
 import { LoginService } from './services/login.service';
@@ -26,6 +25,7 @@ import { BankAccountService } from './services/bankAccount.service';
 import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { AlertModule } from './_alert';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { ManageApplicationComponent } from './portal/Admin/manage-application/manage-application.component';
 
 const modules = [
   MatCardModule,

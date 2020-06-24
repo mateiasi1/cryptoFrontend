@@ -121,8 +121,7 @@ export class BankAccountComponent implements OnInit {
   templateUrl: 'deposit.html',
 })
 export class DepositFiatComponent {
-  constructor(public bankAccountComponent: BankAccountComponent,
-              public bankAccountService: BankAccountService) { }
+  constructor(public bankAccountService: BankAccountService) { }
 }
 
 @Component({
@@ -131,8 +130,7 @@ export class DepositFiatComponent {
   templateUrl: 'withdraw.html',
 })
 export class WithdrawFiatComponent {
-  constructor(public bankAccountComponent: BankAccountComponent,
-              public bankAccountService: BankAccountService) { }
+  constructor(public bankAccountService: BankAccountService) { }
 }
 
 @Component({
@@ -141,7 +139,6 @@ export class WithdrawFiatComponent {
   templateUrl: 'trade.html',
 })
 export class TradeFiatComponent {
-  constructor(public bankAccountComponent: BankAccountComponent,
-              public bankAccountService: BankAccountService) { }
+  constructor(public bankAccountService: BankAccountService) { }
 }
 

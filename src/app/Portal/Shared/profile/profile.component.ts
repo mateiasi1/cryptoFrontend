@@ -1,8 +1,8 @@
 import { AuthService } from 'src/app/services/auth-service';
-import { UsersProfile, ChangePassword } from './../../components/users';
 import { Component, OnInit } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpClient, HttpParams } from '@angular/common/http';
+import { UsersProfile, ChangePassword } from 'src/app/components/users';
 
 @Component({
   selector: 'app-profile',

@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Fee } from '../portal/manage-application/fee.controller';
-import { FlatRate } from '../portal/manage-application/flatRate.component';
 import { environment } from 'src/environments/environment';
+import { FlatRate } from '../Portal/Admin/manage-application/flatRate.component';
+import { Fee } from '../Portal/Admin/manage-application/fee.controller';
 
 @Injectable({
   providedIn: 'root'
