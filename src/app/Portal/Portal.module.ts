@@ -1,19 +1,17 @@
-import { MatCardModule } from '@angular/material/card';
+import { UserModule } from './User/User.module';
 import { ProfileComponent } from './profile/profile.component';
+import { UsersComponent } from './users/users.component';
+import { ManageApplicationComponent } from './manage-application/manage-application.component';
+import { AdminModule } from './Admin/Admin.module';
+import { MatCardModule } from '@angular/material/card';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { PortalRoutingModule } from './portal-routing.module';
 import { PortalComponent } from './portal.component';
-import { BankComponent } from './bank/bank.component';
 // tslint:disable-next-line:max-line-length
-import { BankAccountComponent, DepositFiatComponent, WithdrawFiatComponent, TradeFiatComponent } from './bank-account/bank-account.component';
-import { CryptoAccountComponent, TradeCryptoComponent, TransferCryptoComponent } from './crypto-account/crypto-account.component';
-import { ManageApplicationComponent } from './manage-application/manage-application.component';
 import { Page404portalComponent } from './page404portal/page404portal.component';
 // tslint:disable-next-line:max-line-length
-import { AvailableCurrenciesComponent, AddCurrencyComponent, AddCryptoComponent } from './available-currencies/available-currencies.component';
-import { UsersComponent } from './users/users.component';
 import {MatTableModule} from '@angular/material/table';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -33,6 +31,9 @@ import { CryptoAccountService } from '../services/cryptoAccount.service';
 import { LoginComponent } from '../login/LoginComponent';
 import { AlertModule } from '../_alert';
 import { FlexLayoutModule } from "@angular/flex-layout";
+import { BankComponent } from './bank/bank.component';
+import { BankAccountComponent, DepositFiatComponent, WithdrawFiatComponent, TradeFiatComponent } from './bank-account/bank-account.component';
+import { CryptoAccountComponent, TransferCryptoComponent } from './crypto-account/crypto-account.component';
 import { TrasactionsComponent } from './trasactions/trasactions.component';
 
 @NgModule({
@@ -42,22 +43,12 @@ exports: [
 ],
   declarations: [
     PortalComponent,
-    AvailableCurrenciesComponent,
-    BankComponent,
-    BankAccountComponent,
-    CryptoAccountComponent,
-    ManageApplicationComponent,
     Page404portalComponent,
-    UsersComponent,
-    AddCurrencyComponent,
-    AddCryptoComponent,
     DepositFiatComponent,
     WithdrawFiatComponent,
     TradeFiatComponent,
-    TrasactionsComponent,
-    TradeCryptoComponent,
-    ProfileComponent,
-    TransferCryptoComponent
+    TransferCryptoComponent,
+    Page404portalComponent
   ],
   imports: [
     CommonModule,
@@ -78,11 +69,11 @@ exports: [
     MatToolbarModule,
     MatCardModule,
     MatTooltipModule,
-    ReactiveFormsModule 
+    ReactiveFormsModule,
+    AdminModule,
+    UserModule
   ],
   providers: [
-    AuthService,
-    AuthGuardService,
     LoginComponent,
     LoginService,
     RoleGuardService,
@@ -90,7 +81,6 @@ exports: [
     JwtHelperService,
     CryptoAccountService,
     MatSnackBar,
-    BankAccountComponent,
     CryptoAccountComponent,
     { provide: HTTP_INTERCEPTORS,
        useClass: TokenInterceptor,
@@ -98,8 +88,6 @@ exports: [
     },
     { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
     JwtHelperService
-  ],
-  entryComponents: [AddCurrencyComponent, AddCryptoComponent, DepositFiatComponent, WithdrawFiatComponent, TradeFiatComponent,
-    TradeCryptoComponent, TransferCryptoComponent ]
+  ]
 })
 export class PortalModule { }
