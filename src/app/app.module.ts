@@ -1,3 +1,4 @@
+import { CoreModule } from './_alert/index';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -61,7 +62,8 @@ const modules = [
     BrowserAnimationsModule,
     ...modules,
     AlertModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    CoreModule
   ],
   exports: [...modules],
   providers: [

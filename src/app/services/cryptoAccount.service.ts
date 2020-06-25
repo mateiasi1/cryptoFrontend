@@ -1,10 +1,12 @@
+import { HttpClientWServiceService } from './HttpClientWService.service';
 import { MatTableDataSource, MatDialog } from '@angular/material';
 import { HttpClient } from '@angular/common/http';
 import { ManagerService } from './manager.service';
 import { CryptoAccount, CurrencyListCrypto } from '../components/cryptoCurrency.component';
 import { CurrencyList, BankAccount } from '../components/currency.component';
 import { environment } from 'src/environments/environment';
-import { Subject } from 'rxjs';
+import { Subject, Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 
 
@@ -29,7 +31,8 @@ export class CryptoAccountService {
 
 constructor(private http: HttpClient,
             public dialog: MatDialog,
-            public managerService: ManagerService
+            public managerService: ManagerService,
+            private httpClientWService: HttpClientWServiceService
   ) {
     this.managerService.getFee();
   }
@@ -40,6 +43,7 @@ constructor(private http: HttpClient,
   setID(idFromHTML: number) {
   this.id = idFromHTML;
   }
+
   depositAmount() {
     console.log(this.id);
     this.http.put(this.environmentURL +  `CryptoAccount/add`, JSON.stringify
@@ -67,16 +71,16 @@ constructor(private http: HttpClient,
 
  // #region Currency
 getCurrencies() {
-  this.http.get(this.environmentURL + 'Currencies').subscribe((responseData: CurrencyList[]) => {
-    this.currencyList = responseData;
-    console.log(responseData);
+  this.httpClientWService.get(this.environmentURL + 'Currencies').subscribe((response: CurrencyList[]) => {
+    this.currencyList = response;
+    console.log('resp', response);
   });
 }
 
 getCryptoCurrencies() {
-  this.http.get(this.environmentURL + 'CryptoCurrencies').subscribe((responseData: any) => {
-    this.cryptoList = responseData.data.items;
-    console.log(responseData);
+  this.httpClientWService.get(this.environmentURL + 'CryptoCurrencies').subscribe((response: any) => {
+    this.cryptoList = response.data.items;
+    console.log('resp', response);
   });
 }
 // #endregion
