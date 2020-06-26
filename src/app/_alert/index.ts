@@ -6,9 +6,6 @@ export * from './alert.service';
 export * from './alert.model';
 
 @NgModule({
-    providers: [
-        HttpClientWServiceService
-    ]
 })
 export class CoreModule {
 }

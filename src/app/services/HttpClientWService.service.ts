@@ -15,7 +15,7 @@ import { AlertService } from '../_alert';
 export class HttpClientWServiceService {
 
 constructor(private httpClient: HttpClient,
-            private alert: AlertService) { }
+            private alertService: AlertService) { }
 
 handleError(error: HttpErrorResponse) {
   let errorMessage = 'Unknown error!';
@@ -26,23 +26,23 @@ handleError(error: HttpErrorResponse) {
     // Server-side errors
     errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
   }
-  window.alert(errorMessage);
+  this.alertService.error(errorMessage);
   return throwError(errorMessage);
 }
 
 get(url: string) {
-  return this.httpClient.get(url).pipe(catchError(this.handleError));
+  return this.httpClient.get(url).pipe(catchError(error => (this.handleError(error))));
 }
 
 post(url: string, object: any) {
-  return this.httpClient.post(url, object).pipe(catchError(this.handleError));
+  return this.httpClient.post(url, object).pipe(catchError(error => (this.handleError(error))));
 }
 
 delete(url: string, object: any) {
-  return this.httpClient.delete(url, object).pipe(catchError(this.handleError));
+  return this.httpClient.delete(url, object).pipe(catchError(error => (this.handleError(error))));
 }
 
 put(url: string, object: any) {
-  return this.httpClient.put(url, object).pipe(catchError(this.handleError));
+  return this.httpClient.put(url, object).pipe(catchError(error => (this.handleError(error))));
 }
 }

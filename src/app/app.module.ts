@@ -1,3 +1,5 @@
+import { HttpClientWServiceService } from './services/HttpClientWService.service';
+import { AlertService } from 'src/app/_alert';
 import { CoreModule } from './_alert/index';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -72,6 +74,8 @@ const modules = [
     AuthGuardService,
     LoginService,
     RoleGuardService,
+    AlertService,
+    HttpClientWServiceService,
     BankAccountService,
     { provide: HTTP_INTERCEPTORS,
        useClass: TokenInterceptor,
