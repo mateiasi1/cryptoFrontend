@@ -4,7 +4,7 @@ import { Toast } from './toast.interface';
 @Component({
   selector: 'app-toaster',
   template: `
-    <div class="toast toast-{{toast.type}}" 
+    <div class="toast toast-{{toast.type}}"
       [style.bottom.px]="i*100">
       <h4 class="toast-heading">{{toast.title}}</h4>
       <p>{{toast.body}}</p>
@@ -16,9 +16,11 @@ import { Toast } from './toast.interface';
       position: fixed;
       right: 0;
       width: 300px;
-      height: 80px;
+      height: 70px;
       padding: .75rem 1.25rem;
       margin-top: 1rem;
+      margin-bottom: 10px;
+      margin-right: 10px;
       border: 1px solid transparent;
       border-radius: .25rem;
       animation: move 2s both;

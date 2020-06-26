@@ -52,7 +52,6 @@ export class BankAccountComponent implements OnInit {
 
    setID(idFromHTML: number) {
      this.id = idFromHTML;
-     console.log(this.id);
      }
 
  //#region BankAccount
@@ -62,7 +61,6 @@ export class BankAccountComponent implements OnInit {
    this.http.get(this.environmentURL + 'BankAccounts/' + this.UserId).subscribe((responseData: any) => {
       this.bankAccounts = responseData.data.items;
       this.dataSource = new MatTableDataSource(responseData.data.items);
-      console.log('Bank-account' + responseData.data.items);
     });
   }
 
@@ -70,7 +68,6 @@ export class BankAccountComponent implements OnInit {
    this.http.delete(this.environmentURL + 'BankAccounts/' + id).subscribe((responseData: any) => {
      this.bankAccounts = responseData;
      this.dataSource = new MatTableDataSource(responseData.data.items);
-     console.log(responseData.data.items);
    });
    this.ngOnInit();
    }
@@ -82,30 +79,24 @@ export class BankAccountComponent implements OnInit {
  //#endregion
 
  deposit() {
-   console.log(this.id);
    const dialogRef = this.dialog.open(DepositFiatComponent);
 
    dialogRef.afterClosed().subscribe(result => {
      this.ngOnInit();
-     console.log(`Dialog result: ${result}`);
    });
  }
  withdraw() {
-   console.log(this.id);
    const dialogRef = this.dialog.open(WithdrawFiatComponent);
 
    dialogRef.afterClosed().subscribe(result => {
      this.ngOnInit();
-     console.log(`Dialog result: ${result}`);
    });
  }
  trade() {
-   console.log(this.id);
    const dialogRef = this.dialog.open(TradeFiatComponent);
 
    dialogRef.afterClosed().subscribe(result => {
      this.ngOnInit();
-     console.log(`Dialog result: ${result}`);
    });
  }
 
