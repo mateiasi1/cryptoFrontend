@@ -2,9 +2,13 @@
     width: 100%;
   }
   .loginCard {
+    margin-top: 12%;
       padding: 30px;
       width: 20%;
-      height: 30%
+      height: 30%;
+      -webkit-box-shadow: 0px 10px 20px 0px rgba(50, 50, 50, 0.52);
+	-moz-box-shadow:    0px 10px 20px 0px rgba(50, 50, 50, 0.52);
+	box-shadow:         0px 10px 20px 0px rgba(50, 50, 50, 0.52)
   }
   .inputFields {
     width: 100%;

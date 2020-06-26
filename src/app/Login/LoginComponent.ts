@@ -6,6 +6,8 @@ import { Router } from '@angular/router';
 import { LoginService } from '../services/login.service';
 import { environment } from 'src/environments/environment';
 import { UserLogin } from './userLogin.component';
+import { HttpClientWServiceService } from '../services/HttpClientWService.service';
+import { ToasterService } from '../_alert/toaster.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -20,7 +22,8 @@ export class LoginComponent implements OnInit {
   environmentURL = environment.apiUrl;
 
   // tslint:disable-next-line: max-line-length
-  constructor(private formBuilder: FormBuilder, private http: HttpClient, public authService: AuthService, public router: Router, public loginService: LoginService) {
+  constructor(private formBuilder: FormBuilder, private http: HttpClient, public authService: AuthService, public router: Router, public loginService: LoginService,
+    private httpClientWService: HttpClientWServiceService, private toaster: ToasterService) {
    this.createLoginForm();
   }
   ngOnInit() {
@@ -36,18 +39,18 @@ export class LoginComponent implements OnInit {
   loginUser() {
     // tslint:disable-next-line:max-line-length
     const userLogin: UserLogin = { Username: this.loginForm.value.username, Password: this.loginForm.value.password, Token: this.token, Role: this.token};
-    console.log(this.environmentURL);
-    this.http.post(this.environmentURL + 'Logins/authenticate', userLogin).subscribe((responseData: UserLogin) => {
-      console.log(responseData, 'login');
-      console.log(this.loginForm.value);
+    this.httpClientWService.post(this.environmentURL + 'Logins/authenticate', userLogin).subscribe((responseData: UserLogin) => {
       if (responseData != null) {
         this.authService.isLoggedIn = true;
         localStorage.setItem('currentUser', JSON.stringify({ token: responseData, name: userLogin.Username }));
         if (this.authService.getRole === 'admin') {
-          this.router.navigate(['portal/users-management']);
+          this.router.navigate(['portal/admin/users-management']);
         } else {
-          this.router.navigate(['portal/bank-account']);
+          this.router.navigate(['portal/user/bank-account']);
         }
+      }
+      else {
+        this.toaster.show('error', "Login failed", "Username or password is incorrect. Please try again");
       }
     });
   }

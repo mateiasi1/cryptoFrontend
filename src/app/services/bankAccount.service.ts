@@ -54,9 +54,11 @@ export class BankAccountService {
 
   //#endregion
   depositAmount() {
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    this.UserId = currentUser.token.id;
     // tslint:disable-next-line:object-literal-key-quotes
     // tslint:disable-next-line:max-line-length tslint:disable-next-line:object-literal-key-quotes
-    this.httpClientWService.put(this.environmentURL + `BankAccounts/add`, ({ 'amount': this.amount, 'id': this.id })).subscribe((responseData: any) => {
+    this.httpClientWService.put(this.environmentURL + `BankAccounts/add`, ({ 'amount': this.amount, 'id': this.UserId })).subscribe((responseData: any) => {
       if ( responseData.data === null) {
         this.toaster.show('error', responseData.message);
         // TODO: de adaugat in mesajul de eroare responseData.message
