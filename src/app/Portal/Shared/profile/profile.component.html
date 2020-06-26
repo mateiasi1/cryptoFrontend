@@ -31,7 +31,7 @@
           </mat-form-field>
         </div>
     </div>
-    <div fxLayout="row">
+    <div fxLayout="column">
         <mat-form-field class="example-full-width">
           <mat-label>Role</mat-label>
           <input matInput placeholder="Role" disabled  [(ngModel)]="users[0].role">
@@ -51,22 +51,22 @@
         </mat-panel-title>
       </mat-expansion-panel-header>
   
-      <div fxLayout="column" fxLayoutAlign="center center" >
-        <div   fxFlex="100">
+      <div fxLayout="column" fxLayoutAlign="center" >
+        <div fxLayout="column" fxLayoutAlign="center">
         <mat-form-field class="example-full-width">
           <mat-label>Old password</mat-label>
           <input matInput [(ngModel)]="password[0].Password">
         </mat-form-field>
         </div>
 
-        <div fxLayout="column" fxLayoutAlign="center center" >
+        <div fxLayout="column" fxLayoutAlign="center" >
         <mat-form-field class="example-full-width">
             <mat-label>New password</mat-label>
             <input matInput placeholder="New password" [(ngModel)]="password[0].NewPassword">
           </mat-form-field>
         </div>
 
-        <div fxLayout="column" fxLayoutAlign="center center" >
+        <div fxLayout="column" fxLayoutAlign="center" >
             <mat-form-field class="example-full-width">
                 <mat-label>New password confirmation</mat-label>
                 <input matInput placeholder="New password confirmation" [(ngModel)]="password[0].ConfirmPassword">
