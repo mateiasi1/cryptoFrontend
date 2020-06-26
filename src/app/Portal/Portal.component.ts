@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth-service';
 import { LoginComponent } from '../login/LoginComponent';
 import { MatDialog, MatSnackBar } from '@angular/material';
-import { AlertService } from '../_alert';
 
 @Component({
   selector: 'app-portal',
@@ -14,8 +13,7 @@ export class PortalComponent implements OnInit {
   constructor(public authService: AuthService,
               public loginComponent: LoginComponent,
               public dialog: MatDialog,
-              public snackBar: MatSnackBar,
-              public alertService: AlertService) { }
+              public snackBar: MatSnackBar) { }
   options = {
     autoClose: true,
     keepAfterRouteChange: false

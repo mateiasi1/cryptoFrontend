@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { AlertService } from './_alert';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +12,7 @@ export class AppComponent {
   environmentName = '';
   environmentUrl = '';
 
-  constructor(public alertService: AlertService) {
+  constructor() {
     this.environmentName = environment.environmentName;
     this.environmentUrl = environment.apiUrl;
   }

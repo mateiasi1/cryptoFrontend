@@ -1,6 +1,4 @@
 import { HttpClientWServiceService } from './services/HttpClientWService.service';
-import { AlertService } from 'src/app/_alert';
-import { CoreModule } from './_alert/index';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -16,7 +14,6 @@ import { MatDialogModule, MatFormFieldModule, MatInputModule, MatExpansionModule
 import { MatSelectModule } from '@angular/material/select';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { LoginComponent } from './login/LoginComponent';
 import { AuthService } from './services/auth-service';
@@ -26,9 +23,10 @@ import { RoleGuardService } from './services/role-guad.service';
 import { TokenInterceptor } from './components/token-nterceptor';
 import { BankAccountService } from './services/bankAccount.service';
 import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
-import { AlertModule } from './_alert';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ManageApplicationComponent } from './portal/Admin/manage-application/manage-application.component';
+import { ToasterContainerComponent } from './_alert/toaster-container.component';
+import { ToasterComponent } from './_alert/toaster.component';
 
 const modules = [
   MatCardModule,
@@ -55,7 +53,9 @@ const modules = [
     RegisterComponent,
     SetPasswordComponent,
     ValidateAccountComponent,
-    Page404Component
+    Page404Component,
+    ToasterContainerComponent,
+    ToasterComponent
   ],
   imports: [
     BrowserModule,
@@ -63,9 +63,7 @@ const modules = [
     ReactiveFormsModule,
     BrowserAnimationsModule,
     ...modules,
-    AlertModule,
-    FlexLayoutModule,
-    CoreModule
+    FlexLayoutModule
   ],
   exports: [...modules],
   providers: [
@@ -74,7 +72,6 @@ const modules = [
     AuthGuardService,
     LoginService,
     RoleGuardService,
-    AlertService,
     HttpClientWServiceService,
     BankAccountService,
     { provide: HTTP_INTERCEPTORS,

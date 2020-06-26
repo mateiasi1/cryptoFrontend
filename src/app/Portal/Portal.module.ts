@@ -25,7 +25,6 @@ import { BankAccountService } from '../services/bankAccount.service';
 import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { CryptoAccountService } from '../services/cryptoAccount.service';
 import { LoginComponent } from '../login/LoginComponent';
-import { AlertModule } from '../_alert';
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { TransferCryptoComponent, CryptoAccountComponent } from './User/crypto-account/crypto-account.component';
 import { DepositFiatComponent, WithdrawFiatComponent, TradeFiatComponent } from './User/bank-account/bank-account.component';
@@ -52,7 +51,6 @@ exports: [
     MatMenuModule,
     MatButtonModule,
     MatDialogModule,
-    AlertModule,
     MatTabsModule,
     FlexLayoutModule,
     MatToolbarModule,

@@ -7,7 +7,7 @@ import 'rxjs/add/observable/empty';
 import 'rxjs/add/operator/retry';
 import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { AlertService } from '../_alert';
+import { ToasterService } from '../_alert/toaster.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +15,7 @@ import { AlertService } from '../_alert';
 export class HttpClientWServiceService {
 
 constructor(private httpClient: HttpClient,
-            private alertService: AlertService) { }
+            private toaster: ToasterService) { }
 
 handleError(error: HttpErrorResponse) {
   let errorMessage = 'Unknown error!';
@@ -24,9 +24,10 @@ handleError(error: HttpErrorResponse) {
     errorMessage = `Error: ${error.error.message}`;
   } else {
     // Server-side errors
-    errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+    errorMessage = `Error Code: ${error.status}\nMessage: Server Error`;
+    //errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
   }
-  this.alertService.error(errorMessage);
+  this.toaster.show('error', `Error Code: ${error.status}`, errorMessage);
   return throwError(errorMessage);
 }
 

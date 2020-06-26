@@ -3,9 +3,9 @@ import { MatDialog, MatTableDataSource } from '@angular/material';
 import { ManagerService } from './manager.service';
 import { BankAccount, CurrencyList } from '../components/currency.component';
 import { CurrencyListCrypto } from '../components/cryptoCurrency.component';
-import { AlertService } from '../_alert';
 import { environment } from 'src/environments/environment';
 import { Subject } from 'rxjs';
+import { ToasterService } from '../_alert/toaster.service';
 
 
 
@@ -14,7 +14,7 @@ export class BankAccountService {
   constructor(private http: HttpClient,
               public dialog: MatDialog,
               public managerService: ManagerService,
-              protected alertService: AlertService
+              private toaster: ToasterService
   ) {
     this.managerService.getFlatRate();
   }
@@ -58,12 +58,12 @@ export class BankAccountService {
     // tslint:disable-next-line:max-line-length tslint:disable-next-line:object-literal-key-quotes
     this.http.put(this.environmentURL + `BankAccounts/add`, ({ 'amount': this.amount, 'id': this.id })).subscribe((responseData: any) => {
       if ( responseData.data === null) {
-        this.alertService.error(responseData.message, this.options);
+        this.toaster.show('error', responseData.message);
         // TODO: de adaugat in mesajul de eroare responseData.message
         this.amount = null;
         this.deposit.next(true);
       }
-      this.alertService.success(responseData.message, this.options);
+      this.toaster.show('success', responseData.message);
       console.log(responseData);
       this.amount = null;
       this.deposit.next(true);
@@ -75,12 +75,12 @@ export class BankAccountService {
     this.http.put(this.environmentURL + `BankAccounts/withdraw`, ({ 'amount': this.amount, 'id': this.id })).subscribe((responseData: any) => {
       // tslint:disable-next-line: no-debugger
       if ( responseData.data === null) {
-        this.alertService.error(responseData.message, this.options);
+        this.toaster.show('error', responseData.message);
         // TODO: de adaugat in mesajul de eroare responseData.message
         this.amount = null;
         this.deposit.next(true);
       } else {
-      this.alertService.success(responseData.message, this.options);
+        this.toaster.show('success', responseData.message);
       console.log(responseData);
       this.amount = null;
       this.deposit.next(true);

@@ -6,7 +6,6 @@ import { AdminComponent } from './Admin.component';
 // tslint:disable-next-line: max-line-length
 import { MatTableModule, MatExpansionModule, MatFormFieldModule, MatSelectModule, MatPaginatorModule, MatInputModule, MatMenuModule, MatButtonModule, MatDialogModule, MatTabsModule, MatToolbarModule, MatCardModule, MatTooltipModule } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AlertModule } from 'src/app/_alert';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ManageApplicationComponent } from './manage-application/manage-application.component';
 import { UsersComponent } from './users/users.component';
@@ -26,7 +25,6 @@ import { AvailableCurrenciesComponent } from '../Shared/available-currencies/ava
     MatMenuModule,
     MatButtonModule,
     MatDialogModule,
-    AlertModule,
     MatTabsModule,
     FlexLayoutModule,
     MatToolbarModule,
