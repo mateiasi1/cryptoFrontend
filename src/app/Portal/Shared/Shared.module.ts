@@ -5,7 +5,7 @@ import { SharedRoutingModule } from './Shared-routing.module';
 import { MatTableModule, MatExpansionModule, MatFormFieldModule, MatSelectModule, MatPaginatorModule, MatInputModule, MatMenuModule, MatButtonModule, MatDialogModule, MatTabsModule, MatToolbarModule, MatCardModule, MatTooltipModule } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { AvailableCurrenciesComponent } from './available-currencies/available-currencies.component';
+import { AvailableCurrenciesComponent, AddCurrencyComponent, AddCryptoComponent } from './available-currencies/available-currencies.component';
 import { ProfileComponent } from './profile/profile.component';
 import { TrasactionsComponent } from './trasactions/trasactions.component';
 
@@ -34,7 +34,13 @@ import { TrasactionsComponent } from './trasactions/trasactions.component';
     SharedComponent,
     AvailableCurrenciesComponent,
     ProfileComponent,
-    TrasactionsComponent
+    TrasactionsComponent,
+    AddCurrencyComponent,
+    AddCryptoComponent
+  ],
+  entryComponents: [
+    AddCurrencyComponent,
+    AddCryptoComponent
   ]
 })
 export class SharedModule { }
