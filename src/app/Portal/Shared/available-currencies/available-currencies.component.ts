@@ -78,6 +78,7 @@ export class AvailableCurrenciesComponent implements OnInit {
   // tslint:disable-next-line:component-selector
   selector: 'dialog-content-example-dialog',
   templateUrl: 'addCurrency.html',
+  styleUrls: ['./available-currencies.component.css'],
 })
 export class AddCurrencyComponent {
   constructor(

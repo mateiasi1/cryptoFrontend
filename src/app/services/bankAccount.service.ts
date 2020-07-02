@@ -90,7 +90,9 @@ export class BankAccountService {
 
   tradeAmount() {
     // tslint:disable-next-line:max-line-length
-    this.httpClientWService.put(this.environmentURL + `conversions/exchangeFiat`, JSON.stringify({'selectedValueFrom': this.selectedValueFrom, 'selectedValueTo': this.selectedValueTo, 'amountFrom': this.amountFrom, 'id': this.id })).subscribe((responseData: any) => {
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    this.UserId = currentUser.token.id;
+    this.httpClientWService.put(this.environmentURL + `conversions/exchangeFiat`, JSON.stringify({'selectedValueFrom': this.selectedValueFrom, 'selectedValueTo': this.selectedValueTo, 'amountFrom': this.amountFrom, 'id': this.UserId })).subscribe((responseData: any) => {
       if ( responseData.data === null) {
         this.toaster.show('error', responseData.message);
       } else {

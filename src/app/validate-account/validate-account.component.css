@@ -23,12 +23,15 @@
       -webkit-flex-flow: row wrap;
       justify-content: space-around;
       align-items: center;
+      width: 60%;
+      height: 60%;
+      margin-top: 10%;
     }
     
     .flex-item {
       padding: 55px;
-      width: 50%;
-      height: 50%;
+      width: 60%;
+      height: 60%;
       
       color: black;
       font-weight: bold;

@@ -34,11 +34,12 @@ export class ManageApplicationComponent implements OnInit {
   }
 
   onSubmitFee() {
-    this.managerService.addFee(this.role, this.feeForm.value.feeAmmount);
+    this.managerService.addFee(this.role, this.feeForm.value.feeAmount);
+    this.ngOnInit();
   }
 
   createFlatForm() {
-    this.feeForm = this.formBuilder.group({
+    this.flatForm = this.formBuilder.group({
       flatAmount: ['', Validators.required]
     });
   }

@@ -27,7 +27,9 @@
             <td fxLayoutAlign="center center" fxFlex="40" mat-cell *matCellDef="let element">
               <button mat-icon-button matTooltip="Reset user" color="primary" class="space buttonsWidth" (click)="resetUser(element.id)"><i class="material-icons">autorenew</i></button>
               <button mat-icon-button  matTooltip="Confirm user" color="success"  class="space buttonsWidth" (click)="confirmUser(element.id, element.confirmed)"><i class="material-icons">done</i></button>
-           </td>
+              <button mat-icon-button color="warn" matTooltip="Reject user" class="space buttonsWidth" (click)="deleteUser(element.id)"><i class="material-icons">remove_circle_outline</i></button>
+          
+            </td>
           </ng-container>
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
@@ -63,7 +65,7 @@
             <td fxLayoutAlign="center center" fxFlex="40" mat-cell *matCellDef="let element">
               <button mat-icon-button color="primary" matTooltip="Reset user" class="space buttonsWidth" (click)="resetUser(element.id)"><i class="material-icons">autorenew</i></button>
               <button mat-icon-button color="warn" class="space buttonsWidth" matTooltip="Suspend user" (click)="suspendUser(element.id)"><i class="material-icons">not_interested</i></button>
-          <button mat-icon-button color="warn" matTooltip="Delete user" class="space buttonsWidth" (click)="deleteUser(element.id)"><i class="material-icons">delete</i></button>
+              <button mat-icon-button color="warn" matTooltip="Delete user" class="space buttonsWidth" (click)="deleteUser(element.id)"><i class="material-icons">delete</i></button>
            </td>
           </ng-container>
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
