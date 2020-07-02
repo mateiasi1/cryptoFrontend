@@ -1,3 +1,4 @@
+import { HttpClientWServiceService } from './../../../services/HttpClientWService.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog, MatTableDataSource, MatTabGroup } from '@angular/material';
 import { BankAccountService } from 'src/app/services/bankAccount.service';
@@ -18,7 +19,7 @@ import { MatPaginator } from '@angular/material/paginator';
 export class TrasactionsComponent implements OnInit {
 
   constructor(public serversService: BankAccountService,
-              private http: HttpClient,
+              private http: HttpClientWServiceService,
               public authService: AuthService,
               public dialog: MatDialog
     ) {
@@ -33,6 +34,7 @@ export class TrasactionsComponent implements OnInit {
   displayedColumnsCrypto: string[] = ['From','To','Ammount', 'transactionType','Date'];
   role: string;
   isCurrentUserAdmin: boolean;
+  UserId: string;
 
   public sub: Subject<boolean> = new Subject<boolean>();
 
@@ -50,9 +52,11 @@ export class TrasactionsComponent implements OnInit {
     this.getFiatTransactions();
     this.getCryptoTransactions();
     this.changeTab();
+    this.getUserId();
   }
   getFiatTransactions() {
-    this.http.get(this.environmentURL + 'BankAccountTransactions').subscribe((responseData: any) => {
+    this.getUserId();
+    this.http.get(this.environmentURL + 'BankAccountTransactions/' + this.UserId).subscribe((responseData: any) => {
       this.dataSource = responseData.data.items;
       this.dataSource.paginator = this.paginator;
       console.log(responseData.data.items);
@@ -61,9 +65,14 @@ export class TrasactionsComponent implements OnInit {
 // TODO: de facut in backend crypto transactions
 getCryptoTransactions() {
   this.http.get(this.environmentURL + 'ConversionTransactions').subscribe((responseData: any) => {
-    this.dataSourceCrypto = responseData.data.items;
+    this.dataSourceCrypto = responseData.items;
     this.dataSourceCrypto.paginator = this.paginator2;
   });
+}
+
+getUserId() {
+  const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+  this.UserId = currentUser.token.id;
 }
 
 changeTab() {
