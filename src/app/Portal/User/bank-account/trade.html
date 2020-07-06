@@ -34,6 +34,21 @@
     <p>{{bankAccountService.selectedValueFrom}}</p>
     <p>{{bankAccountService.selectedValueTo}}</p>
 
+
+    <select (change)="bankAccountService.handleChange($event.target.selectedIndex)"
+    name="cmbTipoTexto"
+    class="form-control form-control-sm col-sm-7" 
+    id="cmbTipoTexto"
+    >
+    <option *ngFor="let crypto of bankAccountService.cryptoList" 
+    [value]="crypto.cryptoCurrencyAbbreviation">
+    {{crypto.cryptoCurrencyName}}</option>
+</select>
+
+<br/><br/>
+
+Selected : {{ bankAccountService.selectedValue | json }}
+
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-button mat-dialog-close>Cancel</button>

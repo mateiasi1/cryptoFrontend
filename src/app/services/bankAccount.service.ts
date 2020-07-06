@@ -30,6 +30,7 @@ export class BankAccountService {
   selectedValueFrom = '';
   selectedValueTo = '';
   dataSource: MatTableDataSource<BankAccount>;
+  selectedValue;
 
   public currencyList: CurrencyList[] = [];
   public cryptoList: CurrencyListCrypto[] = [];
@@ -47,6 +48,9 @@ export class BankAccountService {
   public lastId: number;
   newIndex: number;
 
+  handleChange(index) {
+    this.selectedValue = this.cryptoList[index];
+  }
   //#region Operations
   setID(idFromHTML: number) {
     this.id = idFromHTML;
