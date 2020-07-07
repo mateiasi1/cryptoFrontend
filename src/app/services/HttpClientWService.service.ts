@@ -39,8 +39,8 @@ post(url: string, object: any) {
   return this.httpClient.post(url, object).pipe(catchError(error => (this.handleError(error))));
 }
 
-delete(url: string, object: any) {
-  return this.httpClient.delete(url, object).pipe(catchError(error => (this.handleError(error))));
+delete(url: string) {
+  return this.httpClient.delete(url).pipe(catchError(error => (this.handleError(error))));
 }
 
 put(url: string, object: any) {

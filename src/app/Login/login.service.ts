@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../auth-service';
 import { UserLogin } from './userLogin.component';
+import { HttpClientWServiceService } from '../services/HttpClientWService.service';
 
 export class LoginService {
 
@@ -10,7 +11,7 @@ export class LoginService {
     token: string;
     public userLogin: UserLogin = {Username: this.username, Password: this.password, Token: this.token, Role: this.token};
 
-    constructor(private http: HttpClient,
+    constructor(private http: HttpClientWServiceService,
         public authService: AuthService
         ) { }
 

@@ -27,6 +27,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { ManageApplicationComponent } from './portal/Admin/manage-application/manage-application.component';
 import { ToasterContainerComponent } from './_alert/toaster-container.component';
 import { ToasterComponent } from './_alert/toaster.component';
+import { TokenInterceptorServiceService } from './services/TokenInterceptorService.service';
 
 const modules = [
   MatCardModule,
@@ -75,7 +76,7 @@ const modules = [
     HttpClientWServiceService,
     BankAccountService,
     { provide: HTTP_INTERCEPTORS,
-       useClass: TokenInterceptor,
+       useClass: TokenInterceptorServiceService,
        multi: true
     },
     { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
