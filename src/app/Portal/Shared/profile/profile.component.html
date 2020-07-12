@@ -31,11 +31,16 @@
           </mat-form-field>
         </div>
     </div>
-    <div fxLayout="column">
+    <div >
         <mat-form-field class="example-full-width">
           <mat-label>Role</mat-label>
           <input matInput placeholder="Role" disabled  [(ngModel)]="users[0].role">
         </mat-form-field>
+
+      <mat-form-field class="example-full-width margin-left">
+        <mat-label>Refferal</mat-label>
+        <input matInput placeholder="Refferal id" disabled  [(ngModel)]="users[0].referralId">
+      </mat-form-field>
     </div>
     
     <div fxLayout="row" fxLayoutAlign="end end"  class="margin-left">

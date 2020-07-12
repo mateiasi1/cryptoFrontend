@@ -11,6 +11,7 @@ export interface UsersProfile {
     email: string;
     firstName: string;
     lastName: string;
+    referralId: string;
 }
 
 export class ChangePassword {
