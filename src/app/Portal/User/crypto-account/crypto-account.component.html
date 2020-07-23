@@ -33,6 +33,15 @@
             timeline
           </i>
         </button>
+        <button
+        mat-icon-button
+        color="primary"
+        (click)="tradeCryptoToFiat(); bankAccountService.setID(element.id)"
+      >
+        <i class="material-icons" matTooltip="Withdraw">
+          remove_circle_outline
+        </i>
+      </button>
           <button
             mat-icon-button
             color="primary"

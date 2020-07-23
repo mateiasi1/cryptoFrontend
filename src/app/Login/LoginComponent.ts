@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
   loginUser() {
     // tslint:disable-next-line:max-line-length
     const userLogin: UserLogin = { Username: this.loginForm.value.username, Password: this.loginForm.value.password, Token: this.token, Role: this.token};
-    this.httpClientWService.post(this.environmentURL + 'Logins/authenticate', userLogin).subscribe((responseData: UserLogin) => {
+    this.http.post(this.environmentURL + 'Logins/authenticate', userLogin).subscribe((responseData: UserLogin) => {
       if (responseData != null) {
         this.authService.isLoggedIn = true;
         localStorage.setItem('currentUser', JSON.stringify({ token: responseData, name: userLogin.Username }));

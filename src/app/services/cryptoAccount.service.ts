@@ -70,10 +70,9 @@ constructor(private http: HttpClient,
 //#endregion
 
  // #region Currency
-getCurrencies() {
-  this.httpClientWService.get(this.environmentURL + 'Currencies').subscribe((response: CurrencyList[]) => {
-    this.currencyList = response;
-    console.log('resp', response);
+ getCurrencies() {
+  this.httpClientWService.get(this.environmentURL + 'Currencies').subscribe((responseData: any) => {
+    this.currencyList = responseData.data.items;
   });
 }
 
@@ -83,5 +82,19 @@ getCryptoCurrencies() {
     console.log('resp', response);
   });
 }
+
 // #endregion
+
+tradeCryptoToFiat() {
+  console.log(this.selectedValueFrom, this.selectedValueTo, this.amountFrom, this.id);
+  this.http.put(this.environmentURL + `conversions/exchangeCryptoToFiat`, JSON.stringify
+  // tslint:disable-next-line:object-literal-key-quotes
+  ({'selectedValueFrom': this.selectedValueFrom, 'selectedValueTo': this.selectedValueTo,
+   // tslint:disable-next-line:object-literal-key-quotes
+   'amountFrom': this.amountFrom, 'id': this.id })).subscribe(responseData => {
+    // tslint:disable-next-line: no-debugger
+    console.log(responseData);
+  });
+  console.log(this.selectedValueFrom, this.selectedValueTo, this.amountFrom, this.id);
+}
 }

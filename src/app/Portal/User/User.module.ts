@@ -6,7 +6,7 @@ import { UserComponent } from './User.component';
 import { MatTableModule, MatExpansionModule, MatFormFieldModule, MatSelectModule, MatPaginatorModule, MatInputModule, MatMenuModule, MatButtonModule, MatDialogModule, MatTabsModule, MatToolbarModule, MatCardModule, MatTooltipModule } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { CryptoAccountComponent, TransferCryptoComponent, TradeCryptoComponent } from './crypto-account/crypto-account.component';
+import { CryptoAccountComponent, TransferCryptoComponent, TradeCryptoComponent, TradeCryptoToFiatComponent } from './crypto-account/crypto-account.component';
 import { BankComponent } from './bank/bank.component';
 import { DepositFiatComponent, WithdrawFiatComponent, TradeFiatComponent, BankAccountComponent } from './bank-account/bank-account.component';
 
@@ -41,14 +41,16 @@ import { DepositFiatComponent, WithdrawFiatComponent, TradeFiatComponent, BankAc
     WithdrawFiatComponent,
     TradeFiatComponent,
     TransferCryptoComponent,
-    TradeCryptoComponent
+    TradeCryptoComponent,
+    TradeCryptoToFiatComponent
   ],
   entryComponents: [
     DepositFiatComponent,
     WithdrawFiatComponent,
     TradeFiatComponent,
     TradeCryptoComponent,
-    TransferCryptoComponent
+    TransferCryptoComponent,
+    TradeCryptoToFiatComponent
   ]
 })
 export class UserModule { }

@@ -44,6 +44,7 @@ export class CryptoAccountComponent implements OnInit {
      this.getUserId();
      this.getCryptoAccounts();
      this.cryptoAccountService.getCryptoCurrencies();
+     this.cryptoAccountService.getCurrencies();
    }
 
    setID(idFromHTML: number) {
@@ -89,6 +90,17 @@ getUserId() {
     console.log(`Dialog result: ${result}`);
   });
  }
+ 
+ tradeCryptoToFiat(id: number) {
+  console.log(this.id);
+  const dialogRef = this.dialog.open(TradeCryptoToFiatComponent);
+
+  dialogRef.afterClosed().subscribe(result => {
+    this.ngOnInit();
+    console.log(`Dialog result: ${result}`);
+  });
+ }
+
  changeTab(index:number) {
   this.bankAccountService.changeTab(index);
  }
@@ -143,4 +155,13 @@ export class TransferCryptoComponent {
   ngOnInit() {
     
   }
+}
+@Component({
+  // tslint:disable-next-line:component-selector
+  selector: 'dialog-content-example-dialog',
+  templateUrl: 'tradeCrypto.html',
+})
+export class TradeCryptoToFiatComponent {
+  constructor(public cryptoAccountService: CryptoAccountService,
+    public bankAccountService: BankAccountService) { }
 }
